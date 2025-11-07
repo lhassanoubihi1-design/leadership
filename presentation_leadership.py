@@ -228,7 +228,7 @@ st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>
 slide_names = [
     "0. Test Leadership", "1. Intro", "2. Définitions", "3. L vs M", "4. L vs C", "5. McGregor XY", 
     "6. Visionnaire", "7. Coaching", "8. Affiliatif", "9. Démocratique", "10. Directif", 
-    "11. Laissez-faire", "12. Autres Théories", "13. Styles Commandement", "14. Situationnel", 
+    "11. Laissez-faire", "12. Autres Théories", "14. Situationnel", 
     "15. Compétences", "16. IE", "17. Cas", "18. Quiz 1", "19. Quiz 2", "20. Plan d'Action", 
     "21. Synthèse", "22. Secteurs", "23. Erreurs", "24. Développement", "25. Conseils", "26. Ressources"
 ]
@@ -1244,3 +1244,4 @@ with tabs[26]:
     </div>
     </div>
     """, unsafe_allow_html=True)
+
