@@ -833,7 +833,7 @@ with tabs[18]:
                 "Collaborateur : Exprimer des réserves et des préoccupations"
             ],
             "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
-            "duree": "10 minutes"
+            "duree": "1 minutes"
         },
         {
             "titre": "🔥 Gestion de Crise",
@@ -843,7 +843,7 @@ with tabs[18]:
                 "Collaborateur : Suivre les instructions et signaler les problèmes"
             ],
             "styles_recommandes": ["Directif", "Pace-setter"],
-            "duree": "8 minutes"
+            "duree": "2 minutes"
         },
         {
             "titre": "🤝 Résolution de Conflit",
@@ -853,41 +853,21 @@ with tabs[18]:
                 "Collaborateur en conflit : Exprimer son point de vue"
             ],
             "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
-            "duree": "12 minutes"
-        },
-        {
-            "titre": "💡 Innovation et Créativité",
-            "description": "Brainstorming pour résoudre un problème complexe",
-            "roles": [
-                "Leader : Stimuler la créativité sans imposer de solutions",
-                "Collaborateur : Proposer des idées innovantes"
-            ],
-            "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
-            "duree": "15 minutes"
-        },
-        {
-            "titre": "📈 Performance d'Équipe",
-            "description": "L'équipe n'atteint pas ses objectifs de performance",
-            "roles": [
-                "Leader : Identifier les problèmes et motiver l'équipe",
-                "Collaborateur : Expliquer les difficultés rencontrées"
-            ],
-            "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
-            "duree": "10 minutes"
+            "duree": "3 minutes"
         }
     ]
     
-    # Initialisation de l'état du jeu de rôle
+    # Initialisation de l'état
     if 'current_scenario' not in st.session_state:
         st.session_state.current_scenario = None
-    if 'timer_active' not in st.session_state:
-        st.session_state.timer_active = False
     if 'time_left' not in st.session_state:
         st.session_state.time_left = 0
-    if 'timer_started' not in st.session_state:
-        st.session_state.timer_started = False
-    if 'start_time' not in st.session_state:
-        st.session_state.start_time = None
+    if 'initial_time' not in st.session_state:
+        st.session_state.initial_time = 0
+    if 'timer_running' not in st.session_state:
+        st.session_state.timer_running = False
+    if 'timer_finished' not in st.session_state:
+        st.session_state.timer_finished = False
 
     # Sélection du scénario
     st.markdown("### 🎯 Choisissez un Scénario")
@@ -895,13 +875,12 @@ with tabs[18]:
     for i, scenario in enumerate(roleplay_scenarios):
         if st.button(f"{scenario['titre']} - {scenario['duree']}", key=f"scenario_{i}", use_container_width=True):
             st.session_state.current_scenario = scenario
-            st.session_state.timer_active = False
-            st.session_state.timer_started = False
+            st.session_state.timer_running = False
+            st.session_state.timer_finished = False
             # Convertir la durée en secondes
             minutes = int(scenario['duree'].split()[0])
             st.session_state.time_left = minutes * 60
             st.session_state.initial_time = minutes * 60
-            st.session_state.start_time = None
             st.rerun()
     
     # Affichage du scénario sélectionné
@@ -937,73 +916,60 @@ with tabs[18]:
             </div>
             """, unsafe_allow_html=True)
         
-        # Timer - Utiliser st.empty() pour créer un conteneur rafraîchissable
-        timer_container = st.empty()
+        # Conteneur pour le timer qui sera mis à jour
+        timer_placeholder = st.empty()
         
         # Contrôles du timer
         st.markdown("### ⏱️ Contrôles du Timer")
-        col1, col2, col3, col4 = st.columns(4)
+        col1, col2, col3 = st.columns(3)
         
         with col1:
             if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
-                st.session_state.timer_active = True
-                st.session_state.timer_started = True
-                st.session_state.start_time = st.session_state.time_left
+                st.session_state.timer_running = True
+                st.session_state.timer_finished = False
                 st.rerun()
         
         with col2:
             if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
-                st.session_state.timer_active = False
+                st.session_state.timer_running = False
                 st.rerun()
         
         with col3:
-            if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
-                st.session_state.timer_active = False
-                st.session_state.timer_started = False
-                st.session_state.time_left = st.session_state.initial_time
-                st.session_state.start_time = None
-                st.rerun()
-        
-        with col4:
             if st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True):
-                st.session_state.timer_active = False
-                st.session_state.timer_started = False
+                st.session_state.timer_running = False
+                st.session_state.timer_finished = False
                 st.session_state.time_left = st.session_state.initial_time
-                st.session_state.start_time = None
                 st.rerun()
         
-        # Gestion du timer actif
-        if st.session_state.timer_active and st.session_state.time_left > 0:
-            import time
-            # Attendre 1 seconde
-            time.sleep(1)
+        # Logique du timer
+        if st.session_state.timer_running and st.session_state.time_left > 0:
+            # Mettre à jour le temps
             st.session_state.time_left -= 1
             
+            # Si le temps est écoulé
             if st.session_state.time_left <= 0:
-                st.session_state.timer_active = False
+                st.session_state.timer_running = False
+                st.session_state.timer_finished = True
                 st.session_state.time_left = 0
-                st.session_state.timer_started = False
-            
-            # Forcer le rafraîchissement
-            st.rerun()
         
-        # Formatage du temps pour l'affichage
+        # Affichage du timer
         minutes = st.session_state.time_left // 60
         seconds = st.session_state.time_left % 60
         
-        # Couleur du timer en fonction du temps restant
+        # Couleur du timer
         if st.session_state.initial_time > 0:
-            if st.session_state.time_left > st.session_state.initial_time * 0.5:
+            progress = st.session_state.time_left / st.session_state.initial_time
+            if progress > 0.5:
                 timer_color = "#10B981"  # Vert
-            elif st.session_state.time_left > st.session_state.initial_time * 0.25:
+            elif progress > 0.25:
                 timer_color = "#F59E0B"  # Orange
             else:
                 timer_color = "#EF4444"  # Rouge
         else:
-            timer_color = "#6B7280"  # Gris par défaut
+            timer_color = "#6B7280"
         
-        # Affichage du timer dans le conteneur rafraîchissable
-        with timer_container.container():
+        # Afficher le timer dans le placeholder
+        with timer_placeholder.container():
             st.markdown("### ⏱️ Timer de la Session")
             st.markdown(f"""
             <div class="timer-box" style="border-color: {timer_color};">
@@ -1011,34 +977,33 @@ with tabs[18]:
                     {minutes:02d}:{seconds:02d}
                 </div>
                 <div style="margin-top: 0.5rem;">
-                    {'⏰ En cours...' if st.session_state.timer_active else '⏸️ En pause' if st.session_state.timer_started else '⏹️ Arrêté'}
+                    {'⏰ En cours...' if st.session_state.timer_running else '⏸️ En pause' if st.session_state.time_left < st.session_state.initial_time else '⏹️ Prêt'}
                 </div>
             </div>
             """, unsafe_allow_html=True)
             
             # Barre de progression
             if st.session_state.initial_time > 0:
-                progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
-                st.progress(min(progress, 1.0))
-                st.caption(f"Progression : {int(progress * 100)}%")
+                progress_value = 1 - (st.session_state.time_left / st.session_state.initial_time)
+                st.progress(progress_value)
+                st.caption(f"Progression : {int(progress_value * 100)}%")
         
-        # Alerte quand le temps est écoulé
-        if (st.session_state.time_left == 0 and 
-            st.session_state.initial_time > 0 and 
-            st.session_state.timer_started):
-            
+        # Si le timer est en cours, planifier un rerun
+        if st.session_state.timer_running and st.session_state.time_left > 0:
+            # Ajouter un petit délai avant le rerun
+            import time
+            time.sleep(1)
+            st.rerun()
+        
+        # Message de fin
+        if st.session_state.timer_finished:
             st.balloons()
             st.success("🎉 Temps écoulé ! La session est terminée.")
             
-            # Réinitialiser le flag
-            st.session_state.timer_started = False
-            
-            # Bouton pour recommencer
-            if st.button("🔄 Recommencer ce scénario", key="restart_scenario"):
-                st.session_state.timer_active = False
-                st.session_state.timer_started = False
+            if st.button("🔄 Recommencer", key="restart_finished"):
+                st.session_state.timer_running = False
+                st.session_state.timer_finished = False
                 st.session_state.time_left = st.session_state.initial_time
-                st.session_state.start_time = None
                 st.rerun()
         
         # Consignes pour le débriefing
@@ -1889,6 +1854,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
