@@ -1344,32 +1344,199 @@ with tabs[22]:
 with tabs[23]:
     st.markdown("""
     <div class="quiz-section">
-    <h2>🎯 QUIZ 2 - Styles de Leadership</h2>
-    <p class="content-paragraph">Testez votre capacité à identifier les styles de leadership (10 questions)</p>
+    <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
+    <p class="content-paragraph">Testez vos connaissances sur les styles de leadership avec ce quiz de 10 questions</p>
     </div>
     """, unsafe_allow_html=True)
     
     quiz2_questions = [
         {
-            "question": "Quel style de leadership convient le mieux à une équipe d'experts hautement motivés ?",
-            "options": ["Directif", "Laissez-faire", "Visionnaire", "Affiliatif"],
-            "correct": "Laissez-faire",
-            "explication": "✅ Le style laissez-faire fonctionne bien avec des experts autonomes."
+            "question": "Quel style de leadership est le plus adapté en situation de crise nécessitant une action immédiate ?",
+            "options": [
+                "Leadership démocratique",
+                "Leadership directif",
+                "Leadership laissez-faire",
+                "Leadership affiliatif"
+            ],
+            "correct": 1,
+            "explanation": "En situation de crise, le leadership directif permet de prendre des décisions rapides et d'orienter clairement l'action."
+        },
+        {
+            "question": "Quel leader est connu pour son approche 'Servant Leadership' ?",
+            "options": [
+                "Steve Jobs",
+                "Robert Greenleaf",
+                "Jack Welch",
+                "Bill Gates"
+            ],
+            "correct": 1,
+            "explanation": "Robert Greenleaf a développé le concept de 'Servant Leadership' où le leader sert d'abord son équipe."
+        },
+        {
+            "question": "Dans le leadership transformationnel, quelle est la technique clé pour inspirer les collaborateurs ?",
+            "options": [
+                "Stimulation intellectuelle",
+                "Contrôle renforcé",
+                "Punitions fréquentes",
+                "Délégation totale"
+            ],
+            "correct": 0,
+            "explanation": "La stimulation intellectuelle pousse les collaborateurs à innover et penser différemment, clé du leadership transformationnel."
+        },
+        {
+            "question": "Quel style de leadership risque de créer le plus de burn-out dans l'équipe ?",
+            "options": [
+                "Leadership visionnaire",
+                "Leadership pace-setter",
+                "Leadership coaching",
+                "Leadership démocratique"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership pace-setter, où le leader montre l'exemple à un rythme effréné, peut épuiser l'équipe qui peine à suivre."
+        },
+        {
+            "question": "Quelle est la principale caractéristique du leadership authentique ?",
+            "options": [
+                "Transparence et alignement valeurs-actions",
+                "Charisme exceptionnel",
+                "Expertise technique suprême",
+                "Richesse personnelle"
+            ],
+            "correct": 0,
+            "explanation": "L'authenticité se manifeste par la transparence, l'intégrité et l'alignement entre les valeurs professées et les actions."
+        },
+        {
+            "question": "Selon le modèle situationnel, quel style utiliser avec un collaborateur débutant et motivé ?",
+            "options": [
+                "Délégatif",
+                "Directif",
+                "Participatif",
+                "Persuasif"
+            ],
+            "correct": 1,
+            "explanation": "Avec un débutant motivé, le style directif fournit la structure et les instructions nécessaires à l'apprentissage."
+        },
+        {
+            "question": "Quel type de leader utilise principalement des récompenses et punitions ?",
+            "options": [
+                "Leader transformationnel",
+                "Leader transactionnel",
+                "Leader authentique",
+                "Leader serviteur"
+            ],
+            "correct": 1,
+            "explanation": "Le leader transactionnel fonctionne sur le principe 'donnant-donnant' avec des récompenses pour les performances."
+        },
+        {
+            "question": "Quelle est la limite principale du leadership laissez-faire ?",
+            "options": [
+                "Manque de structure et de direction",
+                "Trop de contrôle",
+                "Communication excessive",
+                "Décisions trop rapides"
+            ],
+            "correct": 0,
+            "explanation": "Le laissez-faire peut mener au manque de coordination et à l'absence de vision claire pour l'équipe."
+        },
+        {
+            "question": "Quel style de leadership est le plus efficace pour construire l'harmonie d'équipe ?",
+            "options": [
+                "Leadership affiliatif",
+                "Leadership directif",
+                "Leadership pace-setter",
+                "Leadership transactionnel"
+            ],
+            "correct": 0,
+            "explanation": "Le leadership affiliatif se concentre sur les relations et l'harmonie, créant un environnement de travail positif."
+        },
+        {
+            "question": "Quelle compétence un leader visionnaire doit-il particulièrement développer ?",
+            "options": [
+                "Capacité à communiquer une vision inspirante",
+                "Compétences en micro-management",
+                "Maîtrise des détails opérationnels",
+                "Capacité à punir les mauvaises performances"
+            ],
+            "correct": 0,
+            "explanation": "Un leader visionnaire excelle dans l'art de communiquer une vision qui inspire et mobilise l'équipe."
         }
     ]
     
+    # Initialisation du quiz 2
+    if 'quiz2_responses' not in st.session_state:
+        st.session_state.quiz2_responses = [None] * len(quiz2_questions)
+    if 'quiz2_score' not in st.session_state:
+        st.session_state.quiz2_score = 0
+    if 'show_quiz2_results' not in st.session_state:
+        st.session_state.show_quiz2_results = False
+    
+    # Affichage des questions
     for i, q in enumerate(quiz2_questions):
         st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
-        rep = st.radio(f"Choisissez la bonne réponse :", q["options"], key=f"quiz2_{i}")
         
-        if st.session_state.get(f"show_answers_quiz2", False):
-            if rep == q["correct"]:
-                st.success(f"✅ Correct! {q['explication']}")
-            else:
-                st.error(f"❌ Incorrect! La bonne réponse était : {q['correct']}. {q['explication']}")
+        options = q["options"]
+        response = st.radio(
+            "Choisissez votre réponse :",
+            options,
+            key=f"quiz2_{i}",
+            index=st.session_state.quiz2_responses[i] if st.session_state.quiz2_responses[i] is not None else None
+        )
+        
+        # Stocker la réponse
+        if response in options:
+            st.session_state.quiz2_responses[i] = options.index(response)
     
-    if st.button("📊 Corriger le Quiz 2", key="corriger_quiz2"):
-        st.session_state.show_answers_quiz2 = True
+    # Vérifier si toutes les questions sont répondues
+    all_answered = all(response is not None for response in st.session_state.quiz2_responses)
+    
+    if st.button("📝 Voir mes résultats du Quiz 2", key="view_quiz2_results", disabled=not all_answered):
+        if not all_answered:
+            st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
+        else:
+            st.session_state.show_quiz2_results = True
+            # Calcul du score
+            score = 0
+            for i, q in enumerate(quiz2_questions):
+                if st.session_state.quiz2_responses[i] == q["correct"]:
+                    score += 1
+            st.session_state.quiz2_score = score
+            st.rerun()
+    
+    # Affichage des résultats
+    if st.session_state.get('show_quiz2_results', False) and all_answered:
+        score = st.session_state.quiz2_score
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📊 Résultats du Quiz 2</h3>
+            <p><strong>Score : {score}/10</strong></p>
+            <p><strong>Pourcentage : {score * 10}%</strong></p>
+        """, unsafe_allow_html=True)
+        
+        if score >= 9:
+            st.markdown("<p>🎉 <strong>Exceptionnel !</strong> Vous maîtrisez les styles de leadership avancés.</p>", unsafe_allow_html=True)
+        elif score >= 7:
+            st.markdown("<p>👍 <strong>Très bon !</strong> Vous avez une excellente compréhension des différents styles.</p>", unsafe_allow_html=True)
+        elif score >= 5:
+            st.markdown("<p>💪 <strong>Bon !</strong> Vous connaissez les bases, continuez à vous perfectionner.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown("<p>📚 <strong>À revoir.</strong> Étudiez les différents styles de leadership.</p>", unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Affichage des corrections
+        st.markdown("### 📖 Corrections détaillées")
+        for i, q in enumerate(quiz2_questions):
+            user_answer = st.session_state.quiz2_responses[i]
+            is_correct = user_answer == q["correct"]
+            
+            st.markdown(f"""
+            <div class="modern-card">
+                <h4>Question {i+1} : {q['question']}</h4>
+                <p><strong>Votre réponse :</strong> {q['options'][user_answer]} {'✅' if is_correct else '❌'}</p>
+                <p><strong>Réponse correcte :</strong> {q['options'][q['correct']]}</p>
+                <p><strong>Explication :</strong> {q['explanation']}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Slide 24 : Synthèse
 with tabs[24]:
@@ -1481,3 +1648,4 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
