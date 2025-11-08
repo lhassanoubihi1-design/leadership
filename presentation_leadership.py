@@ -1309,36 +1309,199 @@ with tabs[21]:
 with tabs[22]:
     st.markdown("""
     <div class="quiz-section">
-    <h2>🧠 QUIZ 1 - Fondamentaux du Leadership</h2>
-    <p class="content-paragraph">Testez vos connaissances sur les concepts de base du leadership (10 questions)</p>
+    <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
+    <p class="content-paragraph">Testez vos connaissances sur les bases du leadership avec ce quiz de 10 questions</p>
     </div>
     """, unsafe_allow_html=True)
     
     quiz1_questions = [
         {
-            "question": "Le leadership est une compétence exclusivement innée qui ne peut pas s'apprendre.",
-            "correct": False,
-            "explication": "❌ Faux - Des études montrent que 70% des compétences de leadership s'acquièrent par la pratique et la formation."
+            "question": "Quelle est la définition la plus précise du leadership ?",
+            "options": [
+                "Exercer un pouvoir hiérarchique sur des subordonnés",
+                "Influencer et guider des personnes vers un objectif commun",
+                "Prendre toutes les décisions importantes seul",
+                "Contrôler strictement le travail des autres"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership est avant tout une capacité à influencer et guider, pas à contrôler ou dominer."
         },
         {
-            "question": "Un leader efficace passe plus de temps à écouter qu'à parler.",
-            "correct": True,
-            "explication": "✅ Vrai - L'écoute active est cruciale pour comprendre les besoins de son équipe."
+            "question": "Quelle est la principale différence entre leadership et management ?",
+            "options": [
+                "Le leadership rapporte plus d'argent",
+                "Le leadership concerne la vision, le management l'organisation",
+                "Le management est plus important que le leadership",
+                "Il n'y a aucune différence"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership inspire le changement et fixe la vision, tandis que le management organise et planifie l'exécution."
+        },
+        {
+            "question": "Selon la théorie X et Y de McGregor, quelle affirmation correspond à la théorie Y ?",
+            "options": [
+                "Les employés sont naturellement paresseux et doivent être contrôlés",
+                "Les employés sont créatifs et cherchent à s'impliquer",
+                "Seul l'argent motive les employés",
+                "Les employés ne peuvent pas être fiables"
+            ],
+            "correct": 1,
+            "explanation": "La théorie Y considère que les employés sont naturellement motivés, créatifs et cherchent à prendre des responsabilités."
+        },
+        {
+            "question": "Quel style de leadership est centré sur le développement des collaborateurs ?",
+            "options": [
+                "Leadership directif",
+                "Leadership coaching",
+                "Leadership pace-setter", 
+                "Leadership laissez-faire"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership coaching se concentre sur le développement à long terme des compétences des collaborateurs."
+        },
+        {
+            "question": "Quelle compétence est la plus cruciale pour un leader selon la plupart des études ?",
+            "options": [
+                "Compétences techniques avancées",
+                "Intelligence émotionnelle",
+                "Connaissances financières",
+                "Maîtrise des outils technologiques"
+            ],
+            "correct": 1,
+            "explanation": "L'intelligence émotionnelle permet de comprendre et gérer les émotions, essentielle pour motiver et inspirer."
+        },
+        {
+            "question": "Dans le modèle situationnel de Hersey-Blanchard, quel style utiliser avec une équipe compétente mais peu motivée ?",
+            "options": [
+                "Directif",
+                "Persuasif", 
+                "Participatif",
+                "Délégatif"
+            ],
+            "correct": 2,
+            "explanation": "Avec une équipe compétente mais peu motivée, le style participatif qui implique l'équipe dans les décisions est le plus efficace."
+        },
+        {
+            "question": "Quel est le principal avantage du leadership démocratique ?",
+            "options": [
+                "Décisions très rapides",
+                "Fort engagement des collaborateurs",
+                "Contrôle total du leader",
+                "Peu de discussions nécessaires"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership démocratique favorise l'engagement car les collaborateurs se sentent écoutés et impliqués."
+        },
+        {
+            "question": "Quel type de leader inspire par son exemple et son intégrité ?",
+            "options": [
+                "Leader transactionnel",
+                "Leader authentique",
+                "Leader directif",
+                "Leader laissez-faire"
+            ],
+            "correct": 1,
+            "explanation": "Le leader authentique inspire par sa transparence, son intégrité et son alignement entre ses paroles et ses actions."
+        },
+        {
+            "question": "Quelle est la caractéristique principale du leadership serviteur ?",
+            "options": [
+                "Servir les intérêts du leader",
+                "Servir en premier, diriger ensuite",
+                "Servir seulement les actionnaires",
+                "Servir sous la direction des subordonnés"
+            ],
+            "correct": 1,
+            "explanation": "Le leader serviteur met les besoins des autres en premier et considère le leadership comme un service."
+        },
+        {
+            "question": "Quelle erreur un leader débutant doit-il absolument éviter ?",
+            "options": [
+                "Écouter trop son équipe",
+                "Micro-manager et ne pas faire confiance",
+                "Communiquer trop fréquemment",
+                "Faire trop de compliments"
+            ],
+            "correct": 1,
+            "explanation": "Le micro-management tue la motivation et l'autonomie, c'est une erreur fréquente des leaders débutants."
         }
     ]
     
+    # Initialisation du quiz 1
+    if 'quiz1_responses' not in st.session_state:
+        st.session_state.quiz1_responses = [None] * len(quiz1_questions)
+    if 'quiz1_score' not in st.session_state:
+        st.session_state.quiz1_score = 0
+    if 'show_quiz1_results' not in st.session_state:
+        st.session_state.show_quiz1_results = False
+    
+    # Affichage des questions
     for i, q in enumerate(quiz1_questions):
         st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
-        rep = st.radio(f"Choisissez votre réponse :", ["Vrai", "Faux"], key=f"quiz1_{i}")
         
-        if st.session_state.get(f"show_answers_quiz1", False):
-            if (rep == "Vrai") == q["correct"]:
-                st.success(f"✅ Correct! {q['explication']}")
-            else:
-                st.error(f"❌ Incorrect! {q['explication']}")
+        options = q["options"]
+        response = st.radio(
+            "Choisissez votre réponse :",
+            options,
+            key=f"quiz1_{i}",
+            index=st.session_state.quiz1_responses[i] if st.session_state.quiz1_responses[i] is not None else None
+        )
+        
+        # Stocker la réponse
+        if response in options:
+            st.session_state.quiz1_responses[i] = options.index(response)
     
-    if st.button("📊 Corriger le Quiz 1", key="corriger_quiz1"):
-        st.session_state.show_answers_quiz1 = True
+    # Vérifier si toutes les questions sont répondues
+    all_answered = all(response is not None for response in st.session_state.quiz1_responses)
+    
+    if st.button("📝 Voir mes résultats du Quiz 1", key="view_quiz1_results", disabled=not all_answered):
+        if not all_answered:
+            st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
+        else:
+            st.session_state.show_quiz1_results = True
+            # Calcul du score
+            score = 0
+            for i, q in enumerate(quiz1_questions):
+                if st.session_state.quiz1_responses[i] == q["correct"]:
+                    score += 1
+            st.session_state.quiz1_score = score
+            st.rerun()
+    
+    # Affichage des résultats
+    if st.session_state.get('show_quiz1_results', False) and all_answered:
+        score = st.session_state.quiz1_score
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📊 Résultats du Quiz 1</h3>
+            <p><strong>Score : {score}/10</strong></p>
+            <p><strong>Pourcentage : {score * 10}%</strong></p>
+        """, unsafe_allow_html=True)
+        
+        if score >= 9:
+            st.markdown("<p>🎉 <strong>Excellent !</strong> Vous maîtrisez parfaitement les fondamentaux du leadership.</p>", unsafe_allow_html=True)
+        elif score >= 7:
+            st.markdown("<p>👍 <strong>Très bien !</strong> Vous avez de bonnes connaissances en leadership.</p>", unsafe_allow_html=True)
+        elif score >= 5:
+            st.markdown("<p>💪 <strong>Bien !</strong> Vous avez les bases, continuez à apprendre.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown("<p>📚 <strong>À travailler.</strong> Revoyez les concepts fondamentaux.</p>", unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Affichage des corrections
+        st.markdown("### 📖 Corrections détaillées")
+        for i, q in enumerate(quiz1_questions):
+            user_answer = st.session_state.quiz1_responses[i]
+            is_correct = user_answer == q["correct"]
+            
+            st.markdown(f"""
+            <div class="modern-card">
+                <h4>Question {i+1} : {q['question']}</h4>
+                <p><strong>Votre réponse :</strong> {q['options'][user_answer]} {'✅' if is_correct else '❌'}</p>
+                <p><strong>Réponse correcte :</strong> {q['options'][q['correct']]}</p>
+                <p><strong>Explication :</strong> {q['explanation']}</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 # Slide 23 : QUIZ 2 - Styles
 with tabs[23]:
@@ -1648,4 +1811,5 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
