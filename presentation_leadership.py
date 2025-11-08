@@ -1074,195 +1074,195 @@ with tabs[18]:
                     if st.button("🎭 Commencer le jeu de rôle", key="start_roleplay"):
                         st.rerun()
             
-            return  # Arrêter l'exécution ici pendant le temps de réflexion
-        
-        # JEU DE RÔLE - Partie principale
-        st.markdown(f"""
-        <div class="roleplay-card">
-            <h3>🎭 {scenario['titre']}</h3>
-            <p><strong>Description :</strong> {scenario['description']}</p>
-            <p><strong>Durée du jeu de rôle :</strong> {scenario['duree']}</p>
-            <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Rôles avec plus de détails
-        st.markdown("### 👥 Rôles à Distribuer")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.markdown(f"""
-            <div class="roleplay-scenario" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
-                <h4>🎯 Rôle du LEADER</h4>
-                <p><strong>Votre mission :</strong> {scenario['roles'][0]}</p>
-                <div style="margin-top: 1rem; padding: 0.8rem; background: #dbeafe; border-radius: 6px;">
-                    <strong>💡 Conseils :</strong>
-                    <ul style="margin: 0.5rem 0 0 1rem;">
-                        <li>Écoutez activement</li>
-                        <li>Posez des questions ouvertes</li>
-                        <li>Cherchez des solutions gagnant-gagnant</li>
-                    </ul>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown(f"""
-            <div class="roleplay-scenario" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
-                <h4>👤 Rôle du COLLABORATEUR</h4>
-                <p><strong>Votre situation :</strong> {scenario['roles'][1]}</p>
-                <div style="margin-top: 1rem; padding: 0.8rem; background: #bbf7d0; border-radius: 6px;">
-                    <strong>🎭 Jouez votre rôle :</strong>
-                    <ul style="margin: 0.5rem 0 0 1rem;">
-                        <li>Exprimez vos vraies émotions</li>
-                        <li>Soyez authentique dans vos réactions</li>
-                        <li>Donnez du feedback constructif</li>
-                    </ul>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Timer du jeu de rôle
-        st.markdown("### ⏱️ Timer du Jeu de Rôle")
-        
-        # Contrôles du timer
-        col1, col2, col3, col4 = st.columns(4)
-        
-        with col1:
-            if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
-                st.session_state.timer_active = True
-                st.session_state.timer_started = True
-        
-        with col2:
-            if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
-                st.session_state.timer_active = False
-        
-        with col3:
-            if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
-                st.session_state.timer_active = False
-                st.session_state.timer_started = False
-                st.session_state.time_left = st.session_state.initial_time
-        
-        with col4:
-            if st.button("🔄 Recommencer", key="restart_timer", use_container_width=True):
-                st.session_state.timer_active = False
-                st.session_state.timer_started = False
-                st.session_state.time_left = st.session_state.initial_time
-                st.session_state.reflexion_active = True
-                st.session_state.reflexion_time = st.session_state.reflexion_initial
-                st.rerun()
-        
-        # Affichage du timer avec mise à jour automatique
-        if st.session_state.timer_active:
-            import time
-            if 'last_update' not in st.session_state:
-                st.session_state.last_update = time.time()
-            
-            current_time = time.time()
-            if current_time - st.session_state.last_update >= 1:
-                st.session_state.time_left -= 1
-                st.session_state.last_update = current_time
-                
-                if st.session_state.time_left <= 0:
-                    st.session_state.timer_active = False
-                    st.session_state.time_left = 0
-                    st.session_state.timer_started = False
-        
-        # Formatage du temps
-        minutes = st.session_state.time_left // 60
-        seconds = st.session_state.time_left % 60
-        
-        # Couleur du timer en fonction du temps restant
-        if st.session_state.time_left > st.session_state.initial_time * 0.5:
-            timer_color = "#10B981"  # Vert
-        elif st.session_state.time_left > st.session_state.initial_time * 0.25:
-            timer_color = "#F59E0B"  # Orange
+            # On utilise un else pour continuer vers le jeu de rôle seulement si la réflexion est terminée
         else:
-            timer_color = "#EF4444"  # Rouge
-        
-        # Affichage du timer
-        st.markdown(f"""
-        <div class="timer-box" style="border-color: {timer_color};">
-            <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
-                {minutes:02d}:{seconds:02d}
+            # JEU DE RÔLE - Partie principale (seulement si la réflexion est terminée)
+            st.markdown(f"""
+            <div class="roleplay-card">
+                <h3>🎭 {scenario['titre']}</h3>
+                <p><strong>Description :</strong> {scenario['description']}</p>
+                <p><strong>Durée du jeu de rôle :</strong> {scenario['duree']}</p>
+                <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
             </div>
-            <div style="margin-top: 0.5rem;">
-                {'⏰ Jeu de rôle en cours...' if st.session_state.timer_active else '⏸️ En pause' if st.session_state.timer_started else '⏹️ Arrêté'}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Barre de progression
-        progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
-        st.progress(progress)
-        st.caption(f"Progression : {int(progress * 100)}%")
-        
-        # Alerte quand le temps est écoulé
-        if st.session_state.time_left == 0 and st.session_state.timer_started:
-            st.balloons()
-            st.success("🎉 Temps écoulé ! La session de jeu de rôle est terminée.")
+            """, unsafe_allow_html=True)
             
-            # Section debriefing améliorée
-            st.markdown("### 📝 Debriefing - Retour d'Expérience")
-            st.markdown("""
-            <div class="conseil-box">
-                <h4>🎯 Questions pour le debriefing :</h4>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
-                    <div style="padding: 1rem; background: #f0f9ff; border-radius: 8px;">
-                        <strong>Pour le LEADER :</strong>
-                        <ul>
-                            <li>Comment vous êtes-vous senti dans votre rôle ?</li>
-                            <li>Qu'est-ce qui a bien fonctionné ?</li>
-                            <li>Qu'auriez-vous pu faire différemment ?</li>
-                        </ul>
-                    </div>
-                    <div style="padding: 1rem; background: #f0fdf4; border-radius: 8px;">
-                        <strong>Pour le COLLABORATEUR :</strong>
-                        <ul>
-                            <li>Comment vous êtes-vous senti écouté ?</li>
-                            <li>Le leader a-t-il compris vos besoins ?</li>
-                            <li>Qu'est-ce qui vous a aidé/mis mal à l'aise ?</li>
+            # Rôles avec plus de détails
+            st.markdown("### 👥 Rôles à Distribuer")
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.markdown(f"""
+                <div class="roleplay-scenario" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+                    <h4>🎯 Rôle du LEADER</h4>
+                    <p><strong>Votre mission :</strong> {scenario['roles'][0]}</p>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: #dbeafe; border-radius: 6px;">
+                        <strong>💡 Conseils :</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Écoutez activement</li>
+                            <li>Posez des questions ouvertes</li>
+                            <li>Cherchez des solutions gagnant-gagnant</li>
                         </ul>
                     </div>
                 </div>
+                """, unsafe_allow_html=True)
+            
+            with col2:
+                st.markdown(f"""
+                <div class="roleplay-scenario" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                    <h4>👤 Rôle du COLLABORATEUR</h4>
+                    <p><strong>Votre situation :</strong> {scenario['roles'][1]}</p>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: #bbf7d0; border-radius: 6px;">
+                        <strong>🎭 Jouez votre rôle :</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem;">
+                            <li>Exprimez vos vraies émotions</li>
+                            <li>Soyez authentique dans vos réactions</li>
+                            <li>Donnez du feedback constructif</li>
+                        </ul>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+            
+            # Timer du jeu de rôle
+            st.markdown("### ⏱️ Timer du Jeu de Rôle")
+            
+            # Contrôles du timer
+            col1, col2, col3, col4 = st.columns(4)
+            
+            with col1:
+                if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
+                    st.session_state.timer_active = True
+                    st.session_state.timer_started = True
+            
+            with col2:
+                if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
+                    st.session_state.timer_active = False
+            
+            with col3:
+                if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
+                    st.session_state.timer_active = False
+                    st.session_state.timer_started = False
+                    st.session_state.time_left = st.session_state.initial_time
+            
+            with col4:
+                if st.button("🔄 Recommencer", key="restart_timer", use_container_width=True):
+                    st.session_state.timer_active = False
+                    st.session_state.timer_started = False
+                    st.session_state.time_left = st.session_state.initial_time
+                    st.session_state.reflexion_active = True
+                    st.session_state.reflexion_time = st.session_state.reflexion_initial
+                    st.rerun()
+            
+            # Affichage du timer avec mise à jour automatique
+            if st.session_state.timer_active:
+                import time
+                if 'last_update' not in st.session_state:
+                    st.session_state.last_update = time.time()
                 
-                <div style="margin-top: 1rem; padding: 1rem; background: #fef7cd; border-radius: 8px;">
-                    <strong>💡 Apprentissages communs :</strong>
-                    <ul>
-                        <li>Quel style de leadership était le plus efficace ?</li>
-                        <li>Comment appliquer cela dans vos vrais projets ?</li>
-                        <li>Qu'avez-vous découvert sur vous-même ?</li>
-                    </ul>
+                current_time = time.time()
+                if current_time - st.session_state.last_update >= 1:
+                    st.session_state.time_left -= 1
+                    st.session_state.last_update = current_time
+                    
+                    if st.session_state.time_left <= 0:
+                        st.session_state.timer_active = False
+                        st.session_state.time_left = 0
+                        st.session_state.timer_started = False
+            
+            # Formatage du temps
+            minutes = st.session_state.time_left // 60
+            seconds = st.session_state.time_left % 60
+            
+            # Couleur du timer en fonction du temps restant
+            if st.session_state.time_left > st.session_state.initial_time * 0.5:
+                timer_color = "#10B981"  # Vert
+            elif st.session_state.time_left > st.session_state.initial_time * 0.25:
+                timer_color = "#F59E0B"  # Orange
+            else:
+                timer_color = "#EF4444"  # Rouge
+            
+            # Affichage du timer
+            st.markdown(f"""
+            <div class="timer-box" style="border-color: {timer_color};">
+                <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
+                    {minutes:02d}:{seconds:02d}
+                </div>
+                <div style="margin-top: 0.5rem;">
+                    {'⏰ Jeu de rôle en cours...' if st.session_state.timer_active else '⏸️ En pause' if st.session_state.timer_started else '⏹️ Arrêté'}
                 </div>
             </div>
             """, unsafe_allow_html=True)
             
-            # Boutons de navigation
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                if st.button("🔄 Refaire ce scénario", key="redo_scenario"):
-                    st.session_state.timer_active = False
-                    st.session_state.timer_started = False
-                    st.session_state.time_left = st.session_state.initial_time
-                    st.session_state.reflexion_active = True
-                    st.session_state.reflexion_time = st.session_state.reflexion_initial
-                    st.rerun()
-            with col2:
-                if st.button("🔄 Changer de rôle", key="switch_roles"):
-                    st.session_state.timer_active = False
-                    st.session_state.timer_started = False
-                    st.session_state.time_left = st.session_state.initial_time
-                    st.session_state.reflexion_active = True
-                    st.session_state.reflexion_time = st.session_state.reflexion_initial
-                    st.rerun()
-            with col3:
-                if st.button("📋 Nouveau scénario", key="new_scenario"):
-                    st.session_state.current_scenario = None
-                    st.session_state.timer_active = False
-                    st.session_state.timer_started = False
-                    st.rerun()
+            # Barre de progression
+            progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
+            st.progress(progress)
+            st.caption(f"Progression : {int(progress * 100)}%")
+            
+            # Alerte quand le temps est écoulé
+            if st.session_state.time_left == 0 and st.session_state.timer_started:
+                st.balloons()
+                st.success("🎉 Temps écoulé ! La session de jeu de rôle est terminée.")
+                
+                # Section debriefing améliorée
+                st.markdown("### 📝 Debriefing - Retour d'Expérience")
+                st.markdown("""
+                <div class="conseil-box">
+                    <h4>🎯 Questions pour le debriefing :</h4>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                        <div style="padding: 1rem; background: #f0f9ff; border-radius: 8px;">
+                            <strong>Pour le LEADER :</strong>
+                            <ul>
+                                <li>Comment vous êtes-vous senti dans votre rôle ?</li>
+                                <li>Qu'est-ce qui a bien fonctionné ?</li>
+                                <li>Qu'auriez-vous pu faire différemment ?</li>
+                            </ul>
+                        </div>
+                        <div style="padding: 1rem; background: #f0fdf4; border-radius: 8px;">
+                            <strong>Pour le COLLABORATEUR :</strong>
+                            <ul>
+                                <li>Comment vous êtes-vous senti écouté ?</li>
+                                <li>Le leader a-t-il compris vos besoins ?</li>
+                                <li>Qu'est-ce qui vous a aidé/mis mal à l'aise ?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; padding: 1rem; background: #fef7cd; border-radius: 8px;">
+                        <strong>💡 Apprentissages communs :</strong>
+                        <ul>
+                            <li>Quel style de leadership était le plus efficace ?</li>
+                            <li>Comment appliquer cela dans vos vrais projets ?</li>
+                            <li>Qu'avez-vous découvert sur vous-même ?</li>
+                        </ul>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Boutons de navigation
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    if st.button("🔄 Refaire ce scénario", key="redo_scenario"):
+                        st.session_state.timer_active = False
+                        st.session_state.timer_started = False
+                        st.session_state.time_left = st.session_state.initial_time
+                        st.session_state.reflexion_active = True
+                        st.session_state.reflexion_time = st.session_state.reflexion_initial
+                        st.rerun()
+                with col2:
+                    if st.button("🔄 Changer de rôle", key="switch_roles"):
+                        st.session_state.timer_active = False
+                        st.session_state.timer_started = False
+                        st.session_state.time_left = st.session_state.initial_time
+                        st.session_state.reflexion_active = True
+                        st.session_state.reflexion_time = st.session_state.reflexion_initial
+                        st.rerun()
+                with col3:
+                    if st.button("📋 Nouveau scénario", key="new_scenario"):
+                        st.session_state.current_scenario = None
+                        st.session_state.timer_active = False
+                        st.session_state.timer_started = False
+                        st.rerun()
     
-    # Instructions générales améliorées
+    # Instructions générales améliorées (seulement si aucun scénario n'est sélectionné)
     if not st.session_state.current_scenario:
         st.markdown("---")
         st.markdown("""
@@ -2107,6 +2107,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
