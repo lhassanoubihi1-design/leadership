@@ -306,6 +306,24 @@ st.markdown("""
         box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3); 
         transform: scale(1.05);
     }
+    .forces-defis-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .forces-box {
+        background: #f0fdf4;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #10b981;
+    }
+    .defis-box {
+        background: #fef2f2;
+        padding: 1rem;
+        border-radius: 8px;
+        border-left: 4px solid #ef4444;
+    }
     #MainMenu, footer, header { visibility: hidden !important; }
 </style>
 """, unsafe_allow_html=True)
@@ -317,8 +335,8 @@ st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>
 slide_names = [
     "0. Test DISC Leadership", "1. Intro", "2. Définitions", "3. L vs M", "4. L vs C", 
     "5. Théories XY", "6. Visionnaire", "7. Coaching", "8. Affiliatif", "9. Démocratique", 
-    "10. Directif", "11. Pace-setter", "12. Laissez-faire", "13. Transformationnel", 
-    "14. Transactionnel", "15. Authentique", "16. Serviteur", "17. Situationnel", 
+    "10. Directif", "11. Pace-setter", "12. Transformationnel", "13. Transactionnel", 
+    "14. Authentique", "15. Serviteur", "16. Situationnel", "17. Laissez-faire",
     "18. Compétences", "19. IE", "20. Cas", "21. Quiz 1", "22. Quiz 2", "23. Synthèse", 
     "24. Secteurs", "25. Erreurs", "26. Conseils", "27. Ressources"
 ]
@@ -621,7 +639,8 @@ leadership_styles_data = [
         "forces": ["Inspire et motive", "Donne une direction claire", "Favorise l'innovation", "Crée de l'engagement"],
         "faiblesses": ["Peut manquer de détails pratiques", "Trop focalisé sur le long terme", "Peut négliger les problèmes courants"],
         "exemple": "Elon Musk avec sa vision de coloniser Mars et de transition énergétique.",
-        "couleur": "#8B5CF6"
+        "couleur": "#8B5CF6",
+        "utilisation": "Idéal pour : inspirer le changement, créer une vision partagée, motiver vers des objectifs ambitieux."
     },
     {
         "name": "Coaching",
@@ -630,7 +649,8 @@ leadership_styles_data = [
         "forces": ["Développe les talents", "Améliore les performances", "Fidélise les collaborateurs", "Crée une culture d'apprentissage"],
         "faiblesses": ["Consommateurs de temps", "Difficile avec les équipes nombreuses", "Dépend de la motivation des collaborateurs"],
         "exemple": "Un manager qui consacre 30 minutes par semaine à chaque collaborateur pour son développement.",
-        "couleur": "#10B981"
+        "couleur": "#10B981",
+        "utilisation": "Idéal pour : développer les talents, améliorer les compétences, fidéliser les collaborateurs."
     },
     {
         "name": "Affiliatif",
@@ -639,7 +659,8 @@ leadership_styles_data = [
         "forces": ["Excellente gestion des conflits", "Forte cohésion d'équipe", "Environnement de confiance", "Bien-être au travail"],
         "faiblesses": ["Peut éviter les confrontations nécessaires", "Performance parfois sacrifiée à l'harmonie", "Manque de direction claire"],
         "exemple": "Une cheffe d'équipe qui organise des déjeuners d'équipe réguliers et célèbre les succès personnels.",
-        "couleur": "#3B82F6"
+        "couleur": "#3B82F6",
+        "utilisation": "Idéal pour : résoudre les conflits, renforcer la cohésion, créer un environnement positif."
     },
     {
         "name": "Démocratique",
@@ -648,7 +669,8 @@ leadership_styles_data = [
         "forces": ["Meilleures décisions collectives", "Fort engagement de l'équipe", "Innovation et créativité", "Respect mutuel"],
         "faiblesses": ["Lenteur du processus décisionnel", "Difficile en situation d'urgence", "Risque de consensus mou"],
         "exemple": "Chez Google, les équipes utilisent des votes et consultations pour les décisions importantes.",
-        "couleur": "#6366F1"
+        "couleur": "#6366F1",
+        "utilisation": "Idéal pour : prendre des décisions importantes, impliquer l'équipe, favoriser l'innovation."
     },
     {
         "name": "Directif",
@@ -657,7 +679,8 @@ leadership_styles_data = [
         "forces": ["Décisions rapides", "Clarté des attentes", "Efficace en urgence", "Contrôle serré"],
         "faiblesses": ["Démotivant à long terme", "Tue l'initiative", "Faible développement des collaborateurs", "Résistance passive"],
         "exemple": "Lors de l'incendie de Notre-Dame de Paris, les pompiers ont suivi des ordres directs et précis.",
-        "couleur": "#EF4444"
+        "couleur": "#EF4444",
+        "utilisation": "Idéal pour : situations de crise, équipes inexpérimentées, besoin de résultats immédiats."
     },
     {
         "name": "Pace-setter",
@@ -666,7 +689,8 @@ leadership_styles_data = [
         "forces": ["Haute performance", "Résultats rapides", "Excellence technique", "Auto-motivation"],
         "faiblesses": ["Épuisement de l'équipe", "Manque de délégation", "Démotivation si standards trop hauts", "Faible collaboration"],
         "exemple": "Steve Jobs était connu pour ses standards d'excellence extrêmement élevés chez Apple.",
-        "couleur": "#F59E0B"
+        "couleur": "#F59E0B",
+        "utilisation": "Idéal pour : équipes très compétentes et motivées, besoin de résultats rapides de haute qualité."
     },
     {
         "name": "Transformationnel",
@@ -675,7 +699,8 @@ leadership_styles_data = [
         "forces": ["Changement profond et durable", "Innovation disruptive", "Développement des leaders", "Vision à long terme"],
         "faiblesses": ["Résistance au changement", "Difficile à maintenir", "Nécessite une forte adhésion", "Risque de burnout"],
         "exemple": "Jacques Servier a transformé l'industrie pharmaceutique française par son approche innovante.",
-        "couleur": "#7C3AED"
+        "couleur": "#7C3AED",
+        "utilisation": "Idéal pour : conduire des changements majeurs, innover radicalement, développer une culture forte."
     },
     {
         "name": "Transactionnel",
@@ -684,7 +709,8 @@ leadership_styles_data = [
         "forces": ["Clarté des attentes", "Performance mesurable", "Efficacité à court terme", "Système équitable"],
         "faiblesses": ["Limite la créativité", "Relation transactionnelle", "Démotivation si récompenses insuffisantes", "Focus court terme"],
         "exemple": "Les systèmes de commissions dans les ventes où les performances sont directement récompensées.",
-        "couleur": "#6B7280"
+        "couleur": "#6B7280",
+        "utilisation": "Idéal pour : environnements très structurés, objectifs clairs et mesurables, récompenses basées sur la performance."
     },
     {
         "name": "Authentique",
@@ -693,7 +719,8 @@ leadership_styles_data = [
         "forces": ["Confiance élevée", "Loyauté de l'équipe", "Culture d'apprentissage", "Respect authentique"],
         "faiblesses": ["Vulnérabilité peut être perçue comme faiblesse", "Difficile dans certaines cultures", "Nécessite une grande maturité"],
         "exemple": "Brené Brown, chercheuse qui prône le leadership vulnérable et authentique.",
-        "couleur": "#059669"
+        "couleur": "#059669",
+        "utilisation": "Idéal pour : construire la confiance, créer une culture transparente, développer des relations authentiques."
     },
     {
         "name": "Serviteur",
@@ -702,7 +729,8 @@ leadership_styles_data = [
         "forces": ["Engagement exceptionnel", "Développement des talents", "Culture de service", "Rétention des talents"],
         "faiblesses": ["Peut manquer d'autorité", "Difficile dans les structures hiérarchiques", "Risque d'épuisement du leader"],
         "exemple": "Nelson Mandela qui a toujours mis les besoins de son peuple avant les siens.",
-        "couleur": "#0EA5E9"
+        "couleur": "#0EA5E9",
+        "utilisation": "Idéal pour : développer les talents, créer un engagement profond, construire une culture de service."
     }
 ]
 
@@ -716,44 +744,50 @@ for i, style in enumerate(leadership_styles_data):
                 {style['slogan']}
             </p>
             <p class="content-paragraph">{style['description']}</p>
-            
-            <div class="example-box">
-                💡 <strong>Exemple concret :</strong> {style['exemple']}
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
-                <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px;">
-                    <h4>✅ Forces</h4>
-                    <ul class="content-list">
-                        {''.join([f'<li>{force}</li>' for force in style['forces']])}
-                    </ul>
-                </div>
-                <div style="background: #fef2f2; padding: 1rem; border-radius: 8px;">
-                    <h4>⚠️ Défis</h4>
-                    <ul class="content-list">
-                        {''.join([f'<li>{faiblesse}</li>' for faiblesse in style['faiblesses']])}
-                    </ul>
-                </div>
-            </div>
-            
-            <h4>🎯 Quand utiliser ce style ?</h4>
-            <p class="content-paragraph">
-                {f"Idéal pour : inspirer le changement, créer une vision partagée, motiver vers des objectifs ambitieux." if style['name'] == 'Visionnaire'
-                else f"Idéal pour : développer les talents, améliorer les compétences, fidéliser les collaborateurs." if style['name'] == 'Coaching'
-                else f"Idéal pour : résoudre les conflits, renforcer la cohésion, créer un environnement positif." if style['name'] == 'Affiliatif'
-                else f"Idéal pour : prendre des décisions importantes, impliquer l'équipe, favoriser l'innovation." if style['name'] == 'Démocratique'
-                else f"Idéal pour : situations de crise, équipes inexpérimentées, besoin de résultats immédiats." if style['name'] == 'Directif'
-                else f"Idéal pour : équipes très compétentes et motivées, besoin de résultats rapides de haute qualité." if style['name'] == 'Pace-setter'
-                else f"Idéal pour : conduire des changements majeurs, innover radicalement, développer une culture forte." if style['name'] == 'Transformationnel'
-                else f"Idéal pour : environnements très structurés, objectifs clairs et mesurables, récompenses basées sur la performance." if style['name'] == 'Transactionnel'
-                else f"Idéal pour : construire la confiance, créer une culture transparente, développer des relations authentiques." if style['name'] == 'Authentique'
-                else f"Idéal pour : développer les talents, créer un engagement profond, construire une culture de service."}
-            </p>
         </div>
         """, unsafe_allow_html=True)
+        
+        # Exemple concret
+        st.markdown(f"""
+        <div class="example-box">
+            💡 <strong>Exemple concret :</strong> {style['exemple']}
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Forces et défis
+        st.markdown("""
+        <div class="forces-defis-grid">
+            <div class="forces-box">
+                <h4>✅ Forces</h4>
+                <ul class="content-list">
+        """, unsafe_allow_html=True)
+        
+        for force in style['forces']:
+            st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+        
+        st.markdown("""
+                </ul>
+            </div>
+            <div class="defis-box">
+                <h4>⚠️ Défis</h4>
+                <ul class="content-list">
+        """, unsafe_allow_html=True)
+        
+        for faiblesse in style['faiblesses']:
+            st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+        
+        st.markdown("""
+                </ul>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Quand utiliser ce style
+        st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
+        st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
 # ==============================
-# SLIDES EXISTANTS (conservés et adaptés)
+# SLIDES EXISTANTS CORRIGÉS
 # ==============================
 
 # Slide 1 : Introduction
@@ -780,12 +814,14 @@ with tabs[1]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 17 : Leadership Situationnel
-with tabs[17]:
+# Slide 16 : Leadership Situationnel
+with tabs[16]:
     st.markdown("""
     <div class="modern-card">
     <h2>🔄 Leadership Situationnel</h2>
-    <p class="content-paragraph"><strong>Slogan :</strong> « Adaptons notre style à la situation »</p>
+    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
+        « Adaptons notre style à la situation »
+    </p>
     
     <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs, ainsi que du contexte.</p>
     
@@ -800,9 +836,12 @@ with tabs[17]:
     <li><strong>D3 :</strong> Moyenne à forte compétence, motivation variable → Style participatif</li>
     <li><strong>D4 :</strong> Forte compétence, forte motivation → Style délégatif</li>
     </ul>
+    """, unsafe_allow_html=True)
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
-        <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px;">
+    # Forces et défis pour le style situationnel
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
             <h4>✅ Forces</h4>
             <ul class="content-list">
                 <li>Adaptation optimale à chaque situation</li>
@@ -811,7 +850,7 @@ with tabs[17]:
                 <li>Respect des individualités</li>
             </ul>
         </div>
-        <div style="background: #fef2f2; padding: 1rem; border-radius: 8px;">
+        <div class="defis-box">
             <h4>⚠️ Défis</h4>
             <ul class="content-list">
                 <li>Nécessite une grande flexibilité</li>
@@ -822,12 +861,137 @@ with tabs[17]:
         </div>
     </div>
     
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        Idéal pour : adapter son leadership à chaque collaborateur, développer progressivement les compétences, gérer des équipes hétérogènes.
+    </p>
+    
     <h3>🎥 Vidéo explicative</h3>
     <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
     </div>
     """, unsafe_allow_html=True)
 
-# ... (les autres slides restent similaires)
+# Slide 17 : Laissez-faire
+with tabs[17]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🎨 Style Laissez-faire</h2>
+    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
+        « À toi de jouer »
+    </p>
+    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources nécessaires mais intervient peu dans le travail quotidien.</p>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale pour développer leurs projets.
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Forces et défis pour le style laissez-faire
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+                <li>Autonomie et créativité</li>
+                <li>Responsabilisation des équipes</li>
+                <li>Innovation libre</li>
+                <li>Adaptation aux experts</li>
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+                <li>Manque de direction</li>
+                <li>Manque de coordination</li>
+                <li>Risque de désengagement</li>
+                <li>Peut créer de la confusion</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        Idéal pour : équipes d'experts très compétents et motivés, environnements créatifs, projets innovants nécessitant de l'autonomie.
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 18 : Compétences
+with tabs[18]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🔑 Compétences Clés du Leader Moderne</h2>
+    
+    <h3>🏆 Les 5 compétences indispensables</h3>
+    <ul class="content-list">
+    <li><strong>Vision stratégique :</strong> Voir loin et large</li>
+    <li><strong>Communication inspirante :</strong> Parler avec cœur et conviction</li>
+    <li><strong>Décision courageuse :</strong> Assumer ses choix avec humilité</li>
+    <li><strong>Délégation efficace :</strong> Faire confiance et responsabiliser</li>
+    <li><strong>Résilience émotionnelle :</strong> Rebondir face aux échecs</li>
+    </ul>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Indra Nooyi, ancienne CEO de PepsiCo, combinait vision stratégique et attention aux détails humains.
+    </div>
+    
+    <h3>🎥 Vidéo sur les compétences</h3>
+    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Les compétences d'un leader</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 19 : Intelligence Émotionnelle
+with tabs[19]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
+    
+    <p class="content-paragraph">L'IE représente <strong>80% de la performance</strong> en leadership selon Daniel Goleman.</p>
+    
+    <h3>🎯 Les 4 piliers de l'IE</h3>
+    <ul class="content-list">
+    <li><strong>Conscience de soi :</strong> Comprendre ses émotions et leur impact</li>
+    <li><strong>Maîtrise de soi :</strong> Gérer ses réactions émotionnelles</li>
+    <li><strong>Conscience sociale :</strong> Percevoir les émotions des autres</li>
+    <li><strong>Gestion des relations :</strong> Influencer positivement les émotions collectives</li>
+    </ul>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Lors d'une restructuration, Pierre, directeur RH, reconnaît sa propre anxiété et celle de son équipe, et organise des entretiens individuels pour rassurer.
+    </div>
+    
+    <h3>🎥 Vidéo explicative</h3>
+    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle pour un meilleur leadership</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 20 : Études de Cas
+with tabs[20]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>📊 Études de Cas Concrets</h2>
+    
+    <h3>🏢 Cas 1 : Transformation digitale</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Une PME familiale doit se digitaliser face à la concurrence.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Résistance au changement des équipes historiques.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership visionnaire + coaching progressif.</p>
+    
+    <div class="example-box">
+    💡 <strong>Résultat :</strong> 6 mois pour la transition, 90% d'adoption des nouveaux outils.
+    </div>
+    
+    <h3>🏭 Cas 2 : Fusion d'entreprises</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Deux entreprises de cultures différentes fusionnent.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Choc culturel et perte de repères.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership affiliatif pour créer du lien + démocratique pour co-construire.</p>
+    
+    <div class="example-box">
+    💡 <strong>Résultat :</strong> 75% de rétention des talents clés, nouvelle identité partagée.
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ... (les autres slides continuent avec le même pattern)
 
 # Message final
 st.markdown("---")
