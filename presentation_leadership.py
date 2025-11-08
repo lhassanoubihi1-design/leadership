@@ -886,8 +886,8 @@ with tabs[18]:
         st.session_state.time_left = 0
     if 'timer_started' not in st.session_state:
         st.session_state.timer_started = False
-    if 'last_update' not in st.session_state:
-        st.session_state.last_update = 0
+    if 'start_time' not in st.session_state:
+        st.session_state.start_time = None
 
     # Sélection du scénario
     st.markdown("### 🎯 Choisissez un Scénario")
@@ -901,6 +901,7 @@ with tabs[18]:
             minutes = int(scenario['duree'].split()[0])
             st.session_state.time_left = minutes * 60
             st.session_state.initial_time = minutes * 60
+            st.session_state.start_time = None
             st.rerun()
     
     # Affichage du scénario sélectionné
@@ -936,67 +937,57 @@ with tabs[18]:
             </div>
             """, unsafe_allow_html=True)
         
-        # Timer
-        st.markdown("### ⏱️ Timer de la Session")
+        # Timer - Utiliser st.empty() pour créer un conteneur rafraîchissable
+        timer_container = st.empty()
         
         # Contrôles du timer
+        st.markdown("### ⏱️ Contrôles du Timer")
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            start_clicked = st.button("▶️ Démarrer", key="start_timer", use_container_width=True)
-            if start_clicked:
+            if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
                 st.session_state.timer_active = True
                 st.session_state.timer_started = True
-                st.session_state.last_update = st.session_state.time_left
+                st.session_state.start_time = st.session_state.time_left
                 st.rerun()
         
         with col2:
-            pause_clicked = st.button("⏸️ Pause", key="pause_timer", use_container_width=True)
-            if pause_clicked:
+            if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
                 st.session_state.timer_active = False
                 st.rerun()
         
         with col3:
-            stop_clicked = st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True)
-            if stop_clicked:
+            if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
+                st.session_state.start_time = None
                 st.rerun()
         
         with col4:
-            reset_clicked = st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True)
-            if reset_clicked:
+            if st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True):
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
+                st.session_state.start_time = None
                 st.rerun()
         
-        # Gestion du timer actif - utiliser l'heure actuelle pour calculer le temps écoulé
+        # Gestion du timer actif
         if st.session_state.timer_active and st.session_state.time_left > 0:
             import time
-            current_time = time.time()
+            # Attendre 1 seconde
+            time.sleep(1)
+            st.session_state.time_left -= 1
             
-            # Vérifier si une seconde s'est écoulée depuis la dernière mise à jour
-            if 'timer_start_time' not in st.session_state:
-                st.session_state.timer_start_time = current_time
-                st.session_state.last_displayed_time = st.session_state.time_left
+            if st.session_state.time_left <= 0:
+                st.session_state.timer_active = False
+                st.session_state.time_left = 0
+                st.session_state.timer_started = False
             
-            time_elapsed = current_time - st.session_state.timer_start_time
-            new_time_left = max(0, st.session_state.initial_time - int(time_elapsed))
-            
-            # Si le temps a changé, mettre à jour et rerun
-            if new_time_left != st.session_state.time_left:
-                st.session_state.time_left = new_time_left
-                
-                if st.session_state.time_left <= 0:
-                    st.session_state.timer_active = False
-                    st.session_state.time_left = 0
-                    st.session_state.timer_started = False
-                
-                st.rerun()
+            # Forcer le rafraîchissement
+            st.rerun()
         
-        # Formatage du temps
+        # Formatage du temps pour l'affichage
         minutes = st.session_state.time_left // 60
         seconds = st.session_state.time_left % 60
         
@@ -1011,44 +1002,44 @@ with tabs[18]:
         else:
             timer_color = "#6B7280"  # Gris par défaut
         
-        # Affichage du timer
-        st.markdown(f"""
-        <div class="timer-box" style="border-color: {timer_color};">
-            <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
-                {minutes:02d}:{seconds:02d}
+        # Affichage du timer dans le conteneur rafraîchissable
+        with timer_container.container():
+            st.markdown("### ⏱️ Timer de la Session")
+            st.markdown(f"""
+            <div class="timer-box" style="border-color: {timer_color};">
+                <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
+                    {minutes:02d}:{seconds:02d}
+                </div>
+                <div style="margin-top: 0.5rem;">
+                    {'⏰ En cours...' if st.session_state.timer_active else '⏸️ En pause' if st.session_state.timer_started else '⏹️ Arrêté'}
+                </div>
             </div>
-            <div style="margin-top: 0.5rem;">
-                {'⏰ En cours...' if st.session_state.timer_active else '⏸️ En pause' if st.session_state.timer_started else '⏹️ Arrêté'}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Barre de progression
-        if st.session_state.initial_time > 0:
-            progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
-            st.progress(min(progress, 1.0))
-            st.caption(f"Progression : {int(progress * 100)}%")
+            """, unsafe_allow_html=True)
+            
+            # Barre de progression
+            if st.session_state.initial_time > 0:
+                progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
+                st.progress(min(progress, 1.0))
+                st.caption(f"Progression : {int(progress * 100)}%")
         
         # Alerte quand le temps est écoulé
         if (st.session_state.time_left == 0 and 
             st.session_state.initial_time > 0 and 
-            'timer_finished_shown' not in st.session_state):
+            st.session_state.timer_started):
             
-            st.session_state.timer_finished_shown = True
             st.balloons()
             st.success("🎉 Temps écoulé ! La session est terminée.")
+            
+            # Réinitialiser le flag
+            st.session_state.timer_started = False
             
             # Bouton pour recommencer
             if st.button("🔄 Recommencer ce scénario", key="restart_scenario"):
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
-                st.session_state.timer_finished_shown = False
+                st.session_state.start_time = None
                 st.rerun()
-        
-        # Réinitialiser le flag quand on change de scénario
-        if 'timer_finished_shown' in st.session_state and st.session_state.time_left > 0:
-            st.session_state.timer_finished_shown = False
         
         # Consignes pour le débriefing
         st.markdown("### 📝 Debriefing")
@@ -1898,6 +1889,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
