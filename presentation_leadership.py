@@ -992,7 +992,8 @@ with tabs[18]:
         </ol>
         
         <div class="example-box">
-            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
+            💡 <strong>Conseil :</strong> 
+            Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1481,3 +1482,4 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
