@@ -1306,7 +1306,7 @@ with tabs[21]:
     """, unsafe_allow_html=True)
 
 # Slide 22 : QUIZ 1 - Fondamentaux
-with tabs[22]:
+with tabs[18]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 QUIZ 1 - Fondamentaux du Leadership</h2>
@@ -1316,20 +1316,64 @@ with tabs[22]:
     
     quiz1_questions = [
         {
+            "question": "Selon la Théorie X de McGregor, les employés sont naturellement paresseux et évitent le travail.",
+            "correct": True,
+            "explication": "✅ Vrai - La Théorie X postule que les employés n'aiment pas le travail et doivent être contrôlés."
+        },
+        {
             "question": "Le leadership est une compétence exclusivement innée qui ne peut pas s'apprendre.",
             "correct": False,
             "explication": "❌ Faux - Des études montrent que 70% des compétences de leadership s'acquièrent par la pratique et la formation."
         },
         {
+            "question": "La Théorie Y de McGregor correspond à un style de management participatif et délégatif.",
+            "correct": True,
+            "explication": "✅ Vrai - La Théorie Y valorise l'autonomie et la responsabilité des employés."
+        },
+        {
             "question": "Un leader efficace passe plus de temps à écouter qu'à parler.",
             "correct": True,
             "explication": "✅ Vrai - L'écoute active est cruciale pour comprendre les besoins de son équipe."
+        },
+        {
+            "question": "Le style de leadership directif doit toujours être évité car il est toxique.",
+            "correct": False,
+            "explication": "❌ Faux - Le style directif est nécessaire en situation de crise ou avec des débutants (Théorie X contextuelle)."
+        },
+        {
+            "question": "On peut exercer un leadership efficace sans avoir de position hiérarchique officielle.",
+            "correct": True,
+            "explication": "✅ Vrai - C'est le leadership informel, basé sur l'influence et le respect."
+        },
+        {
+            "question": "L'intelligence émotionnelle représente environ 80% de la performance en leadership selon Daniel Goleman.",
+            "correct": True,
+            "explication": "✅ Vrai - La capacité à gérer ses émotions et celles des autres est cruciale."
+        },
+        {
+            "question": "Un leader visionnaire se concentre principalement sur le contrôle des tâches quotidiennes.",
+            "correct": False,
+            "explication": "❌ Faux - Le leader visionnaire se concentre sur la vision à long terme (approche Théorie Y)."
+        },
+        {
+            "question": "Le leadership situationnel implique d'adapter son style à la maturité de chaque collaborateur.",
+            "correct": True,
+            "explication": "✅ Vrai - Adapter le style selon la compétence et la motivation de chacun."
+        },
+        {
+            "question": "McGregor recommandait d'utiliser exclusivement la Théorie Y dans toutes les situations.",
+            "correct": False,
+            "explication": "❌ Faux - McGregor présentait deux visions, mais le leadership situationnel montre qu'il faut adapter son approche."
         }
     ]
+    
+    score_quiz1 = 0
+    user_answers_quiz1 = []
     
     for i, q in enumerate(quiz1_questions):
         st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
         rep = st.radio(f"Choisissez votre réponse :", ["Vrai", "Faux"], key=f"quiz1_{i}")
+        user_answers_quiz1.append(rep)
         
         if st.session_state.get(f"show_answers_quiz1", False):
             if (rep == "Vrai") == q["correct"]:
@@ -1339,6 +1383,27 @@ with tabs[22]:
     
     if st.button("📊 Corriger le Quiz 1", key="corriger_quiz1"):
         st.session_state.show_answers_quiz1 = True
+        score_quiz1 = sum(1 for i, q in enumerate(quiz1_questions) 
+                        if (user_answers_quiz1[i] == "Vrai") == q["correct"])
+        st.session_state.score_quiz1 = score_quiz1
+        
+        # Évaluation détaillée
+        st.markdown(f"""
+        <div class="evaluation-box">
+        <h3>📊 Évaluation du Quiz 1</h3>
+        <p><strong>Score : {score_quiz1}/10</strong></p>
+        <p><strong>Niveau :</strong> {'🌟 Expert en théories du leadership' if score_quiz1 >= 9 
+            else '💡 Bonne maîtrise des concepts' if score_quiz1 >= 7
+            else '📚 Connaissances de base' if score_quiz1 >= 5
+            else '🎯 En développement'}</p>
+        <p><strong>Recommandation :</strong> {
+            'Vous maîtrisez parfaitement les théories fondamentales dont McGregor !' if score_quiz1 >= 9
+            else 'Vous comprenez bien les concepts clés, continuez à approfondir.' if score_quiz1 >= 7
+            else 'Revoyez les théories de McGregor et leurs applications pratiques.' if score_quiz1 >= 5
+            else 'Reprenez les bases des théories X et Y de McGregor.'
+        }</p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Slide 23 : QUIZ 2 - Styles
 with tabs[23]:
@@ -1481,3 +1546,4 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
