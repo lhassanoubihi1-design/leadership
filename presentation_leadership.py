@@ -348,29 +348,174 @@ st.markdown("""
         font-weight: bold;
         margin: 1rem 0;
     }
+    .schema-container {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .schema-title {
+        font-weight: 600;
+        color: #4f46e5;
+        margin-bottom: 1rem;
+    }
+    .naturel-test-box {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        padding: 1.5rem;
+        border-radius: 12px;
+        margin: 1rem 0;
+        border-left: 4px solid #0ea5e9;
+    }
+    .competence-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    .competence-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-left: 4px solid #4f46e5;
+    }
     #MainMenu, footer, header { visibility: hidden !important; }
 </style>
 """, unsafe_allow_html=True)
 
 st.title("✨ Leadership & Styles de Leadership")
-st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec exemples concrets et vidéos</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec tests, jeux de rôle et outils pratiques</div>", unsafe_allow_html=True)
 
-# Structure avec les 10 styles de leadership
+# Structure avec les tests au début
 slide_names = [
-    "0. Test DISC Leadership", "1. Intro", "2. Définitions", "3. L vs M", "4. L vs C", 
-    "5. Théories XY", "6. Visionnaire", "7. Coaching", "8. Affiliatif", "9. Démocratique", 
-    "10. Directif", "11. Pace-setter", "12. Transformationnel", "13. Transactionnel", 
-    "14. Authentique", "15. Serviteur", "16. Situationnel", "17. Laissez-faire",
-    "18. Jeu de Rôle", "19. Compétences", "20. IE", "21. Cas", "22. Quiz 1", "23. Quiz 2", 
-    "24. Synthèse", "25. Secteurs", "26. Erreurs", "27. Conseils", "28. Ressources"
+    "0. Test Leadership Naturel", "1. Test DISC", "2. Intro", "3. Définitions", "4. L vs M", 
+    "5. L vs C", "6. Théories XY", "7. Visionnaire", "8. Coaching", "9. Affiliatif", 
+    "10. Démocratique", "11. Directif", "12. Pace-setter", "13. Transformationnel", 
+    "14. Transactionnel", "15. Authentique", "16. Serviteur", "17. Situationnel", 
+    "18. Laissez-faire", "19. Jeu de Rôle", "20. Compétences", "21. IE", "22. Cas", 
+    "23. Quiz 1", "24. Quiz 2", "25. Synthèse", "26. Secteurs", "27. Erreurs", 
+    "28. Conseils", "29. Ressources"
 ]
 
 tabs = st.tabs(slide_names)
 
 # ==============================
-# TEST DE LEADERSHIP DISC AVEC COULEURS ET 10 STYLES
+# TEST DE LEADERSHIP NATUREL - SLIDE 0
 # ==============================
 with tabs[0]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🧪 Test : Êtes-vous un leader naturel ?</h2>
+    <p class="content-paragraph">Découvrez votre profil de leadership avec ce test de 10 questions</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    leadership_test_questions = [
+        {"question": "Dans un groupe, je prends naturellement les devants", "points": [3, 2, 1, 0]},
+        {"question": "J'écoute activement les opinions des autres avant de décider", "points": [3, 2, 1, 0]},
+        {"question": "Je motive facilement les autres à se dépasser", "points": [3, 2, 1, 0]},
+        {"question": "Je reste calme et rationnel sous pression", "points": [3, 2, 1, 0]},
+        {"question": "Je délègue facilement et fais confiance aux autres", "points": [3, 2, 1, 0]},
+        {"question": "Je prends des décisions difficiles quand il le faut", "points": [3, 2, 1, 0]},
+        {"question": "Je donne régulièrement du feedback constructif", "points": [3, 2, 1, 0]},
+        {"question": "Je reconnais mes erreurs et en tire des leçons", "points": [3, 2, 1, 0]},
+        {"question": "Je crée facilement une ambiance positive dans l'équipe", "points": [3, 2, 1, 0]},
+        {"question": "Je sais dire non quand c'est nécessaire", "points": [3, 2, 1, 0]}
+    ]
+    
+    if 'test_score' not in st.session_state:
+        st.session_state.test_score = 0
+        st.session_state.test_responses = [None] * 10
+    
+    total_score = 0
+    
+    for i, q in enumerate(leadership_test_questions):
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        response = st.radio(
+            "Votre réponse :",
+            ["Toujours", "Souvent", "Parfois", "Rarement"],
+            key=f"leadership_test_{i}",
+            index=st.session_state.test_responses[i] if st.session_state.test_responses[i] is not None else None
+        )
+        
+        # Stocker la réponse
+        st.session_state.test_responses[i] = ["Toujours", "Souvent", "Parfois", "Rarement"].index(response)
+        
+        # Calculer le score
+        total_score += q["points"][st.session_state.test_responses[i]]
+    
+    st.session_state.test_score = total_score
+    
+    if st.button("📊 Voir mes résultats du test", key="view_test_results"):
+        st.session_state.show_test_results = True
+    
+    if st.session_state.get('show_test_results', False):
+        st.markdown(f"""
+        <div class="evaluation-box">
+        <h3>📊 Résultats de votre Test de Leadership</h3>
+        <p><strong>Score : {total_score}/30 points</strong></p>
+        """, unsafe_allow_html=True)
+        
+        if total_score >= 25:
+            st.markdown("""
+            <p><strong>🎯 Profil : Leader Confirmé</strong></p>
+            <p>Vous avez des qualités de leadership exceptionnelles. Vous inspirez naturellement les autres et savez guider une équipe vers le succès.</p>
+            <p><strong>Conseil :</strong> Continuez à développer votre impact et à mentorer les futurs leaders.</p>
+            """, unsafe_allow_html=True)
+        elif total_score >= 20:
+            st.markdown("""
+            <p><strong>💪 Profil : Leader Émergent</strong></p>
+            <p>Vous avez de solides bases de leadership et un bon potentiel. Vous êtes sur la bonne voie pour devenir un leader accompli.</p>
+            <p><strong>Conseil :</strong> Travaillez votre assertivité et votre vision stratégique.</p>
+            """, unsafe_allow_html=True)
+        elif total_score >= 15:
+            st.markdown("""
+            <p><strong>🌱 Profil : Leader en Développement</strong></p>
+            <p>Vous avez les bases nécessaires et un bon potentiel de croissance. Le leadership s'apprend et se développe.</p>
+            <p><strong>Conseil :</strong> Pratiquez la prise de décision et le feedback régulier.</p>
+            """, unsafe_allow_html=True)
+        else:
+            st.markdown("""
+            <p><strong>📚 Profil : Leader en Apprentissage</strong></p>
+            <p>Vous avez conscience de l'importance du leadership. C'est le premier pas vers le développement de vos compétences.</p>
+            <p><strong>Conseil :</strong> Commencez par observer les bons leaders et pratiquez l'écoute active.</p>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Schéma des profils
+        st.markdown("""
+        <div class="schema-container">
+            <div class="schema-title">📈 Schéma des Profils de Leadership</div>
+            <div style="display: flex; justify-content: space-between; align-items: end; height: 200px; margin: 2rem 0;">
+                <div style="text-align: center; flex: 1;">
+                    <div style="background: #fee2e2; height: 60px; margin: 0 10px; border-radius: 8px 8px 0 0;"></div>
+                    <div>Apprentissage</div>
+                </div>
+                <div style="text-align: center; flex: 1;">
+                    <div style="background: #fef3c7; height: 100px; margin: 0 10px; border-radius: 8px 8px 0 0;"></div>
+                    <div>Développement</div>
+                </div>
+                <div style="text-align: center; flex: 1;">
+                    <div style="background: #dcfce7; height: 140px; margin: 0 10px; border-radius: 8px 8px 0 0;"></div>
+                    <div>Émergent</div>
+                </div>
+                <div style="text-align: center; flex: 1;">
+                    <div style="background: #dbeafe; height: 180px; margin: 0 10px; border-radius: 8px 8px 0 0;"></div>
+                    <div>Confirmé</div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.info("💡 **Note :** Ce test donne une indication de votre profil actuel. Le leadership se développe continuellement tout au long de la vie.")
+
+# ==============================
+# TEST DISC - SLIDE 1
+# ==============================
+with tabs[1]:
     st.markdown("""
     <div class="test-section">
     <h2>🎨 Test de Leadership DISC</h2>
@@ -578,7 +723,7 @@ with tabs[0]:
         profile = leadership_mapping[dominant_color]
         result_class = f"result-{dominant_color}"
         
-        # Affichage des résultats avec Streamlit native pour éviter les problèmes d'HTML
+        # Affichage des résultats
         st.markdown(f'<div class="{result_class}">', unsafe_allow_html=True)
         
         st.markdown(f"<h2>🎯 Votre Profil de Leadership</h2>", unsafe_allow_html=True)
@@ -639,6 +784,31 @@ with tabs[0]:
         
         st.markdown('</div>', unsafe_allow_html=True)
         
+        # Diagramme des styles
+        st.markdown("""
+        <div class="schema-container">
+            <div class="schema-title">🎯 Diagramme des Styles de Leadership</div>
+            <div style="display: flex; justify-content: center; margin: 2rem 0;">
+                <div style="text-align: center;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                        <div style="background: #fee2e2; padding: 1rem; border-radius: 8px; border-left: 4px solid #dc2626;">
+                            <strong>🔴 Directif</strong><br>Décision rapide
+                        </div>
+                        <div style="background: #fef3c7; padding: 1rem; border-radius: 8px; border-left: 4px solid #d97706;">
+                            <strong>🟡 Visionnaire</strong><br>Inspiration
+                        </div>
+                        <div style="background: #dcfce7; padding: 1rem; border-radius: 8px; border-left: 4px solid #16a34a;">
+                            <strong>🟢 Affiliatif</strong><br>Relations
+                        </div>
+                        <div style="background: #dbeafe; padding: 1rem; border-radius: 8px; border-left: 4px solid #2563eb;">
+                            <strong>🔵 Analytique</strong><br>Précision
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
         # Vidéo recommandée
         st.markdown("""
         <div class="modern-card">
@@ -651,169 +821,9 @@ with tabs[0]:
         """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES POUR LES 10 STYLES DE LEADERSHIP
+# JEU DE RÔLE AMÉLIORÉ - SLIDE 19
 # ==============================
-
-# Données pour les 10 styles de leadership
-leadership_styles_data = [
-    {
-        "name": "Visionnaire",
-        "slogan": "« Viens avec moi vers l'avenir »",
-        "description": "Le leader visionnaire inspire en partageant une vision claire et motivante de l'avenir. Il donne du sens au travail et guide son équipe vers des objectifs ambitieux.",
-        "forces": ["Inspire et motive", "Donne une direction claire", "Favorise l'innovation", "Crée de l'engagement"],
-        "faiblesses": ["Peut manquer de détails pratiques", "Trop focalisé sur le long terme", "Peut négliger les problèmes courants"],
-        "exemple": "Elon Musk avec sa vision de coloniser Mars et de transition énergétique.",
-        "couleur": "#8B5CF6",
-        "utilisation": "Idéal pour : inspirer le changement, créer une vision partagée, motiver vers des objectifs ambitieux."
-    },
-    {
-        "name": "Coaching",
-        "slogan": "« Essayez et je vous aiderai à réussir »",
-        "description": "Le leader coaching se concentre sur le développement personnel et professionnel de chaque membre de l'équipe. Il investit du temps pour identifier les forces et aider à surmonter les faiblesses.",
-        "forces": ["Développe les talents", "Améliore les performances", "Fidélise les collaborateurs", "Crée une culture d'apprentissage"],
-        "faiblesses": ["Consommateurs de temps", "Difficile avec les équipes nombreuses", "Dépend de la motivation des collaborateurs"],
-        "exemple": "Un manager qui consacre 30 minutes par semaine à chaque collaborateur pour son développement.",
-        "couleur": "#10B981",
-        "utilisation": "Idéal pour : développer les talents, améliorer les compétences, fidéliser les collaborateurs."
-    },
-    {
-        "name": "Affiliatif",
-        "slogan": "« Les personnes d'abord »",
-        "description": "Le leader affiliatif privilégie l'harmonie et les relations humaines. Il crée un environnement de travail positif où les membres se sentent valorisés et connectés.",
-        "forces": ["Excellente gestion des conflits", "Forte cohésion d'équipe", "Environnement de confiance", "Bien-être au travail"],
-        "faiblesses": ["Peut éviter les confrontations nécessaires", "Performance parfois sacrifiée à l'harmonie", "Manque de direction claire"],
-        "exemple": "Une cheffe d'équipe qui organise des déjeuners d'équipe réguliers et célèbre les succès personnels.",
-        "couleur": "#3B82F6",
-        "utilisation": "Idéal pour : résoudre les conflits, renforcer la cohésion, créer un environnement positif."
-    },
-    {
-        "name": "Démocratique",
-        "slogan": "« Qu'en pensez-vous ? »",
-        "description": "Le leader démocratique valorise la participation et la collaboration. Il consulte son équipe avant de prendre des décisions importantes et encourage le partage d'idées.",
-        "forces": ["Meilleures décisions collectives", "Fort engagement de l'équipe", "Innovation et créativité", "Respect mutuel"],
-        "faiblesses": ["Lenteur du processus décisionnel", "Difficile en situation d'urgence", "Risque de consensus mou"],
-        "exemple": "Chez Google, les équipes utilisent des votes et consultations pour les décisions importantes.",
-        "couleur": "#6366F1",
-        "utilisation": "Idéal pour : prendre des décisions importantes, impliquer l'équipe, favoriser l'innovation."
-    },
-    {
-        "name": "Directif",
-        "slogan": "« Faites ce que je vous dis »",
-        "description": "Le leader directif donne des instructions claires et spécifiques. Il attend une exécution précise et contrôle étroitement le travail. Efficace en situation de crise.",
-        "forces": ["Décisions rapides", "Clarté des attentes", "Efficace en urgence", "Contrôle serré"],
-        "faiblesses": ["Démotivant à long terme", "Tue l'initiative", "Faible développement des collaborateurs", "Résistance passive"],
-        "exemple": "Lors de l'incendie de Notre-Dame de Paris, les pompiers ont suivi des ordres directs et précis.",
-        "couleur": "#EF4444",
-        "utilisation": "Idéal pour : situations de crise, équipes inexpérimentées, besoin de résultats immédiats."
-    },
-    {
-        "name": "Pace-setter",
-        "slogan": "« Faites comme moi, maintenant ! »",
-        "description": "Le leader pace-setter établit des standards d'excellence très élevés et montre l'exemple. Il s'attend à ce que l'équipe suive son rythme et sa qualité de travail.",
-        "forces": ["Haute performance", "Résultats rapides", "Excellence technique", "Auto-motivation"],
-        "faiblesses": ["Épuisement de l'équipe", "Manque de délégation", "Démotivation si standards trop hauts", "Faible collaboration"],
-        "exemple": "Steve Jobs était connu pour ses standards d'excellence extrêmement élevés chez Apple.",
-        "couleur": "#F59E0B",
-        "utilisation": "Idéal pour : équipes très compétentes et motivées, besoin de résultats rapides de haute qualité."
-    },
-    {
-        "name": "Transformationnel",
-        "slogan": "« Ensemble, transformons notre réalité »",
-        "description": "Le leader transformationnel inspire un changement profond en challengeant les statu quo et en encourageant l'innovation radicale. Il transforme les individus et l'organisation.",
-        "forces": ["Changement profond et durable", "Innovation disruptive", "Développement des leaders", "Vision à long terme"],
-        "faiblesses": ["Résistance au changement", "Difficile à maintenir", "Nécessite une forte adhésion", "Risque de burnout"],
-        "exemple": "Jacques Servier a transformé l'industrie pharmaceutique française par son approche innovante.",
-        "couleur": "#7C3AED",
-        "utilisation": "Idéal pour : conduire des changements majeurs, innover radicalement, développer une culture forte."
-    },
-    {
-        "name": "Transactionnel",
-        "slogan": "« Vous serez récompensé pour vos résultats »",
-        "description": "Le leader transactionnel fonctionne sur un système de récompenses et punitions basé sur la performance. Il établit des objectifs clairs et des incitations correspondantes.",
-        "forces": ["Clarté des attentes", "Performance mesurable", "Efficacité à court terme", "Système équitable"],
-        "faiblesses": ["Limite la créativité", "Relation transactionnelle", "Démotivation si récompenses insuffisantes", "Focus court terme"],
-        "exemple": "Les systèmes de commissions dans les ventes où les performances sont directement récompensées.",
-        "couleur": "#6B7280",
-        "utilisation": "Idéal pour : environnements très structurés, objectifs clairs et mesurables, récompenses basées sur la performance."
-    },
-    {
-        "name": "Authentique",
-        "slogan": "« Je suis vrai et transparent »",
-        "description": "Le leader authentique montre sa vulnérabilité, admet ses erreurs et reste fidèle à ses valeurs. Il construit la confiance par sa transparence et son intégrité.",
-        "forces": ["Confiance élevée", "Loyauté de l'équipe", "Culture d'apprentissage", "Respect authentique"],
-        "faiblesses": ["Vulnérabilité peut être perçue comme faiblesse", "Difficile dans certaines cultures", "Nécessite une grande maturité"],
-        "exemple": "Brené Brown, chercheuse qui prône le leadership vulnérable et authentique.",
-        "couleur": "#059669",
-        "utilisation": "Idéal pour : construire la confiance, créer une culture transparente, développer des relations authentiques."
-    },
-    {
-        "name": "Serviteur",
-        "slogan": "« Je suis là pour vous servir »",
-        "description": "Le leader serviteur met les besoins de son équipe avant les siens. Il se concentre sur le développement et le bien-être des collaborateurs pour atteindre les objectifs.",
-        "forces": ["Engagement exceptionnel", "Développement des talents", "Culture de service", "Rétention des talents"],
-        "faiblesses": ["Peut manquer d'autorité", "Difficile dans les structures hiérarchiques", "Risque d'épuisement du leader"],
-        "exemple": "Nelson Mandela qui a toujours mis les besoins de son peuple avant les siens.",
-        "couleur": "#0EA5E9",
-        "utilisation": "Idéal pour : développer les talents, créer un engagement profond, construire une culture de service."
-    }
-]
-
-# Création des slides pour chaque style
-for i, style in enumerate(leadership_styles_data):
-    with tabs[6 + i]:  # Les styles commencent à l'onglet 6
-        st.markdown(f"""
-        <div class="modern-card">
-            <h2>🎨 Style {style['name']}</h2>
-            <p style="font-size:1.3rem; font-weight:600; color:{style['couleur']}; margin:1rem 0;">
-                {style['slogan']}
-            </p>
-            <p class="content-paragraph">{style['description']}</p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Exemple concret
-        st.markdown(f"""
-        <div class="example-box">
-            💡 <strong>Exemple concret :</strong> {style['exemple']}
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Forces et défis
-        st.markdown("""
-        <div class="forces-defis-grid">
-            <div class="forces-box">
-                <h4>✅ Forces</h4>
-                <ul class="content-list">
-        """, unsafe_allow_html=True)
-        
-        for force in style['forces']:
-            st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
-        
-        st.markdown("""
-                </ul>
-            </div>
-            <div class="defis-box">
-                <h4>⚠️ Défis</h4>
-                <ul class="content-list">
-        """, unsafe_allow_html=True)
-        
-        for faiblesse in style['faiblesses']:
-            st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
-        
-        st.markdown("""
-                </ul>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Quand utiliser ce style
-        st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
-        st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
-
-# ==============================
-# JEU DE RÔLE - SLIDE 18
-# ==============================
-with tabs[18]:
+with tabs[19]:
     st.markdown("""
     <div class="test-section">
     <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
@@ -821,57 +831,101 @@ with tabs[18]:
     </div>
     """, unsafe_allow_html=True)
     
-    # Scénarios de jeu de rôle
+    # Scénarios de jeu de rôle améliorés
     roleplay_scenarios = [
         {
             "titre": "🚀 Lancement d'un Nouveau Projet",
-            "description": "Vous devez lancer un projet innovant avec une équipe réticente au changement",
+            "description": "Vous devez lancer un projet innovant avec une équipe réticente au changement. Le projet est crucial pour l'avenir de l'entreprise.",
+            "context": "Votre équipe de 5 personnes travaille ensemble depuis 2 ans. Les membres sont compétents mais habitués à leurs méthodes actuelles.",
             "roles": [
-                "Leader : Convaincre l'équipe de l'importance du projet",
-                "Collaborateur : Exprimer des réserves et des préoccupations"
+                "LEADER : Présenter le projet et convaincre l'équipe de son importance. Répondre aux préoccupations.",
+                "COLLABORATEUR 1 : Exprimer des doutes sur les délais trop serrés",
+                "COLLABORATEUR 2 : S'inquiéter de la charge de travail supplémentaire",
+                "COLLABORATEUR 3 : Poser des questions techniques sur la faisabilité"
+            ],
+            "objectifs": [
+                "Obtenir l'adhésion de l'équipe au projet",
+                "Répondre aux préoccupations spécifiques",
+                "Définir les premières étapes concrètes"
             ],
             "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
-            "duree": "10 minutes"
+            "duree": "10 minutes",
+            "conseils": "Écoutez activement chaque préoccupation. Reliez le projet à la vision d'ensemble. Montrez comment chacun peut contribuer."
         },
         {
-            "titre": "🔥 Gestion de Crise",
-            "description": "Une urgence nécessite une action immédiate et coordonnée",
+            "titre": "🔥 Gestion de Crise Immédiate",
+            "description": "Une urgence client nécessite une action immédiate et coordonnée. Le délai de résolution est de 2 heures.",
+            "context": "Un client important menace de résilier son contrat suite à un problème technique critique. L'équipe est sous pression.",
             "roles": [
-                "Leader : Prendre des décisions rapides sous pression",
-                "Collaborateur : Suivre les instructions et signaler les problèmes"
+                "LEADER : Coordonner la réponse d'urgence, prendre des décisions rapides",
+                "TECHNICIEN 1 : Analyser le problème technique",
+                "TECHNICIEN 2 : Proposer des solutions immédiates", 
+                "RELATION CLIENT : Gérer la communication avec le client"
+            ],
+            "objectifs": [
+                "Résoudre le problème dans les 2 heures",
+                "Maintenir la confiance du client",
+                "Coordonner efficacement l'équipe"
             ],
             "styles_recommandes": ["Directif", "Pace-setter"],
-            "duree": "8 minutes"
+            "duree": "8 minutes",
+            "conseils": "Soyez clair et concis dans vos instructions. Montrez de la confiance dans les capacités de l'équipe. Gardez votre calme."
         },
         {
-            "titre": "🤝 Résolution de Conflit",
-            "description": "Deux membres de l'équipe sont en conflit ouvert",
+            "titre": "🤝 Résolution de Conflit Inter-Équipe",
+            "description": "Deux membres de l'équipe sont en conflit ouvert, affectant la productivité du groupe.",
+            "context": "Le conflit dure depuis 2 semaines. Les deux personnes évitent de travailler ensemble. L'ambiance est tendue.",
             "roles": [
-                "Leader : Médier le conflit et rétablir l'harmonie",
-                "Collaborateur en conflit : Exprimer son point de vue"
+                "LEADER : Médier le conflit et trouver une résolution",
+                "COLLABORATEUR A : Se sent ignoré et sous-estimé",
+                "COLLABORATEUR B : Pense que A ne fait pas sa part du travail"
+            ],
+            "objectifs": [
+                "Rétablir la communication entre les deux parties",
+                "Trouver un terrain d'entente",
+                "Établir des règles de collaboration futures"
             ],
             "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
-            "duree": "12 minutes"
+            "duree": "12 minutes",
+            "conseils": "Créez un environnement sécurisé. Écoutez sans juger. Aidez à reformuler les positions de chacun."
         },
         {
-            "titre": "💡 Innovation et Créativité",
-            "description": "Brainstorming pour résoudre un problème complexe",
+            "titre": "💡 Session d'Innovation et Créativité",
+            "description": "Brainstorming pour résoudre un problème complexe nécessitant des solutions innovantes.",
+            "context": "L'entreprise cherche de nouvelles idées pour un produit. Les approches traditionnelles n'ont pas fonctionné.",
             "roles": [
-                "Leader : Stimuler la créativité sans imposer de solutions",
-                "Collaborateur : Proposer des idées innovantes"
+                "LEADER : Faciliter la créativité sans imposer de solutions",
+                "CRÉATIF 1 : Proposer des idées audacieuses mais peu pratiques",
+                "CRÉATIF 2 : Avoir des idées conservatrices mais réalisables",
+                "ANALYSTE : Évaluer la faisabilité des propositions"
+            ],
+            "objectifs": [
+                "Générer au moins 10 idées nouvelles",
+                "Sélectionner 3 idées prometteuses",
+                "Créer un plan d'action pour les tester"
             ],
             "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
-            "duree": "15 minutes"
+            "duree": "15 minutes",
+            "conseils": "Encouragez toutes les idées sans critique. Utilisez des techniques de créativité. Favorisez la collaboration."
         },
         {
-            "titre": "📈 Performance d'Équipe",
-            "description": "L'équipe ne atteint pas ses objectifs de performance",
+            "titre": "📈 Amélioration des Performances",
+            "description": "L'équipe n'atteint pas ses objectifs de performance depuis 3 mois consécutifs.",
+            "context": "Les indicateurs sont au rouge. La motivation est basse. Certains membres commencent à se décourager.",
             "roles": [
-                "Leader : Identifier les problèmes et motiver l'équipe",
-                "Collaborateur : Expliquer les difficultés rencontrées"
+                "LEADER : Identifier les problèmes et remotiver l'équipe",
+                "PERFORMANT : Exprime sa frustration face aux mauvais résultats",
+                "DÉMOTIVÉ : A perdu confiance dans la capacité du groupe à réussir",
+                "OBSERVATEUR : A identifié des problèmes de processus"
+            ],
+            "objectifs": [
+                "Identifier les causes racines des problèmes",
+                "Redéfinir une stratégie claire",
+                "Retrouver la motivation de l'équipe"
             ],
             "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
-            "duree": "10 minutes"
+            "duree": "10 minutes",
+            "conseils": "Soyez honnête sur la situation. Reconnaissez les efforts passés. Impliquez l'équipe dans la solution."
         }
     ]
     
@@ -887,11 +941,15 @@ with tabs[18]:
     st.markdown("### 🎯 Choisissez un Scénario")
     
     for i, scenario in enumerate(roleplay_scenarios):
-        if st.button(f"{scenario['titre']} - {scenario['duree']}", key=f"scenario_{i}", use_container_width=True):
-            st.session_state.current_scenario = scenario
-            st.session_state.timer_active = False
-            st.session_state.time_left = int(scenario['duree'].split()[0]) * 60
-            st.rerun()
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            if st.button(f"{scenario['titre']}", key=f"scenario_{i}", use_container_width=True):
+                st.session_state.current_scenario = scenario
+                st.session_state.timer_active = False
+                st.session_state.time_left = int(scenario['duree'].split()[0]) * 60
+                st.rerun()
+        with col2:
+            st.markdown(f"<div style='text-align: center; color: #64748b;'>{scenario['duree']}</div>", unsafe_allow_html=True)
     
     # Affichage du scénario sélectionné
     if st.session_state.current_scenario:
@@ -901,30 +959,33 @@ with tabs[18]:
         <div class="roleplay-card">
             <h3>🎭 {scenario['titre']}</h3>
             <p><strong>Description :</strong> {scenario['description']}</p>
+            <p><strong>Contexte :</strong> {scenario['context']}</p>
             <p><strong>Durée :</strong> {scenario['duree']}</p>
             <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
         </div>
         """, unsafe_allow_html=True)
         
+        # Objectifs
+        st.markdown("### 🎯 Objectifs à Atteindre")
+        for objectif in scenario['objectifs']:
+            st.markdown(f"- {objectif}")
+        
         # Rôles
         st.markdown("### 👥 Rôles à Distribuer")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.markdown("""
+        for role in scenario['roles']:
+            st.markdown(f"""
             <div class="roleplay-scenario">
-                <h4>🎯 Rôle du Leader</h4>
-                <p>{}</p>
+                {role}
             </div>
-            """.format(scenario['roles'][0]), unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
         
-        with col2:
-            st.markdown("""
-            <div class="roleplay-scenario">
-                <h4>👤 Rôle du Collaborateur</h4>
-                <p>{}</p>
-            </div>
-            """.format(scenario['roles'][1]), unsafe_allow_html=True)
+        # Conseils pour le leader
+        st.markdown("### 💡 Conseils pour le Leader")
+        st.markdown(f"""
+        <div class="conseil-box">
+            {scenario['conseils']}
+        </div>
+        """, unsafe_allow_html=True)
         
         # Timer
         st.markdown("### ⏱️ Timer de la Session")
@@ -968,11 +1029,12 @@ with tabs[18]:
         <div class="conseil-box">
             <h4>Questions pour le debriefing :</h4>
             <ul>
-                <li>Quel style de leadership a été utilisé ?</li>
-                <li>Comment s'est senti le collaborateur ?</li>
-                <li>Qu'est-ce qui a bien fonctionné ?</li>
-                <li>Qu'est-ce qui pourrait être amélioré ?</li>
+                <li>Quel style de leadership a été utilisé ? Était-il adapté ?</li>
+                <li>Comment s'est senti le leader ? Les collaborateurs ?</li>
+                <li>Qu'est-ce qui a bien fonctionné ? Qu'est-ce qui a été difficile ?</li>
+                <li>Les objectifs ont-ils été atteints ? Pourquoi ?</li>
                 <li>Quel autre style aurait pu être efficace ?</li>
+                <li>Quels apprentissages pouvez-vous retenir pour la réalité ?</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -983,334 +1045,218 @@ with tabs[18]:
     <div class="modern-card">
         <h3>📋 Instructions pour le Jeu de Rôle</h3>
         <ol class="content-list">
-            <li><strong>Formez des binômes</strong> - Un leader et un collaborateur</li>
+            <li><strong>Formez des groupes de 3-4 personnes</strong> - Un leader et des collaborateurs</li>
             <li><strong>Choisissez un scénario</strong> - Cliquez sur un des scénarios ci-dessus</li>
             <li><strong>Distribuez les rôles</strong> - Chacun joue son rôle selon la description</li>
             <li><strong>Utilisez le timer</strong> - Respectez le temps imparti</li>
-            <li><strong>Débriefer</strong> - À la fin, échangez vos retours d'expérience</li>
-            <li><strong>Inversez les rôles</strong> - Changez de rôle pour le scénario suivant</li>
+            <li><strong>Débriefer</strong> - À la fin, échangez vos retours d'expérience (5-10 minutes)</li>
+            <li><strong>Changez de rôles</strong> - Inversez les rôles pour le scénario suivant</li>
         </ol>
         
         <div class="example-box">
-            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
+            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats ! Notez ce que vous apprenez sur vous-même.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES EXISTANTS CORRIGÉS
+# SLIDES 20-29 : CONTENU PÉDAGOGIQUE SUPPLÉMENTAIRE
 # ==============================
 
-# Slide 1 : Introduction
-with tabs[1]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🚀 Bienvenue dans l'univers du leadership moderne</h2>
-    <p class="content-paragraph">
-    Le leadership n'est plus réservé aux dirigeants : c'est une <strong>compétence essentielle</strong> pour inspirer, mobiliser et transformer. 
-    </p>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Marie, enseignante en collège, utilise le leadership affiliatif pour recréer du lien après le confinement.
-    </div>
-    
-    <h3>🎥 Vidéos recommandées</h3>
-    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
-    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
-    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
-    
-    <div class="quote-card">
-    « Le leadership n'est pas un titre, c'est une responsabilité envers les autres. » — Simon Sinek
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 2 : Définitions
-with tabs[2]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>📘 Définitions clés avec exemples</h2>
-    
-    <p class="content-paragraph"><strong>Leadership</strong> : Capacité à influencer, inspirer et guider vers un objectif commun.</p>
-    <div class="example-box">
-    💡 <strong>Exemple :</strong> Joséphine, infirmière chef, inspire son équipe en partageant quotidiennement les témoignages de patients guéris.
-    </div>
-    
-    <p class="content-paragraph"><strong>Management</strong> : Processus de planification, organisation et contrôle des ressources.</p>
-    <div class="example-box">
-    💡 <strong>Exemple :</strong> Un chef de projet qui organise les tâches et les délais pour son équipe.
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 3 : Leadership vs Management
-with tabs[3]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>⚖️ Leadership vs Management</h2>
-    
-    <p class="content-paragraph">Beaucoup pensent que leadership et management s'opposent. En réalité, ils sont <strong>complémentaires</strong>.</p>
-    
-    <div class="content-paragraph">
-    <strong>Management :</strong> Gérer les processus, planifier, organiser, contrôler.
-    </div>
-    
-    <div class="content-paragraph">
-    <strong>Leadership :</strong> Inspirer les personnes, créer une vision, innover.
-    </div>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> À Google, les managers allient leadership (vision) et management (KPIs mensuels).
-    </div>
-    
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence entre leader et management</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 4 : Leadership vs Commandement
-with tabs[4]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>⚔️ Leadership vs Commandement</h2>
-    
-    <p class="content-paragraph">Le leadership s'acquiert par l'influence, le commandement par la position hiérarchique.</p>
-    
-    <div class="content-paragraph">
-    <strong>Commandement :</strong> Autorité formelle, contrôle, structure hiérarchique.
-    </div>
-    
-    <div class="content-paragraph">
-    <strong>Leadership :</strong> Influence informelle, inspiration, relations.
-    </div>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres) alors qu'un caporal chef peut développer du leadership (respect gagné).
-    </div>
-    
-    <div class="quote-card">
-    « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 5 : Théories X et Y de McGregor
-with tabs[5]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🧠 Théories X et Y de Douglas McGregor</h2>
-    
-    <p class="content-paragraph">Douglas McGregor (1960) a identifié <strong>deux visions opposées de la nature humaine</strong> au travail.</p>
-    
-    <div class="theory-box">
-    <h3>📋 Théorie X - Vision traditionnelle</h3>
-    <p><strong>Postulats :</strong></p>
-    <ul class="content-list">
-    <li>Les employés n'aiment pas naturellement le travail</li>
-    <li>Ils doivent être contrôlés, dirigés et menacés de sanctions</li>
-    <li>Ils évitent les responsabilités et recherchent la sécurité</li>
-    </ul>
-    </div>
-    
-    <div class="theory-box">
-    <h3>📈 Théorie Y - Vision moderne</h3>
-    <p><strong>Postulats :</strong></p>
-    <ul class="content-list">
-    <li>Le travail est aussi naturel que le jeu ou le repos</li>
-    <li>Les personnes peuvent s'auto-contrôler et s'auto-motiver</li>
-    <li>Elles recherchent et acceptent les responsabilités</li>
-    </ul>
-    </div>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Une usine traditionnelle (Théorie X) vs une startup tech (Théorie Y).
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 16 : Leadership Situationnel
-with tabs[16]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🔄 Leadership Situationnel</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
-        « Adaptons notre style à la situation »
-    </p>
-    
-    <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs, ainsi que du contexte.</p>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Un manager utilise un style directif avec un nouveau collaborateur (faible compétence, forte motivation) et délégatif avec un expert expérimenté (forte compétence, forte motivation).
-    </div>
-    
-    <h3>📈 Les 4 niveaux de développement</h3>
-    <ul class="content-list">
-    <li><strong>D1 :</strong> Faible compétence, forte motivation → Style directif</li>
-    <li><strong>D2 :</strong> Faible à moyenne compétence, faible motivation → Style persuasif</li>
-    <li><strong>D3 :</strong> Moyenne à forte compétence, motivation variable → Style participatif</li>
-    <li><strong>D4 :</strong> Forte compétence, forte motivation → Style délégatif</li>
-    </ul>
-    """, unsafe_allow_html=True)
-    
-    # Forces et défis pour le style situationnel
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Adaptation optimale à chaque situation</li>
-                <li>Développement progressif des collaborateurs</li>
-                <li>Efficacité contextuelle</li>
-                <li>Respect des individualités</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Nécessite une grande flexibilité</li>
-                <li>Complexe à maîtriser</li>
-                <li>Demande une bonne analyse des situations</li>
-                <li>Risque d'incohérence perçue</li>
-            </ul>
-        </div>
-    </div>
-    
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : adapter son leadership à chaque collaborateur, développer progressivement les compétences, gérer des équipes hétérogènes.
-    </p>
-    
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 17 : Laissez-faire
-with tabs[17]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🎨 Style Laissez-faire</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
-        « À toi de jouer »
-    </p>
-    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources nécessaires mais intervient peu dans le travail quotidien.</p>
-    
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale pour développer leurs projets.
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Forces et défis pour le style laissez-faire
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Autonomie et créativité</li>
-                <li>Responsabilisation des équipes</li>
-                <li>Innovation libre</li>
-                <li>Adaptation aux experts</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Manque de direction</li>
-                <li>Manque de coordination</li>
-                <li>Risque de désengagement</li>
-                <li>Peut créer de la confusion</li>
-            </ul>
-        </div>
-    </div>
-    
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : équipes d'experts très compétents et motivés, environnements créatifs, projets innovants nécessitant de l'autonomie.
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 19 : Compétences
-with tabs[19]:
+# Slide 20 : Compétences
+with tabs[20]:
     st.markdown("""
     <div class="modern-card">
     <h2>🔑 Compétences Clés du Leader Moderne</h2>
     
-    <h3>🏆 Les 5 compétences indispensables</h3>
-    <ul class="content-list">
-    <li><strong>Vision stratégique :</strong> Voir loin et large</li>
-    <li><strong>Communication inspirante :</strong> Parler avec cœur et conviction</li>
-    <li><strong>Décision courageuse :</strong> Assumer ses choix avec humilité</li>
-    <li><strong>Délégation efficace :</strong> Faire confiance et responsabiliser</li>
-    <li><strong>Résilience émotionnelle :</strong> Rebondir face aux échecs</li>
-    </ul>
+    <p class="content-paragraph">Le leadership moderne repose sur un ensemble de compétences complémentaires qui se développent et s'entretiennent.</p>
     
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Indra Nooyi, ancienne CEO de PepsiCo, combinait vision stratégique et attention aux détails humains.
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>🎯 Vision Stratégique</h4>
+            <p>Capacité à anticiper les tendances et définir une direction claire.</p>
+            <ul>
+                <li>Pensée systémique</li>
+                <li>Analyse prospective</li>
+                <li>Alignement stratégique</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>💬 Communication Inspirante</h4>
+            <p>Art de transmettre des messages qui mobilisent et engagent.</p>
+            <ul>
+                <li>Storytelling</li>
+                <li>Écoute active</li>
+                <li>Communication non-verbale</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🤝 Intelligence Relationnelle</h4>
+            <p>Capacité à construire et entretenir des relations de qualité.</p>
+            <ul>
+                <li>Empathie</li>
+                <li>Résolution de conflits</li>
+                <li>Construction de réseaux</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>⚡ Prise de Décision</h4>
+            <p>Art de choisir rapidement et efficacement dans l'incertitude.</p>
+            <ul>
+                <li>Analyse risque/bénéfice</li>
+                <li>Intuition éclairée</li>
+                <li>Gestion de l'incertitude</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🔄 Adaptabilité</h4>
+            <p>Capacité à s'adapter aux changements et à faire évoluer son style.</p>
+            <ul>
+                <li>Agilité cognitive</li>
+                <li>Résilience</li>
+                <li>Apprentissage continu</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🌟 Développement des Talents</h4>
+            <p>Art de faire grandir les autres et de libérer leur potentiel.</p>
+            <ul>
+                <li>Mentorat</li>
+                <li>Feedback constructif</li>
+                <li>Délégation efficace</li>
+            </ul>
+        </div>
     </div>
     
-    <h3>🎥 Vidéo sur les compétences</h3>
-    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Les compétences d'un leader</a>
+    <div class="example-box">
+    💡 <strong>Conseil pratique :</strong> Identifiez 2-3 compétences à développer prioritairement selon votre profil DISC et créez un plan d'action concret.
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 20 : Intelligence Émotionnelle
-with tabs[20]:
+# Slide 21 : Intelligence Émotionnelle
+with tabs[21]:
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
     
-    <p class="content-paragraph">L'IE représente <strong>80% de la performance</strong> en leadership selon Daniel Goleman.</p>
+    <p class="content-paragraph">L'IE représente <strong>80% de la performance</strong> en leadership selon Daniel Goleman. C'est la capacité à reconnaître, comprendre et maîtriser ses propres émotions et à composer avec les émotions des autres.</p>
     
     <h3>🎯 Les 4 piliers de l'IE</h3>
-    <ul class="content-list">
-    <li><strong>Conscience de soi :</strong> Comprendre ses émotions et leur impact</li>
-    <li><strong>Maîtrise de soi :</strong> Gérer ses réactions émotionnelles</li>
-    <li><strong>Conscience sociale :</strong> Percevoir les émotions des autres</li>
-    <li><strong>Gestion des relations :</strong> Influencer positivement les émotions collectives</li>
-    </ul>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>1. Conscience de soi</h4>
+            <p>Comprendre ses émotions et leur impact</p>
+            <ul>
+                <li>Reconnaître ses patterns émotionnels</li>
+                <li>Identifier ses déclencheurs</li>
+                <li>Comprendre son impact sur les autres</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>2. Maîtrise de soi</h4>
+            <p>Gérer ses réactions émotionnelles</p>
+            <ul>
+                <li>Gérer le stress et l'anxiété</li>
+                <li>Contrôler ses impulsions</li>
+                <li>S'adapter aux changements</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>3. Conscience sociale</h4>
+            <p>Percevoir les émotions des autres</p>
+            <ul>
+                <li>Décoder le langage non-verbal</li>
+                <li>Comprendre les dynamiques de groupe</li>
+                <li>Respecter les différences culturelles</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>4. Gestion des relations</h4>
+            <p>Influencer positivement les émotions collectives</p>
+            <ul>
+                <li>Inspirer et motiver</li>
+                <li>Gérer les conflits</li>
+                <li>Favoriser la collaboration</li>
+            </ul>
+        </div>
+    </div>
     
     <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Lors d'une restructuration, Pierre, directeur RH, reconnaît sa propre anxiété et celle de son équipe, et organise des entretiens individuels pour rassurer.
+    💡 <strong>Exemple concret :</strong> Lors d'une restructuration, Pierre, directeur RH, reconnaît sa propre anxiété et celle de son équipe. Il organise des entretiens individuels pour rassurer et co-construire la nouvelle organisation.
     </div>
+    
+    <h3>🛠️ Outils pour développer votre IE</h3>
+    <ul class="content-list">
+    <li><strong>Journal des émotions :</strong> Notez quotidiennement vos réactions émotionnelles</li>
+    <li><strong>Pause réflexive :</strong> Prenez 5 minutes avant de répondre à une situation tendue</li>
+    <li><strong>Feedback 360° :</strong> Demandez à votre entourage comment vous êtes perçu</li>
+    <li><strong>Méditation :</strong> Développez votre présence et votre conscience</li>
+    </ul>
     
     <h3>🎥 Vidéo explicative</h3>
     <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle pour un meilleur leadership</a>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 21 : Études de Cas
-with tabs[21]:
+# Slide 22 : Études de Cas
+with tabs[22]:
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
     
-    <h3>🏢 Cas 1 : Transformation digitale</h3>
-    <p class="content-paragraph"><strong>Contexte :</strong> Une PME familiale doit se digitaliser face à la concurrence.</p>
-    <p class="content-paragraph"><strong>Défi :</strong> Résistance au changement des équipes historiques.</p>
-    <p class="content-paragraph"><strong>Solution :</strong> Leadership visionnaire + coaching progressif.</p>
+    <h3>🏢 Cas 1 : Transformation Digitale chez RetailCorp</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Une PME familiale de 50 ans doit se digitaliser face à la concurrence des géants du e-commerce.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Résistance au changement des équipes historiques, peur de la technologie, perte des repères.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership visionnaire pour inspirer + coaching progressif pour accompagner le changement.</p>
     
     <div class="example-box">
-    💡 <strong>Résultat :</strong> 6 mois pour la transition, 90% d'adoption des nouveaux outils.
+    💡 <strong>Résultat :</strong> 6 mois pour la transition complète, 90% d'adoption des nouveaux outils, augmentation de 35% de la productivité.
     </div>
     
-    <h3>🏭 Cas 2 : Fusion d'entreprises</h3>
-    <p class="content-paragraph"><strong>Contexte :</strong> Deux entreprises de cultures différentes fusionnent.</p>
-    <p class="content-paragraph"><strong>Défi :</strong> Choc culturel et perte de repères.</p>
-    <p class="content-paragraph"><strong>Solution :</strong> Leadership affiliatif pour créer du lien + démocratique pour co-construire.</p>
+    <h3>🏭 Cas 2 : Fusion Culturelle chez TechMerge</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Deux entreprises de cultures différentes fusionnent - startup agile et entreprise traditionnelle.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Choc culturel, méthodes de travail incompatibles, tensions entre équipes.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership affiliatif pour créer du lien + démocratique pour co-construire la nouvelle culture.</p>
     
     <div class="example-box">
-    💡 <strong>Résultat :</strong> 75% de rétention des talents clés, nouvelle identité partagée.
+    💡 <strong>Résultat :</strong> 75% de rétention des talents clés, création d'une identité hybride performante, innovation accélérée.
     </div>
+    
+    <h3>🏥 Cas 3 : Crise Sanitaire à l'Hôpital Regional</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Pendant la pandémie, surcharge des services, épuisement du personnel, ressources limitées.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Prendre des décisions rapides sous pression extrême tout en préservant le moral des équipes.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership situationnel alternant style directif (urgences) et serviteur (soutien aux équipes).</p>
+    
+    <div class="example-box">
+    💡 <strong>Résultat :</strong> Gestion efficace de la crise, préservation de la qualité des soins, reconnaissance nationale des équipes.
+    </div>
+    
+    <h3>🎯 Analyse Commune</h3>
+    <ul class="content-list">
+    <li><strong>Adaptabilité :</strong> Aucun style unique ne fonctionne dans toutes les situations</li>
+    <li><strong>Authenticité :</strong> Les leaders efficaces restent fidèles à leurs valeurs</li>
+    <li><strong>Résilience :</strong> La capacité à rebondir est cruciale face aux défis</li>
+    <li><strong>Vision partagée :</strong> Le succès dépend de l'adhésion collective</li>
+    </ul>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 22 : QUIZ 1 - Fondamentaux
-with tabs[22]:
+# Slide 23 : QUIZ 1 - Fondamentaux
+with tabs[23]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 QUIZ 1 - Fondamentaux du Leadership</h2>
-    <p class="content-paragraph">Testez vos connaissances sur les concepts de base du leadership (10 questions)</p>
+    <p class="content-paragraph">Testez vos connaissances sur les concepts de base du leadership</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1318,34 +1264,74 @@ with tabs[22]:
         {
             "question": "Le leadership est une compétence exclusivement innée qui ne peut pas s'apprendre.",
             "correct": False,
-            "explication": "❌ Faux - Des études montrent que 70% des compétences de leadership s'acquièrent par la pratique et la formation."
+            "explication": "❌ Faux - Des études montrent que 70% des compétences de leadership s'acquièrent par la pratique et la formation. Seulement 30% sont innées."
         },
         {
             "question": "Un leader efficace passe plus de temps à écouter qu'à parler.",
             "correct": True,
-            "explication": "✅ Vrai - L'écoute active est cruciale pour comprendre les besoins de son équipe."
+            "explication": "✅ Vrai - L'écoute active est cruciale pour comprendre les besoins de son équipe et prendre de meilleures décisions."
+        },
+        {
+            "question": "Le leadership et le management sont deux concepts identiques.",
+            "correct": False,
+            "explication": "❌ Faux - Le leadership inspire les personnes et crée la vision, tandis que le management organise les processus et contrôle les résultats."
+        },
+        {
+            "question": "L'intelligence émotionnelle est plus importante que le QI pour le succès en leadership.",
+            "correct": True,
+            "explication": "✅ Vrai - Daniel Goleman a démontré que l'IE représente 80% du succès en leadership contre 20% pour le QI."
+        },
+        {
+            "question": "Un bon leader doit toujours être aimé de son équipe.",
+            "correct": False,
+            "explication": "❌ Faux - Un leader doit être respecté plutôt qu'aimé. Les décisions difficiles peuvent parfois créer des mécontentements temporaires."
         }
     ]
     
+    if 'quiz1_responses' not in st.session_state:
+        st.session_state.quiz1_responses = [None] * len(quiz1_questions)
+    
+    score = 0
+    
     for i, q in enumerate(quiz1_questions):
-        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
-        rep = st.radio(f"Choisissez votre réponse :", ["Vrai", "Faux"], key=f"quiz1_{i}")
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/{len(quiz1_questions)} :</strong> {q["question"]}</div>', unsafe_allow_html=True)
         
-        if st.session_state.get(f"show_answers_quiz1", False):
-            if (rep == "Vrai") == q["correct"]:
+        response = st.radio(
+            "Choisissez votre réponse :",
+            ["Vrai", "Faux"],
+            key=f"quiz1_{i}",
+            index=st.session_state.quiz1_responses[i] if st.session_state.quiz1_responses[i] is not None else None
+        )
+        
+        st.session_state.quiz1_responses[i] = ["Vrai", "Faux"].index(response)
+        
+        if st.session_state.get('show_answers_quiz1', False):
+            if (response == "Vrai") == q["correct"]:
                 st.success(f"✅ Correct! {q['explication']}")
+                score += 1
             else:
                 st.error(f"❌ Incorrect! {q['explication']}")
     
     if st.button("📊 Corriger le Quiz 1", key="corriger_quiz1"):
         st.session_state.show_answers_quiz1 = True
+        st.rerun()
+    
+    if st.session_state.get('show_answers_quiz1', False):
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📈 Résultats du Quiz 1</h3>
+            <p><strong>Score : {score}/{len(quiz1_questions)}</strong></p>
+            <p><strong>Pourcentage : {int(score/len(quiz1_questions)*100)}%</strong></p>
+            {"🎉 Excellent ! Vous maîtrisez les fondamentaux du leadership." if score >= 4 else "👍 Bon score ! Continuez à vous perfectionner." if score >= 3 else "📚 Continuez à apprendre, vous progressez !"}
+        </div>
+        """, unsafe_allow_html=True)
 
-# Slide 23 : QUIZ 2 - Styles
-with tabs[23]:
+# Slide 24 : QUIZ 2 - Styles
+with tabs[24]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🎯 QUIZ 2 - Styles de Leadership</h2>
-    <p class="content-paragraph">Testez votre capacité à identifier les styles de leadership (10 questions)</p>
+    <p class="content-paragraph">Testez votre capacité à identifier les styles de leadership</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1354,121 +1340,537 @@ with tabs[23]:
             "question": "Quel style de leadership convient le mieux à une équipe d'experts hautement motivés ?",
             "options": ["Directif", "Laissez-faire", "Visionnaire", "Affiliatif"],
             "correct": "Laissez-faire",
-            "explication": "✅ Le style laissez-faire fonctionne bien avec des experts autonomes."
+            "explication": "✅ Le style laissez-faire fonctionne bien avec des experts autonomes qui n'ont pas besoin de supervision étroite."
+        },
+        {
+            "question": "Quel style utiliser en situation de crise nécessitant une action immédiate ?",
+            "options": ["Démocratique", "Directif", "Coaching", "Affiliatif"],
+            "correct": "Directif",
+            "explication": "✅ Le style directif est le plus efficace en situation d'urgence où des décisions rapides doivent être prises."
+        },
+        {
+            "question": "Quel style privilégier pour développer les compétences d'un collaborateur ?",
+            "options": ["Pace-setter", "Coaching", "Transactionnel", "Laissez-faire"],
+            "correct": "Coaching",
+            "explication": "✅ Le style coaching est spécifiquement conçu pour développer les talents et les compétences des collaborateurs."
+        },
+        {
+            "question": "Quel style est caractérisé par la recherche de consensus et la participation de l'équipe ?",
+            "options": ["Directif", "Visionnaire", "Démocratique", "Pace-setter"],
+            "correct": "Démocratique",
+            "explication": "✅ Le style démocratique valorise la participation et la consultation de l'équipe dans les décisions."
+        },
+        {
+            "question": "Quel style met l'accent sur l'harmonie et les relations dans l'équipe ?",
+            "options": ["Affiliatif", "Transactionnel", "Directif", "Pace-setter"],
+            "correct": "Affiliatif",
+            "explication": "✅ Le style affiliatif privilégie l'harmonie, la cohésion d'équipe et le bien-être des collaborateurs."
         }
     ]
     
+    if 'quiz2_responses' not in st.session_state:
+        st.session_state.quiz2_responses = [None] * len(quiz2_questions)
+    
+    score = 0
+    
     for i, q in enumerate(quiz2_questions):
-        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
-        rep = st.radio(f"Choisissez la bonne réponse :", q["options"], key=f"quiz2_{i}")
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/{len(quiz2_questions)} :</strong> {q["question"]}</div>', unsafe_allow_html=True)
         
-        if st.session_state.get(f"show_answers_quiz2", False):
-            if rep == q["correct"]:
+        response = st.radio(
+            "Choisissez la bonne réponse :",
+            q["options"],
+            key=f"quiz2_{i}",
+            index=st.session_state.quiz2_responses[i] if st.session_state.quiz2_responses[i] is not None else None
+        )
+        
+        st.session_state.quiz2_responses[i] = q["options"].index(response)
+        
+        if st.session_state.get('show_answers_quiz2', False):
+            if response == q["correct"]:
                 st.success(f"✅ Correct! {q['explication']}")
+                score += 1
             else:
                 st.error(f"❌ Incorrect! La bonne réponse était : {q['correct']}. {q['explication']}")
     
     if st.button("📊 Corriger le Quiz 2", key="corriger_quiz2"):
         st.session_state.show_answers_quiz2 = True
+        st.rerun()
+    
+    if st.session_state.get('show_answers_quiz2', False):
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📈 Résultats du Quiz 2</h3>
+            <p><strong>Score : {score}/{len(quiz2_questions)}</strong></p>
+            <p><strong>Pourcentage : {int(score/len(quiz2_questions)*100)}%</strong></p>
+            {"🎉 Félicitations ! Vous maîtrisez parfaitement les styles de leadership." if score >= 4 else "👍 Bonne compréhension ! Vous identifiez bien la plupart des styles." if score >= 3 else "📚 Continuez à étudier les styles pour mieux les reconnaître."}
+        </div>
+        """, unsafe_allow_html=True)
 
-# Slide 24 : Synthèse
-with tabs[24]:
+# Slide 25 : Synthèse
+with tabs[25]:
     st.markdown("""
     <div class="modern-card">
     <h2>🎓 Synthèse du Parcours Leadership</h2>
     
-    <h3>🔑 Les 5 points clés à retenir</h3>
-    <ul class="content-list">
-    <li><strong>1. Adaptabilité :</strong> Un bon leader adapte son style à la situation</li>
-    <li><strong>2. Authenticité :</strong> La cohérence entre paroles et actions</li>
-    <li><strong>3. Vision :</strong> Savoir où aller et emmener les autres</li>
-    <li><strong>4. Humilité :</strong> Reconnaître ses erreurs et apprendre</li>
-    <li><strong>5. Impact :</strong> Mesurer son leadership par l'impact positif</li>
-    </ul>
+    <h3>🔑 Les 7 principes fondamentaux du leadership efficace</h3>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>1. Adaptabilité Contextuelle</h4>
+            <p>Il n'existe pas de style unique idéal. Le leader efficace adapte son approche à chaque situation, équipe et objectif.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>2. Vision Inspirante</h4>
+            <p>Un leader donne du sens et une direction. Il transforme les objectifs en vision partagée qui motive et engage.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>3. Authenticité Cohérente</h4>
+            <p>La crédité naît de l'alignement entre paroles et actions. Un leader authentique inspire confiance naturellement.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>4. Développement Mutuel</h4>
+            <p>Le vrai leadership fait grandir les autres. Investir dans le développement de son équipe est un multiplicateur de performance.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>5. Intelligence Collective</h4>
+            <p>Un leader sait qu'il ne détient pas toutes les réponses. Il active l'intelligence du groupe pour innover et résoudre.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>6. Résilience Émotionnelle</h4>
+            <p>Face aux défis et aux échecs, le leader maintient son cap et sert de point d'ancrage pour son équipe.</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>7. Impact Mesurable</h4>
+            <p>Le leadership se juge aux résultats et à l'impact positif créé sur les personnes, l'organisation et la société.</p>
+        </div>
+    </div>
+    
+    <h3>🔄 Cycle d'Amélioration Continue</h3>
+    <ol class="content-list">
+    <li><strong>Auto-évaluation :</strong> Connais-toi toi-même (test DISC, feedback 360°)</li>
+    <li><strong>Apprentissage :</strong> Étudie les styles et théories (formation, lecture)</li>
+    <li><strong>Expérimentation :</strong> Pratique en situation réelle (jeux de rôle, projets)</li>
+    <li><strong>Réflexion :</strong> Analyse tes succès et échecs (journal de bord, debriefing)</li>
+    <li><strong>Adaptation :</strong> Ajuste ton approche (flexibilité, agilité)</li>
+    </ol>
     
     <div class="quote-card">
-    « Le véritable leadership ne consiste pas à avoir une position, mais à avoir une influence positive. »
+    « Le véritable leadership ne consiste pas à avoir une position, mais à avoir une influence positive. Le plus grand privilège du leader est de servir ceux qu'il guide. »
+    </div>
+    
+    <div class="example-box">
+    💡 <strong>Prochaines étapes :</strong> Identifiez 3 actions concrètes à mettre en œuvre dans les 30 prochains jours pour développer votre leadership.
     </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 25 : Secteurs d'Application
-with tabs[25]:
+# Slide 26 : Secteurs d'Application
+with tabs[26]:
     st.markdown("""
     <div class="modern-card">
     <h2>🏥 Leadership dans Différents Secteurs</h2>
     
-    <h3>💻 Technologie</h3>
-    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Laissez-faire</p>
+    <p class="content-paragraph">Chaque secteur présente des spécificités qui influencent les styles de leadership les plus efficaces.</p>
     
-    <h3>🏭 Industrie</h3>
-    <p class="content-paragraph"><strong>Style dominant :</strong> Directif + Démocratique</p>
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>💻 Technologie & Startups</h4>
+            <p><strong>Styles dominants :</strong> Visionnaire + Laissez-faire</p>
+            <p><strong>Caractéristiques :</strong> Innovation rapide, équipes experts, environnement VUCA</p>
+            <p><strong>Défis :</strong> Gérer l'incertitude, maintenir l'innovation, rétention des talents</p>
+            <p><strong>Exemple :</strong> Satya Nadella chez Microsoft - transformation culturelle</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🏭 Industrie & Manufacturing</h4>
+            <p><strong>Styles dominants :</strong> Directif + Démocratique</p>
+            <p><strong>Caractéristiques :</strong> Processus structurés, sécurité critique, optimisation continue</p>
+            <p><strong>Défis :</strong> Digitalisation, amélioration continue, sécurité des équipes</p>
+            <p><strong>Exemple :</strong> Carlos Ghosn chez Renault-Nissan - turnaround industriel</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🏥 Santé & Médical</h4>
+            <p><strong>Styles dominants :</strong> Affiliatif + Coaching</p>
+            <p><strong>Caractéristiques :</strong> Haut niveau d'expertise, pression émotionnelle, travail d'équipe</p>
+            <p><strong>Défis :</strong> Burnout professionnel, coordination interdisciplinaire, innovation médicale</p>
+            <p><strong>Exemple :</strong> Dr. Denis Mukwege - leadership humanitaire et médical</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🎓 Éducation & Formation</h4>
+            <p><strong>Styles dominants :</strong> Visionnaire + Coaching</p>
+            <p><strong>Caractéristiques :</strong> Développement humain, autonomie professionnelle, impact sociétal</p>
+            <p><strong>Défis :</strong> Adaptation pédagogique, motivation des équipes, ressources limitées</p>
+            <p><strong>Exemple :</strong> Ken Robinson - leadership éducatif et innovation pédagogique</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🏛️ Public & Associatif</h4>
+            <p><strong>Styles dominants :</strong> Serviteur + Démocratique</p>
+            <p><strong>Caractéristiques :</strong> Mission de service, complexité administrative, multiples parties prenantes</p>
+            <p><strong>Défis :</strong> Contraintes budgétaires, lourdeur administrative, impact social</p>
+            <p><strong>Exemple :</strong> Jacinda Ardern - leadership politique empathique</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>💼 Services & Conseil</h4>
+            <p><strong>Styles dominants :</strong> Coaching + Transactionnel</p>
+            <p><strong>Caractéristiques :</strong> Relation client, expertise pointue, facturation au résultat</p>
+            <p><strong>Défis :</strong> Fidélisation clients, développement commercial, qualité de service</p>
+            <p><strong>Exemple :</strong> Sheryl Sandberg chez Facebook - leadership opérationnel</p>
+        </div>
+    </div>
     
-    <h3>🏥 Santé</h3>
-    <p class="content-paragraph"><strong>Style dominant :</strong> Affiliatif + Coaching</p>
+    <h3>🌍 Tendances Transversales</h3>
+    <ul class="content-list">
+    <li><strong>Digitalisation :</strong> Tous les secteurs sont impactés par la transformation digitale</li>
+    <li><strong>Durabilité :</strong> Le leadership responsable devient une exigence dans tous les domaines</li>
+    <li><strong>Diversité :</strong> L'inclusion et la diversité sont des leviers de performance reconnus</li>
+    <li><strong>Agilité :</strong> La capacité d'adaptation rapide est désormais cruciale partout</li>
+    </ul>
     
-    <h3>🎓 Éducation</h3>
-    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Coaching</p>
+    <div class="example-box">
+    💡 <strong>Conseil :</strong> Analysez votre secteur et identifiez les compétences de leadership les plus valorisées. Développez-les tout en conservant votre authenticité.
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 26 : Erreurs Courantes
-with tabs[26]:
+# Slide 27 : Erreurs Courantes
+with tabs[27]:
     st.markdown("""
     <div class="modern-card">
     <h2>🚫 Erreurs Courantes en Leadership</h2>
     
-    <h3>❌ Les 7 pièges à éviter</h3>
+    <p class="content-paragraph">Identifier et éviter ces pièges courants peut accélérer votre développement en leadership.</p>
+    
+    <h3>❌ Les 10 pièges à éviter absolument</h3>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>1. Micro-management</h4>
+            <p><strong>Symptômes :</strong> Contrôle excessif, manque de délégation, étouffement de l'autonomie</p>
+            <p><strong>Impact :</strong> Démotivation, dépendance, burnout des collaborateurs</p>
+            <p><strong>Solution :</strong> Déléguer avec confiance, définir des objectifs clairs, accepter les erreurs</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>2. Incohérence</h4>
+            <p><strong>Symptômes :</strong> Paroles ≠ actions, règles changeantes, favoritisme</p>
+            <p><strong>Impact :</strong> Perte de crédibilité, confusion, climat de méfiance</p>
+            <p><strong>Solution :</strong> Alignement valeurs-actions, transparence, constance</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>3. Manque de reconnaissance</h4>
+            <p><strong>Symptômes :</strong> Focus uniquement sur les problèmes, oubli des succès</p>
+            <p><strong>Impact :</strong> Démotivation, sentiment d'injustice, turnover</p>
+            <p><strong>Solution :</strong> Célébrer les succès, feedback positif régulier, reconnaissance personnalisée</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>4. Communication insuffisante</h4>
+            <p><strong>Symptômes :</strong> Information gardée, rumeurs, surprises désagréables</p>
+            <p><strong>Impact :</strong> Anxiété, perte d'engagement, mauvaises décisions</p>
+            <p><strong>Solution :</strong> Sur-communiquer, être transparent, créer des canaux ouverts</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>5. Évitement des conflits</h4>
+            <p><strong>Symptômes :</strong> Ignorer les tensions, reporter les discussions difficiles</p>
+            <p><strong>Impact :</strong> Problèmes non résolus, climat toxique, explosion ultérieure</p>
+            <p><strong>Solution :</strong> Adresser rapidement, écouter toutes les parties, rechercher des solutions</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>6. Style unique</h4>
+            <p><strong>Symptômes :</strong> Même approche dans toutes les situations, rigidité</p>
+            <p><strong>Impact :</strong> Inefficacité contextuelle, frustration des équipes</p>
+            <p><strong>Solution :</strong> Développer sa flexibilité, adapter son style, être situationnel</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>7. Négligence du développement</h4>
+            <p><strong>Symptômes :</strong> Arrêt des apprentissages, routine, stagnation</p>
+            <p><strong>Impact :</strong> Obsolescence des compétences, manque d'inspiration</p>
+            <p><strong>Solution :</strong> Formation continue, lecture, mentorat, réflexion</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>8. Prise de décision solitaire</h4>
+            <p><strong>Symptômes :</strong> Décisions unilatérales, non-consultation de l'équipe</p>
+            <p><strong>Impact :</strong> Manque d'adhésion, solutions sous-optimales, frustration</p>
+            <p><strong>Solution :</strong> Impliquer l'équipe, co-construction, expliquer les décisions</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>9. Surprotection des collaborateurs</h4>
+            <p><strong>Symptômes :</strong> Éviter les challenges, protéger des feedbacks difficiles</p>
+            <p><strong>Impact :</strong> Stagnation professionnelle, manque de résilience</p>
+            <p><strong>Solution :</strong> Donner des défis, feedback honnête, soutenir la croissance</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>10. Oubli de soi-même</h4>
+            <p><strong>Symptômes :</strong> Négligence santé personnelle, déséquilibre vie pro/perso</p>
+            <p><strong>Impact :</strong> Burnout, mauvaise exemplarité, baisse de performance</p>
+            <p><strong>Solution :</strong> Auto-soin, boundaries claires, équilibre de vie</p>
+        </div>
+    </div>
+    
+    <h3>🛡️ Stratégie de Prévention</h3>
     <ul class="content-list">
-    <li><strong>1. Micro-management :</strong> Tuer l'autonomie et la créativité</li>
-    <li><strong>2. Incohérence :</strong> Dire une chose et faire le contraire</li>
-    <li><strong>3. Manque de reconnaissance :</strong> Oublier de valoriser les efforts</li>
-    <li><strong>4. Communication insuffisante :</strong> Ne pas partager l'information</li>
-    <li><strong>5. Éviter les conflits :</strong> Laisser pourrir les situations</li>
-    <li><strong>6. Style unique :</strong> Même style dans toutes les situations</li>
-    <li><strong>7. Négliger son développement :</strong> Arrêter d'apprendre</li>
+    <li><strong>Auto-réflexion régulière :</strong> Prendre du recul pour identifier ses patterns</li>
+    <li><strong>Feedback continu :</strong> Solliciter activement les retours de son équipe</li>
+    <li><strong>Mentorat :</strong> Bénéficier de l'expérience de leaders plus expérimentés</li>
+    <li><strong>Apprentissage par les erreurs :</strong> Transformer les échecs en apprentissages</li>
+    <li><strong>Communauté de pratique :</strong> Échanger avec d'autres leaders sur les défis</li>
     </ul>
+    
+    <div class="example-box">
+    💡 <strong>Exercice pratique :</strong> Identifiez 2-3 erreurs que vous avez tendance à commettre et créez un plan d'action concret pour les corriger.
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 27 : Conseils
-with tabs[27]:
+# Slide 28 : Conseils
+with tabs[28]:
     st.markdown("""
     <div class="modern-card">
-    <h2>💡 Conseils Pratiques</h2>
+    <h2>💡 Conseils Pratiques pour Développer votre Leadership</h2>
     
-    <h3>🎯 5 conseils pour développer votre leadership</h3>
+    <p class="content-paragraph">Le leadership se développe par la pratique consciente et l'apprentissage continu. Voici des conseils concrets pour progresser.</p>
+    
+    <h3>🎯 10 Conseils Actionnables</h3>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>1. Pratiquez l'écoute active</h4>
+            <p><strong>Action :</strong> Lors des réunions, consacrez 70% du temps à écouter, 30% à parler</p>
+            <p><strong>Technique :</strong> Reformulez ce que vous entendez avant de répondre</p>
+            <p><strong>Bénéfice :</strong> Meilleure compréhension, décisions plus éclairées</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>2. Donnez du feedback régulier</h4>
+            <p><strong>Action :</strong> Offrez du feedback constructif à chaque collaborateur toutes les 2 semaines</p>
+            <p><strong>Technique :</strong> Méthode "Sandwich" (positif → amélioration → positif)</p>
+            <p><strong>Bénéfice :</strong> Amélioration continue, motivation accrue</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>3. Développez votre intelligence émotionnelle</h4>
+            <p><strong>Action :</strong> Tenez un journal des émotions pendant 30 jours</p>
+            <p><strong>Technique :</strong> Identifiez vos déclencheurs émotionnels et leurs impacts</p>
+            <p><strong>Bénéfice :</strong> Meilleure gestion des relations et des conflits</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>4. Communiquez clairement votre vision</h4>
+            <p><strong>Action :</strong> Créez un "pitch" de 2 minutes expliquant votre vision</p>
+            <p><strong>Technique :</strong> Utilisez des métaphores et des histoires inspirantes</p>
+            <p><strong>Bénéfice :</strong> Alignement et engagement de l'équipe</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>5. Déléguez efficacement</h4>
+            <p><strong>Action :</strong> Identifiez 3 tâches à déléguer cette semaine</p>
+            <p><strong>Technique :</strong> Méthode "Déléguer le quoi, pas le comment"</p>
+            <p><strong>Bénéfice :</strong> Développement des collaborateurs, gain de temps</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>6. Investissez dans votre développement</h4>
+            <p><strong>Action :</strong> Lisez un livre de leadership par mois</p>
+            <p><strong>Technique :</strong> Appliquez une idée concrète de chaque livre lu</p>
+            <p><strong>Bénéfice :</strong> Amélioration continue des compétences</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>7. Créez un environnement sûr</h4>
+            <p><strong>Action :</strong> Célébrez les échecs comme des opportunités d'apprentissage</p>
+            <p><strong>Technique :</strong> Organisez des "post-mortems" sans blame</p>
+            <p><strong>Bénéfice :</strong> Innovation et prise de risque calculée</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>8. Adaptez votre style</h4>
+            <p><strong>Action :</strong> Analysez chaque situation avant de choisir votre approche</p>
+            <p><strong>Technique :</strong> Utilisez la grille des styles de leadership comme guide</p>
+            <p><strong>Bénéfice :</strong> Efficacité contextuelle améliorée</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>9. Construisez votre réseau</h4>
+            <p><strong>Action :</strong> Prenez un café mensuel avec un leader que vous admirez</p>
+            <p><strong>Technique :</strong> Approche "Comment puis-je vous aider ?" plutôt que "Que pouvez-vous faire pour moi ?"</p>
+            <p><strong>Bénéfice :</strong> Apprentissages accélérés, opportunités</p>
+        </div>
+        
+        <div class="competence-card">
+            <h4>10. Prenez soin de vous</h4>
+            <p><strong>Action :</strong> Bloquez 30 minutes par jour pour votre bien-être</p>
+            <p><strong>Technique :</strong> Méditation, exercice, lecture personnelle</p>
+            <p><strong>Bénéfice :</strong> Énergie durable, exemplarité</p>
+        </div>
+    </div>
+    
+    <h3>📅 Plan d'Action sur 90 Jours</h3>
     <ul class="content-list">
-    <li><strong>1. Pratiquez l'écoute active</strong> - Écoutez pour comprendre, pas pour répondre</li>
-    <li><strong>2. Donnez du feedback régulier</strong> - Constructif, spécifique et opportun</li>
-    <li><strong>3. Développez votre intelligence émotionnelle</strong> - Comprenez vos émotions et celles des autres</li>
-    <li><strong>4. Communiquez clairement votre vision</strong> - Expliquez le "pourquoi" derrière chaque action</li>
-    <li><strong>5. Investissez dans votre développement</strong> - Le leadership s'apprend et se perfectionne</li>
+    <li><strong>Mois 1 :</strong> Focus sur l'écoute active et le feedback régulier</li>
+    <li><strong>Mois 2 :</strong> Développement de l'intelligence émotionnelle et de la délégation</li>
+    <li><strong>Mois 3 :</strong> Perfectionnement de la communication visionnaire et de l'adaptabilité</li>
     </ul>
     
     <h3>🎥 Vidéos sur les styles</h3>
     <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Les compétences d'un leader</a>
+    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle</a>
+    
+    <div class="example-box">
+    💡 <strong>Prochain pas :</strong> Choisissez 3 conseils à mettre en œuvre immédiatement et planifiez-les dans votre agenda.
+    </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 28 : Ressources
-with tabs[28]:
+# Slide 29 : Ressources
+with tabs[29]:
     st.markdown("""
     <div class="modern-card">
     <h2>📚 Ressources Complémentaires</h2>
     
+    <p class="content-paragraph">Approfondissez vos connaissances avec ces ressources soigneusement sélectionnées.</p>
+    
     <h3>🎥 Toutes les vidéos recommandées</h3>
-    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
-    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
-    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence leader/management</a>
-    <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
-    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Leadership situationnel</a>
-    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Compétences d'un leader</a>
-    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle</a>
-    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>📖 Fondamentaux</h4>
+            <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
+            <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
+            <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence leader/management</a>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🎨 Styles de Leadership</h4>
+            <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+            <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Leadership situationnel</a>
+            <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🔧 Compétences</h4>
+            <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Les compétences d'un leader</a>
+            <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle</a>
+            <a href="https://youtu.be/6T9TyL1g0Qc?si=J6QY0w8m9Z9qy5Q6" target="_blank" class="video-link">▶ Communication efficace</a>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🚀 Inspiration</h4>
+            <a href="https://youtu.be/7sxpKhDbr0Q?si=8t5Y5q5y5y5y5y5y" target="_blank" class="video-link">▶ Leaders inspirants</a>
+            <a href="https://youtu.be/3Kk6f7q4lq4?si=4lq4lq4lq4lq4lq4" target="_blank" class="video-link">▶ Histoires de leadership</a>
+            <a href="https://youtu.be/5Y5Y5Y5Y5Y5?si=5Y5Y5Y5Y5Y5Y5Y5Y" target="_blank" class="video-link">▶ Futur du leadership</a>
+        </div>
+    </div>
+    
+    <h3>📚 Livres Essentiels</h3>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>🏆 Classiques</h4>
+            <ul>
+                <li><strong>"Le Leader du Futur"</strong> - Peter Drucker</li>
+                <li><strong>"Les 7 Habitudes des Gens Efficaces"</strong> - Stephen Covey</li>
+                <li><strong>"Start with Why"</strong> - Simon Sinek</li>
+                <li><strong>"Leadership"</strong> - James McGregor Burns</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🧠 Intelligence Émotionnelle</h4>
+            <ul>
+                <li><strong>"L'intelligence Emotionnelle"</strong> - Daniel Goleman</li>
+                <li><strong>"Leadership Émotionnel"</strong> - Richard Boyatzis</li>
+                <li><strong>"Présence"</strong> - Amy Cuddy</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🔄 Leadership Moderne</h4>
+            <ul>
+                <li><strong>"Le Leadership Authentique"</strong> - Bill George</li>
+                <li><strong>"Lean In"</strong> - Sheryl Sandberg</li>
+                <li><strong>"Dare to Lead"</strong> - Brené Brown</li>
+                <li><strong>"Leaders Eat Last"</strong> - Simon Sinek</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>⚡ Pratique</h4>
+            <ul>
+                <li><strong>"The First 90 Days"</strong> - Michael Watkins</li>
+                <li><strong>"Radical Candor"</strong> - Kim Scott</li>
+                <li><strong>"Extreme Ownership"</strong> - Jocko Willink</li>
+            </ul>
+        </div>
+    </div>
+    
+    <h3>🛠️ Outils Pratiques</h3>
+    
+    <div class="competence-grid">
+        <div class="competence-card">
+            <h4>📊 Auto-évaluation</h4>
+            <ul>
+                <li>Test DISC (inclus dans cette formation)</li>
+                <li>MBTI (Myers-Briggs Type Indicator)</li>
+                <li>360° Feedback tools</li>
+                <li>Leadership Circle Profile</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>📝 Templates</h4>
+            <ul>
+                <li>Plan de développement personnel</li>
+                <li>Grille d'évaluation des compétences</li>
+                <li>Template de feedback constructif</li>
+                <li>Journal de réflexion leadership</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>👥 Communautés</h4>
+            <ul>
+                <li>LinkedIn Leadership Groups</li>
+                <li>Toastmasters International</li>
+                <li>Professional Associations</li>
+                <li>Mentoring programs</li>
+            </ul>
+        </div>
+        
+        <div class="competence-card">
+            <h4>🎓 Formations</h4>
+            <ul>
+                <li>Cours en ligne (Coursera, EdX)</li>
+                <li>Certifications leadership</li>
+                <li>Programmes exécutifs</li>
+                <li>Coaching individuel</li>
+            </ul>
+        </div>
+    </div>
     
     <div class="quote-card">
-    « L'investissement le plus important que vous puissiez faire est d'investir en vous-même. »
+    « L'investissement le plus important que vous puissiez faire est d'investir en vous-même. Votre croissance personnelle et professionnelle est le meilleur garant de votre succès en leadership. »
+    </div>
+    
+    <div class="example-box">
+    💡 <strong>Action recommandée :</strong> Créez votre plan de développement personnel en sélectionnant 3 ressources à explorer dans le mois à venir.
     </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1477,7 +1879,7 @@ with tabs[28]:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
-<p><strong>✨ Présentation Leadership Pro - Formation Complète ✨</strong></p>
-<p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
+<p><strong>✨ Leadership Pro - Formation Complète ✨</strong></p>
+<p>Tests interactifs • 10 styles de leadership • Jeux de rôle réalistes • Outils pratiques</p>
 </div>
 """, unsafe_allow_html=True)
