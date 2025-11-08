@@ -884,7 +884,9 @@ with tabs[18]:
         st.session_state.time_left = 0
     if 'timer_started' not in st.session_state:
         st.session_state.timer_started = False
-    
+    if 'last_update' not in st.session_state:
+        st.session_state.last_update = 0
+
     # Sélection du scénario
     st.markdown("### 🎯 Choisissez un Scénario")
     
@@ -942,16 +944,20 @@ with tabs[18]:
             if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
                 st.session_state.timer_active = True
                 st.session_state.timer_started = True
+                st.session_state.last_update = st.session_state.time_left
+                st.rerun()
         
         with col2:
             if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
                 st.session_state.timer_active = False
+                st.rerun()
         
         with col3:
             if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
+                st.rerun()
         
         with col4:
             if st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True):
@@ -960,22 +966,20 @@ with tabs[18]:
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
         
-        # Affichage du timer avec mise à jour automatique
-        if st.session_state.timer_active:
-            # Utiliser time pour une mise à jour plus précise
+        # Gestion du timer actif - utiliser time pour une mise à jour précise
+        if st.session_state.timer_active and st.session_state.time_left > 0:
+            # Utiliser time.sleep pour éviter de surcharger le CPU
             import time
-            if 'last_update' not in st.session_state:
-                st.session_state.last_update = time.time()
+            time.sleep(1)  # Pause d'une seconde
+            st.session_state.time_left -= 1
             
-            current_time = time.time()
-            if current_time - st.session_state.last_update >= 1:
-                st.session_state.time_left -= 1
-                st.session_state.last_update = current_time
-                
-                if st.session_state.time_left <= 0:
-                    st.session_state.timer_active = False
-                    st.session_state.time_left = 0
-                    st.session_state.timer_started = False
+            if st.session_state.time_left <= 0:
+                st.session_state.timer_active = False
+                st.session_state.time_left = 0
+                st.session_state.timer_started = False
+            
+            # Forcer la mise à jour de l'interface
+            st.rerun()
         
         # Formatage du temps
         minutes = st.session_state.time_left // 60
@@ -1001,8 +1005,14 @@ with tabs[18]:
         </div>
         """, unsafe_allow_html=True)
         
+        # Barre de progression
+        if st.session_state.initial_time > 0:
+            progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
+            st.progress(min(progress, 1.0))
+            st.caption(f"Progression : {int(progress * 100)}%")
+        
         # Alerte quand le temps est écoulé
-        if st.session_state.time_left == 0 and st.session_state.timer_started:
+        if st.session_state.time_left == 0 and st.session_state.initial_time > 0:
             st.balloons()
             st.success("🎉 Temps écoulé ! La session est terminée.")
             
@@ -1012,11 +1022,6 @@ with tabs[18]:
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
-        
-        # Barre de progression
-        progress = 1 - (st.session_state.time_left / st.session_state.initial_time)
-        st.progress(progress)
-        st.caption(f"Progression : {int(progress * 100)}%")
         
         # Consignes pour le débriefing
         st.markdown("### 📝 Debriefing")
@@ -1052,7 +1057,6 @@ with tabs[18]:
         </div>
     </div>
     """, unsafe_allow_html=True)
-
 # ==============================
 # SLIDES EXISTANTS CORRIGÉS
 # ==============================
@@ -1867,6 +1871,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
