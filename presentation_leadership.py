@@ -324,6 +324,30 @@ st.markdown("""
         border-radius: 8px;
         border-left: 4px solid #ef4444;
     }
+    .roleplay-card {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border: 2px solid #0ea5e9;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    .roleplay-scenario {
+        background: white;
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-left: 4px solid #8b5cf6;
+    }
+    .timer-box {
+        background: linear-gradient(135deg, #fffbeb, #fef3c7);
+        border: 2px solid #d97706;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 1rem 0;
+    }
     #MainMenu, footer, header { visibility: hidden !important; }
 </style>
 """, unsafe_allow_html=True)
@@ -337,8 +361,8 @@ slide_names = [
     "5. Théories XY", "6. Visionnaire", "7. Coaching", "8. Affiliatif", "9. Démocratique", 
     "10. Directif", "11. Pace-setter", "12. Transformationnel", "13. Transactionnel", 
     "14. Authentique", "15. Serviteur", "16. Situationnel", "17. Laissez-faire",
-    "18. Compétences", "19. IE", "20. Cas", "21. Quiz 1", "22. Quiz 2", "23. Synthèse", 
-    "24. Secteurs", "25. Erreurs", "26. Conseils", "27. Ressources"
+    "18. Jeu de Rôle", "19. Compétences", "20. IE", "21. Cas", "22. Quiz 1", "23. Quiz 2", 
+    "24. Synthèse", "25. Secteurs", "26. Erreurs", "27. Conseils", "28. Ressources"
 ]
 
 tabs = st.tabs(slide_names)
@@ -787,6 +811,193 @@ for i, style in enumerate(leadership_styles_data):
         st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
 # ==============================
+# JEU DE RÔLE - SLIDE 18
+# ==============================
+with tabs[18]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
+    <p class="content-paragraph">Pratiquez les différents styles de leadership à travers des scénarios réalistes en binômes</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Scénarios de jeu de rôle
+    roleplay_scenarios = [
+        {
+            "titre": "🚀 Lancement d'un Nouveau Projet",
+            "description": "Vous devez lancer un projet innovant avec une équipe réticente au changement",
+            "roles": [
+                "Leader : Convaincre l'équipe de l'importance du projet",
+                "Collaborateur : Exprimer des réserves et des préoccupations"
+            ],
+            "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
+            "duree": "10 minutes"
+        },
+        {
+            "titre": "🔥 Gestion de Crise",
+            "description": "Une urgence nécessite une action immédiate et coordonnée",
+            "roles": [
+                "Leader : Prendre des décisions rapides sous pression",
+                "Collaborateur : Suivre les instructions et signaler les problèmes"
+            ],
+            "styles_recommandes": ["Directif", "Pace-setter"],
+            "duree": "8 minutes"
+        },
+        {
+            "titre": "🤝 Résolution de Conflit",
+            "description": "Deux membres de l'équipe sont en conflit ouvert",
+            "roles": [
+                "Leader : Médier le conflit et rétablir l'harmonie",
+                "Collaborateur en conflit : Exprimer son point de vue"
+            ],
+            "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
+            "duree": "12 minutes"
+        },
+        {
+            "titre": "💡 Innovation et Créativité",
+            "description": "Brainstorming pour résoudre un problème complexe",
+            "roles": [
+                "Leader : Stimuler la créativité sans imposer de solutions",
+                "Collaborateur : Proposer des idées innovantes"
+            ],
+            "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
+            "duree": "15 minutes"
+        },
+        {
+            "titre": "📈 Performance d'Équipe",
+            "description": "L'équipe ne atteint pas ses objectifs de performance",
+            "roles": [
+                "Leader : Identifier les problèmes et motiver l'équipe",
+                "Collaborateur : Expliquer les difficultés rencontrées"
+            ],
+            "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
+            "duree": "10 minutes"
+        }
+    ]
+    
+    # Initialisation de l'état du jeu de rôle
+    if 'current_scenario' not in st.session_state:
+        st.session_state.current_scenario = None
+    if 'timer_active' not in st.session_state:
+        st.session_state.timer_active = False
+    if 'time_left' not in st.session_state:
+        st.session_state.time_left = 0
+    
+    # Sélection du scénario
+    st.markdown("### 🎯 Choisissez un Scénario")
+    
+    for i, scenario in enumerate(roleplay_scenarios):
+        if st.button(f"{scenario['titre']} - {scenario['duree']}", key=f"scenario_{i}", use_container_width=True):
+            st.session_state.current_scenario = scenario
+            st.session_state.timer_active = False
+            st.session_state.time_left = int(scenario['duree'].split()[0]) * 60
+            st.rerun()
+    
+    # Affichage du scénario sélectionné
+    if st.session_state.current_scenario:
+        scenario = st.session_state.current_scenario
+        
+        st.markdown(f"""
+        <div class="roleplay-card">
+            <h3>🎭 {scenario['titre']}</h3>
+            <p><strong>Description :</strong> {scenario['description']}</p>
+            <p><strong>Durée :</strong> {scenario['duree']}</p>
+            <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Rôles
+        st.markdown("### 👥 Rôles à Distribuer")
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div class="roleplay-scenario">
+                <h4>🎯 Rôle du Leader</h4>
+                <p>{}</p>
+            </div>
+            """.format(scenario['roles'][0]), unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div class="roleplay-scenario">
+                <h4>👤 Rôle du Collaborateur</h4>
+                <p>{}</p>
+            </div>
+            """.format(scenario['roles'][1]), unsafe_allow_html=True)
+        
+        # Timer
+        st.markdown("### ⏱️ Timer de la Session")
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("▶️ Démarrer le Timer", key="start_timer"):
+                st.session_state.timer_active = True
+                st.session_state.start_time = st.session_state.time_left
+        
+        with col2:
+            if st.button("⏸️ Pause", key="pause_timer"):
+                st.session_state.timer_active = False
+        
+        with col3:
+            if st.button("🔄 Réinitialiser", key="reset_timer"):
+                st.session_state.timer_active = False
+                st.session_state.time_left = int(scenario['duree'].split()[0]) * 60
+        
+        # Affichage du timer
+        if st.session_state.timer_active:
+            st.session_state.time_left -= 1
+            if st.session_state.time_left <= 0:
+                st.session_state.timer_active = False
+                st.session_state.time_left = 0
+                st.balloons()
+        
+        minutes = st.session_state.time_left // 60
+        seconds = st.session_state.time_left % 60
+        
+        st.markdown(f"""
+        <div class="timer-box">
+            ⏰ Temps restant : {minutes:02d}:{seconds:02d}
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Consignes pour le débriefing
+        st.markdown("### 📝 Debriefing")
+        st.markdown("""
+        <div class="conseil-box">
+            <h4>Questions pour le debriefing :</h4>
+            <ul>
+                <li>Quel style de leadership a été utilisé ?</li>
+                <li>Comment s'est senti le collaborateur ?</li>
+                <li>Qu'est-ce qui a bien fonctionné ?</li>
+                <li>Qu'est-ce qui pourrait être amélioré ?</li>
+                <li>Quel autre style aurait pu être efficace ?</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Instructions générales
+    st.markdown("---")
+    st.markdown("""
+    <div class="modern-card">
+        <h3>📋 Instructions pour le Jeu de Rôle</h3>
+        <ol class="content-list">
+            <li><strong>Formez des binômes</strong> - Un leader et un collaborateur</li>
+            <li><strong>Choisissez un scénario</strong> - Cliquez sur un des scénarios ci-dessus</li>
+            <li><strong>Distribuez les rôles</strong> - Chacun joue son rôle selon la description</li>
+            <li><strong>Utilisez le timer</strong> - Respectez le temps imparti</li>
+            <li><strong>Débriefer</strong> - À la fin, échangez vos retours d'expérience</li>
+            <li><strong>Inversez les rôles</strong> - Changez de rôle pour le scénario suivant</li>
+        </ol>
+        
+        <div class="example-box">
+            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
 # SLIDES EXISTANTS CORRIGÉS
 # ==============================
 
@@ -810,6 +1021,109 @@ with tabs[1]:
     
     <div class="quote-card">
     « Le leadership n'est pas un titre, c'est une responsabilité envers les autres. » — Simon Sinek
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 2 : Définitions
+with tabs[2]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>📘 Définitions clés avec exemples</h2>
+    
+    <p class="content-paragraph"><strong>Leadership</strong> : Capacité à influencer, inspirer et guider vers un objectif commun.</p>
+    <div class="example-box">
+    💡 <strong>Exemple :</strong> Joséphine, infirmière chef, inspire son équipe en partageant quotidiennement les témoignages de patients guéris.
+    </div>
+    
+    <p class="content-paragraph"><strong>Management</strong> : Processus de planification, organisation et contrôle des ressources.</p>
+    <div class="example-box">
+    💡 <strong>Exemple :</strong> Un chef de projet qui organise les tâches et les délais pour son équipe.
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 3 : Leadership vs Management
+with tabs[3]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>⚖️ Leadership vs Management</h2>
+    
+    <p class="content-paragraph">Beaucoup pensent que leadership et management s'opposent. En réalité, ils sont <strong>complémentaires</strong>.</p>
+    
+    <div class="content-paragraph">
+    <strong>Management :</strong> Gérer les processus, planifier, organiser, contrôler.
+    </div>
+    
+    <div class="content-paragraph">
+    <strong>Leadership :</strong> Inspirer les personnes, créer une vision, innover.
+    </div>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> À Google, les managers allient leadership (vision) et management (KPIs mensuels).
+    </div>
+    
+    <h3>🎥 Vidéo explicative</h3>
+    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence entre leader et management</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 4 : Leadership vs Commandement
+with tabs[4]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>⚔️ Leadership vs Commandement</h2>
+    
+    <p class="content-paragraph">Le leadership s'acquiert par l'influence, le commandement par la position hiérarchique.</p>
+    
+    <div class="content-paragraph">
+    <strong>Commandement :</strong> Autorité formelle, contrôle, structure hiérarchique.
+    </div>
+    
+    <div class="content-paragraph">
+    <strong>Leadership :</strong> Influence informelle, inspiration, relations.
+    </div>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres) alors qu'un caporal chef peut développer du leadership (respect gagné).
+    </div>
+    
+    <div class="quote-card">
+    « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 5 : Théories X et Y de McGregor
+with tabs[5]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🧠 Théories X et Y de Douglas McGregor</h2>
+    
+    <p class="content-paragraph">Douglas McGregor (1960) a identifié <strong>deux visions opposées de la nature humaine</strong> au travail.</p>
+    
+    <div class="theory-box">
+    <h3>📋 Théorie X - Vision traditionnelle</h3>
+    <p><strong>Postulats :</strong></p>
+    <ul class="content-list">
+    <li>Les employés n'aiment pas naturellement le travail</li>
+    <li>Ils doivent être contrôlés, dirigés et menacés de sanctions</li>
+    <li>Ils évitent les responsabilités et recherchent la sécurité</li>
+    </ul>
+    </div>
+    
+    <div class="theory-box">
+    <h3>📈 Théorie Y - Vision moderne</h3>
+    <p><strong>Postulats :</strong></p>
+    <ul class="content-list">
+    <li>Le travail est aussi naturel que le jeu ou le repos</li>
+    <li>Les personnes peuvent s'auto-contrôler et s'auto-motiver</li>
+    <li>Elles recherchent et acceptent les responsabilités</li>
+    </ul>
+    </div>
+    
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Une usine traditionnelle (Théorie X) vs une startup tech (Théorie Y).
     </div>
     </div>
     """, unsafe_allow_html=True)
@@ -916,8 +1230,8 @@ with tabs[17]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 18 : Compétences
-with tabs[18]:
+# Slide 19 : Compétences
+with tabs[19]:
     st.markdown("""
     <div class="modern-card">
     <h2>🔑 Compétences Clés du Leader Moderne</h2>
@@ -940,8 +1254,8 @@ with tabs[18]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 19 : Intelligence Émotionnelle
-with tabs[19]:
+# Slide 20 : Intelligence Émotionnelle
+with tabs[20]:
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
@@ -965,8 +1279,8 @@ with tabs[19]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 20 : Études de Cas
-with tabs[20]:
+# Slide 21 : Études de Cas
+with tabs[21]:
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
@@ -991,13 +1305,179 @@ with tabs[20]:
     </div>
     """, unsafe_allow_html=True)
 
-# ... (les autres slides continuent avec le même pattern)
+# Slide 22 : QUIZ 1 - Fondamentaux
+with tabs[22]:
+    st.markdown("""
+    <div class="quiz-section">
+    <h2>🧠 QUIZ 1 - Fondamentaux du Leadership</h2>
+    <p class="content-paragraph">Testez vos connaissances sur les concepts de base du leadership (10 questions)</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    quiz1_questions = [
+        {
+            "question": "Le leadership est une compétence exclusivement innée qui ne peut pas s'apprendre.",
+            "correct": False,
+            "explication": "❌ Faux - Des études montrent que 70% des compétences de leadership s'acquièrent par la pratique et la formation."
+        },
+        {
+            "question": "Un leader efficace passe plus de temps à écouter qu'à parler.",
+            "correct": True,
+            "explication": "✅ Vrai - L'écoute active est cruciale pour comprendre les besoins de son équipe."
+        }
+    ]
+    
+    for i, q in enumerate(quiz1_questions):
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        rep = st.radio(f"Choisissez votre réponse :", ["Vrai", "Faux"], key=f"quiz1_{i}")
+        
+        if st.session_state.get(f"show_answers_quiz1", False):
+            if (rep == "Vrai") == q["correct"]:
+                st.success(f"✅ Correct! {q['explication']}")
+            else:
+                st.error(f"❌ Incorrect! {q['explication']}")
+    
+    if st.button("📊 Corriger le Quiz 1", key="corriger_quiz1"):
+        st.session_state.show_answers_quiz1 = True
+
+# Slide 23 : QUIZ 2 - Styles
+with tabs[23]:
+    st.markdown("""
+    <div class="quiz-section">
+    <h2>🎯 QUIZ 2 - Styles de Leadership</h2>
+    <p class="content-paragraph">Testez votre capacité à identifier les styles de leadership (10 questions)</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    quiz2_questions = [
+        {
+            "question": "Quel style de leadership convient le mieux à une équipe d'experts hautement motivés ?",
+            "options": ["Directif", "Laissez-faire", "Visionnaire", "Affiliatif"],
+            "correct": "Laissez-faire",
+            "explication": "✅ Le style laissez-faire fonctionne bien avec des experts autonomes."
+        }
+    ]
+    
+    for i, q in enumerate(quiz2_questions):
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        rep = st.radio(f"Choisissez la bonne réponse :", q["options"], key=f"quiz2_{i}")
+        
+        if st.session_state.get(f"show_answers_quiz2", False):
+            if rep == q["correct"]:
+                st.success(f"✅ Correct! {q['explication']}")
+            else:
+                st.error(f"❌ Incorrect! La bonne réponse était : {q['correct']}. {q['explication']}")
+    
+    if st.button("📊 Corriger le Quiz 2", key="corriger_quiz2"):
+        st.session_state.show_answers_quiz2 = True
+
+# Slide 24 : Synthèse
+with tabs[24]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🎓 Synthèse du Parcours Leadership</h2>
+    
+    <h3>🔑 Les 5 points clés à retenir</h3>
+    <ul class="content-list">
+    <li><strong>1. Adaptabilité :</strong> Un bon leader adapte son style à la situation</li>
+    <li><strong>2. Authenticité :</strong> La cohérence entre paroles et actions</li>
+    <li><strong>3. Vision :</strong> Savoir où aller et emmener les autres</li>
+    <li><strong>4. Humilité :</strong> Reconnaître ses erreurs et apprendre</li>
+    <li><strong>5. Impact :</strong> Mesurer son leadership par l'impact positif</li>
+    </ul>
+    
+    <div class="quote-card">
+    « Le véritable leadership ne consiste pas à avoir une position, mais à avoir une influence positive. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 25 : Secteurs d'Application
+with tabs[25]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🏥 Leadership dans Différents Secteurs</h2>
+    
+    <h3>💻 Technologie</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Laissez-faire</p>
+    
+    <h3>🏭 Industrie</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Directif + Démocratique</p>
+    
+    <h3>🏥 Santé</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Affiliatif + Coaching</p>
+    
+    <h3>🎓 Éducation</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Coaching</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 26 : Erreurs Courantes
+with tabs[26]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🚫 Erreurs Courantes en Leadership</h2>
+    
+    <h3>❌ Les 7 pièges à éviter</h3>
+    <ul class="content-list">
+    <li><strong>1. Micro-management :</strong> Tuer l'autonomie et la créativité</li>
+    <li><strong>2. Incohérence :</strong> Dire une chose et faire le contraire</li>
+    <li><strong>3. Manque de reconnaissance :</strong> Oublier de valoriser les efforts</li>
+    <li><strong>4. Communication insuffisante :</strong> Ne pas partager l'information</li>
+    <li><strong>5. Éviter les conflits :</strong> Laisser pourrir les situations</li>
+    <li><strong>6. Style unique :</strong> Même style dans toutes les situations</li>
+    <li><strong>7. Négliger son développement :</strong> Arrêter d'apprendre</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 27 : Conseils
+with tabs[27]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>💡 Conseils Pratiques</h2>
+    
+    <h3>🎯 5 conseils pour développer votre leadership</h3>
+    <ul class="content-list">
+    <li><strong>1. Pratiquez l'écoute active</strong> - Écoutez pour comprendre, pas pour répondre</li>
+    <li><strong>2. Donnez du feedback régulier</strong> - Constructif, spécifique et opportun</li>
+    <li><strong>3. Développez votre intelligence émotionnelle</strong> - Comprenez vos émotions et celles des autres</li>
+    <li><strong>4. Communiquez clairement votre vision</strong> - Expliquez le "pourquoi" derrière chaque action</li>
+    <li><strong>5. Investissez dans votre développement</strong> - Le leadership s'apprend et se perfectionne</li>
+    </ul>
+    
+    <h3>🎥 Vidéos sur les styles</h3>
+    <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 28 : Ressources
+with tabs[28]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>📚 Ressources Complémentaires</h2>
+    
+    <h3>🎥 Toutes les vidéos recommandées</h3>
+    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
+    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
+    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence leader/management</a>
+    <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Leadership situationnel</a>
+    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Compétences d'un leader</a>
+    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle</a>
+    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
+    
+    <div class="quote-card">
+    « L'investissement le plus important que vous puissiez faire est d'investir en vous-même. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Message final
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
 <p><strong>✨ Présentation Leadership Pro - Formation Complète ✨</strong></p>
-<p>Test DISC • 10 styles de leadership • Théories fondamentales • Quiz interactifs • Ressources vidéo</p>
+<p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
