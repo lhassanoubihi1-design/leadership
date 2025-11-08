@@ -823,7 +823,7 @@ with tabs[18]:
     </div>
     """, unsafe_allow_html=True)
     
-    # Scénarios de jeu de rôle
+    # Scénarios de jeu de rôle complets
     roleplay_scenarios = [
         {
             "titre": "🚀 Lancement d'un Nouveau Projet",
@@ -833,7 +833,7 @@ with tabs[18]:
                 "Collaborateur : Exprimer des réserves et des préoccupations"
             ],
             "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
-            "duree": "1 minutes"
+            "duree": "10 minutes"
         },
         {
             "titre": "🔥 Gestion de Crise",
@@ -843,7 +843,7 @@ with tabs[18]:
                 "Collaborateur : Suivre les instructions et signaler les problèmes"
             ],
             "styles_recommandes": ["Directif", "Pace-setter"],
-            "duree": "2 minutes"
+            "duree": "8 minutes"
         },
         {
             "titre": "🤝 Résolution de Conflit",
@@ -853,7 +853,27 @@ with tabs[18]:
                 "Collaborateur en conflit : Exprimer son point de vue"
             ],
             "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
-            "duree": "3 minutes"
+            "duree": "12 minutes"
+        },
+        {
+            "titre": "💡 Innovation et Créativité",
+            "description": "Brainstorming pour résoudre un problème complexe",
+            "roles": [
+                "Leader : Stimuler la créativité sans imposer de solutions",
+                "Collaborateur : Proposer des idées innovantes"
+            ],
+            "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
+            "duree": "15 minutes"
+        },
+        {
+            "titre": "📈 Performance d'Équipe",
+            "description": "L'équipe n'atteint pas ses objectifs de performance",
+            "roles": [
+                "Leader : Identifier les problèmes et motiver l'équipe",
+                "Collaborateur : Expliquer les difficultés rencontrées"
+            ],
+            "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
+            "duree": "10 minutes"
         }
     ]
     
@@ -1854,6 +1874,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
