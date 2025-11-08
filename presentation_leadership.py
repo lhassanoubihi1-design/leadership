@@ -810,6 +810,8 @@ for i, style in enumerate(leadership_styles_data):
         st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
         st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
+
+    
 # ==============================
 # JEU DE RÔLE - SLIDE 18
 # ==============================
@@ -941,57 +943,73 @@ with tabs[18]:
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
+            start_clicked = st.button("▶️ Démarrer", key="start_timer", use_container_width=True)
+            if start_clicked:
                 st.session_state.timer_active = True
                 st.session_state.timer_started = True
                 st.session_state.last_update = st.session_state.time_left
                 st.rerun()
         
         with col2:
-            if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
+            pause_clicked = st.button("⏸️ Pause", key="pause_timer", use_container_width=True)
+            if pause_clicked:
                 st.session_state.timer_active = False
                 st.rerun()
         
         with col3:
-            if st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True):
+            stop_clicked = st.button("⏹️ Arrêter", key="stop_timer", use_container_width=True)
+            if stop_clicked:
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
         
         with col4:
-            if st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True):
+            reset_clicked = st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True)
+            if reset_clicked:
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
         
-        # Gestion du timer actif - utiliser time pour une mise à jour précise
+        # Gestion du timer actif - utiliser l'heure actuelle pour calculer le temps écoulé
         if st.session_state.timer_active and st.session_state.time_left > 0:
-            # Utiliser time.sleep pour éviter de surcharger le CPU
             import time
-            time.sleep(1)  # Pause d'une seconde
-            st.session_state.time_left -= 1
+            current_time = time.time()
             
-            if st.session_state.time_left <= 0:
-                st.session_state.timer_active = False
-                st.session_state.time_left = 0
-                st.session_state.timer_started = False
+            # Vérifier si une seconde s'est écoulée depuis la dernière mise à jour
+            if 'timer_start_time' not in st.session_state:
+                st.session_state.timer_start_time = current_time
+                st.session_state.last_displayed_time = st.session_state.time_left
             
-            # Forcer la mise à jour de l'interface
-            st.rerun()
+            time_elapsed = current_time - st.session_state.timer_start_time
+            new_time_left = max(0, st.session_state.initial_time - int(time_elapsed))
+            
+            # Si le temps a changé, mettre à jour et rerun
+            if new_time_left != st.session_state.time_left:
+                st.session_state.time_left = new_time_left
+                
+                if st.session_state.time_left <= 0:
+                    st.session_state.timer_active = False
+                    st.session_state.time_left = 0
+                    st.session_state.timer_started = False
+                
+                st.rerun()
         
         # Formatage du temps
         minutes = st.session_state.time_left // 60
         seconds = st.session_state.time_left % 60
         
         # Couleur du timer en fonction du temps restant
-        if st.session_state.time_left > st.session_state.initial_time * 0.5:
-            timer_color = "#10B981"  # Vert
-        elif st.session_state.time_left > st.session_state.initial_time * 0.25:
-            timer_color = "#F59E0B"  # Orange
+        if st.session_state.initial_time > 0:
+            if st.session_state.time_left > st.session_state.initial_time * 0.5:
+                timer_color = "#10B981"  # Vert
+            elif st.session_state.time_left > st.session_state.initial_time * 0.25:
+                timer_color = "#F59E0B"  # Orange
+            else:
+                timer_color = "#EF4444"  # Rouge
         else:
-            timer_color = "#EF4444"  # Rouge
+            timer_color = "#6B7280"  # Gris par défaut
         
         # Affichage du timer
         st.markdown(f"""
@@ -1012,7 +1030,11 @@ with tabs[18]:
             st.caption(f"Progression : {int(progress * 100)}%")
         
         # Alerte quand le temps est écoulé
-        if st.session_state.time_left == 0 and st.session_state.initial_time > 0:
+        if (st.session_state.time_left == 0 and 
+            st.session_state.initial_time > 0 and 
+            'timer_finished_shown' not in st.session_state):
+            
+            st.session_state.timer_finished_shown = True
             st.balloons()
             st.success("🎉 Temps écoulé ! La session est terminée.")
             
@@ -1021,7 +1043,12 @@ with tabs[18]:
                 st.session_state.timer_active = False
                 st.session_state.timer_started = False
                 st.session_state.time_left = st.session_state.initial_time
+                st.session_state.timer_finished_shown = False
                 st.rerun()
+        
+        # Réinitialiser le flag quand on change de scénario
+        if 'timer_finished_shown' in st.session_state and st.session_state.time_left > 0:
+            st.session_state.timer_finished_shown = False
         
         # Consignes pour le débriefing
         st.markdown("### 📝 Debriefing")
@@ -1871,6 +1898,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
