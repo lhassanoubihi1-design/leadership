@@ -210,11 +210,36 @@ st.markdown("""
         margin: 1rem 0;
         border-left: 4px solid #0ea5e9;
     }
-    .color-red { background: linear-gradient(135deg, #fee2e2, #fecaca); border-left: 4px solid #dc2626; }
-    .color-yellow { background: linear-gradient(135deg, #fef3c7, #fde68a); border-left: 4px solid #d97706; }
-    .color-green { background: linear-gradient(135deg, #dcfce7, #bbf7d0); border-left: 4px solid #16a34a; }
-    .color-blue { background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-left: 4px solid #2563eb; }
-    .color-option {
+    .color-red { 
+        background: linear-gradient(135deg, #fee2e2, #fecaca); 
+        border-left: 4px solid #dc2626; 
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .color-yellow { 
+        background: linear-gradient(135deg, #fef3c7, #fde68a); 
+        border-left: 4px solid #d97706; 
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .color-green { 
+        background: linear-gradient(135deg, #dcfce7, #bbf7d0); 
+        border-left: 4px solid #16a34a; 
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .color-blue { 
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe); 
+        border-left: 4px solid #2563eb; 
         padding: 1rem;
         margin: 0.5rem 0;
         border-radius: 8px;
@@ -225,10 +250,34 @@ st.markdown("""
         transform: translateX(5px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
-    .result-red { background: linear-gradient(135deg, #fef2f2, #fee2e2); border: 2px solid #dc2626; }
-    .result-yellow { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #d97706; }
-    .result-green { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 2px solid #16a34a; }
-    .result-blue { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #2563eb; }
+    .result-red { 
+        background: linear-gradient(135deg, #fef2f2, #fee2e2); 
+        border: 2px solid #dc2626; 
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1rem 0;
+    }
+    .result-yellow { 
+        background: linear-gradient(135deg, #fffbeb, #fef3c7); 
+        border: 2px solid #d97706; 
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1rem 0;
+    }
+    .result-green { 
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7); 
+        border: 2px solid #16a34a; 
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1rem 0;
+    }
+    .result-blue { 
+        background: linear-gradient(135deg, #eff6ff, #dbeafe); 
+        border: 2px solid #2563eb; 
+        border-radius: 16px;
+        padding: 2rem;
+        margin: 1rem 0;
+    }
     .leader-card {
         background: white;
         border-radius: 12px;
@@ -241,6 +290,21 @@ st.markdown("""
     .leader-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .disc-score-box {
+        text-align: center;
+        padding: 0.8rem;
+        border-radius: 8px;
+        margin: 0.2rem;
+        font-weight: 600;
+    }
+    .disc-score-red { background: #fee2e2; border: 2px solid #dc2626; color: #dc2626; }
+    .disc-score-yellow { background: #fef3c7; border: 2px solid #d97706; color: #d97706; }
+    .disc-score-green { background: #dcfce7; border: 2px solid #16a34a; color: #16a34a; }
+    .disc-score-blue { background: #dbeafe; border: 2px solid #2563eb; color: #2563eb; }
+    .disc-score-dominant { 
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3); 
+        transform: scale(1.05);
     }
     #MainMenu, footer, header { visibility: hidden !important; }
 </style>
@@ -369,26 +433,36 @@ with tabs[0]:
     # Initialisation des scores
     if 'disc_scores' not in st.session_state:
         st.session_state.disc_scores = {'red': 0, 'yellow': 0, 'green': 0, 'blue': 0}
-        st.session_state.disc_responses = [None] * 10
+        st.session_state.disc_responses = [None] * len(disc_questions)
+        st.session_state.show_disc_results = False
+    
+    # Réinitialiser le test
+    if st.button("🔄 Recommencer le test", key="reset_test"):
+        st.session_state.disc_scores = {'red': 0, 'yellow': 0, 'green': 0, 'blue': 0}
+        st.session_state.disc_responses = [None] * len(disc_questions)
+        st.session_state.show_disc_results = False
+        st.rerun()
     
     # Affichage des questions
     for i, q in enumerate(disc_questions):
-        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/{len(disc_questions)} :</strong> {q["question"]}</div>', unsafe_allow_html=True)
         
         # Création des options colorées
         col1, col2, col3, col4 = st.columns(4)
         columns = [col1, col2, col3, col4]
         
-        selected_option = None
-        
         for idx, option in enumerate(q["options"]):
             with columns[idx]:
+                color_class = f"color-{option['color']}"
                 if st.button(option["text"], key=f"q{i}_opt{idx}", use_container_width=True):
+                    # Réinitialiser le score pour cette question
+                    previous_color = st.session_state.disc_responses[i]
+                    if previous_color:
+                        st.session_state.disc_scores[previous_color] -= 1
+                    
+                    # Ajouter le nouveau score
                     st.session_state.disc_responses[i] = option['color']
-                    # Réinitialiser les scores pour cette question
-                    for color in st.session_state.disc_scores:
-                        if color == option['color']:
-                            st.session_state.disc_scores[color] += 1
+                    st.session_state.disc_scores[option['color']] += 1
                     st.rerun()
         
         # Afficher la réponse sélectionnée
@@ -405,21 +479,25 @@ with tabs[0]:
         
         st.markdown("---")
     
-    # Calcul des résultats
-    if st.button("🎯 Découvrir mon style de leadership", key="calculate_disc"):
-        if None in st.session_state.disc_responses:
+    # Vérifier si toutes les questions sont répondues
+    all_answered = all(response is not None for response in st.session_state.disc_responses)
+    
+    # Bouton pour voir les résultats
+    if st.button("🎯 Découvrir mon style de leadership", key="calculate_disc", disabled=not all_answered):
+        if not all_answered:
             st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
         else:
             st.session_state.show_disc_results = True
+            st.rerun()
     
     # Affichage des résultats
-    if st.session_state.get('show_disc_results', False):
+    if st.session_state.get('show_disc_results', False) and all_answered:
         scores = st.session_state.disc_scores
         
         # Détermination du style dominant
         dominant_color = max(scores, key=scores.get)
         
-        # Mapping des couleurs DISC vers les 10 styles de leadership
+        # Mapping des couleurs DISC vers les styles de leadership
         leadership_mapping = {
             'red': {
                 'primary_styles': ['Directif', 'Pace-setter'],
@@ -458,78 +536,75 @@ with tabs[0]:
         profile = leadership_mapping[dominant_color]
         result_class = f"result-{dominant_color}"
         
-        st.markdown(f"""
-        <div class="modern-card {result_class}">
-            <h2>🎯 Votre Profil de Leadership</h2>
-            <h3 style="color: {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'}">
-                Profil {dominant_color.capitalize()} - Leader {', '.join(profile['primary_styles'])}
-            </h3>
-            
-            <p class="content-paragraph"><strong>Description :</strong> {profile['description']}</p>
-            
-            <div style="background: white; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                <h4>📊 Votre profil DISC :</h4>
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; margin: 1rem 0;">
-                    <div style="text-align: center; padding: 0.5rem; background: #fee2e2; border-radius: 6px; {'border: 2px solid #dc2626' if dominant_color == 'red' else ''}">
-                        <strong>🔴 Rouge</strong><br>{scores['red']}/10
-                    </div>
-                    <div style="text-align: center; padding: 0.5rem; background: #fef3c7; border-radius: 6px; {'border: 2px solid #d97706' if dominant_color == 'yellow' else ''}">
-                        <strong>🟡 Jaune</strong><br>{scores['yellow']}/10
-                    </div>
-                    <div style="text-align: center; padding: 0.5rem; background: #dcfce7; border-radius: 6px; {'border: 2px solid #16a34a' if dominant_color == 'green' else ''}">
-                        <strong>🟢 Vert</strong><br>{scores['green']}/10
-                    </div>
-                    <div style="text-align: center; padding: 0.5rem; background: #dbeafe; border-radius: 6px; {'border: 2px solid #2563eb' if dominant_color == 'blue' else ''}">
-                        <strong>🔵 Bleu</strong><br>{scores['blue']}/10
-                    </div>
-                </div>
-            </div>
-            
-            <h4>🎨 Vos Styles de Leadership Dominants</h4>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
-        """, unsafe_allow_html=True)
+        # Affichage des résultats avec Streamlit native pour éviter les problèmes d'HTML
+        st.markdown(f'<div class="{result_class}">', unsafe_allow_html=True)
         
-        # Afficher les styles primaires
-        for style in profile['primary_styles']:
-            st.markdown(f"""
+        st.markdown(f"<h2>🎯 Votre Profil de Leadership</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='color: {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'};'>Profil {dominant_color.capitalize()} - Leader {', '.join(profile['primary_styles'])}</h3>", unsafe_allow_html=True)
+        
+        st.markdown(f"<p><strong>Description :</strong> {profile['description']}</p>", unsafe_allow_html=True)
+        
+        # Section scores DISC
+        st.markdown("<h4>📊 Votre profil DISC :</h4>", unsafe_allow_html=True)
+        
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            dominant_class = "disc-score-dominant" if dominant_color == 'red' else ""
+            st.markdown(f'<div class="disc-score-red disc-score-box {dominant_class}"><strong>🔴 Rouge</strong><br>{scores["red"]}/10</div>', unsafe_allow_html=True)
+        with col2:
+            dominant_class = "disc-score-dominant" if dominant_color == 'yellow' else ""
+            st.markdown(f'<div class="disc-score-yellow disc-score-box {dominant_class}"><strong>🟡 Jaune</strong><br>{scores["yellow"]}/10</div>', unsafe_allow_html=True)
+        with col3:
+            dominant_class = "disc-score-dominant" if dominant_color == 'green' else ""
+            st.markdown(f'<div class="disc-score-green disc-score-box {dominant_class}"><strong>🟢 Vert</strong><br>{scores["green"]}/10</div>', unsafe_allow_html=True)
+        with col4:
+            dominant_class = "disc-score-dominant" if dominant_color == 'blue' else ""
+            st.markdown(f'<div class="disc-score-blue disc-score-box {dominant_class}"><strong>🔵 Bleu</strong><br>{scores["blue"]}/10</div>', unsafe_allow_html=True)
+        
+        # Styles de leadership dominants
+        st.markdown("<h4>🎨 Vos Styles de Leadership Dominants</h4>", unsafe_allow_html=True)
+        
+        cols = st.columns(2)
+        for idx, style in enumerate(profile['primary_styles']):
+            with cols[idx % 2]:
+                st.markdown(f"""
                 <div style="background: {'#fef2f2' if dominant_color == 'red' else '#fffbeb' if dominant_color == 'yellow' else '#f0fdf4' if dominant_color == 'green' else '#eff6ff'}; 
-                            padding: 1rem; border-radius: 8px; border-left: 4px solid {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'};">
+                            padding: 1rem; border-radius: 8px; border-left: 4px solid {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'}; margin: 0.5rem 0;">
                     <strong>★ {style}</strong>
                 </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
         
-        st.markdown("""
-            </div>
-            
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
-                <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px;">
-                    <h4>✅ Vos Forces</h4>
-                    <ul>
-        """, unsafe_allow_html=True)
+        # Forces et défis
+        col1, col2 = st.columns(2)
         
-        for strength in profile['strengths']:
-            st.markdown(f"<li>{strength}</li>", unsafe_allow_html=True)
+        with col1:
+            st.markdown("<h4>✅ Vos Forces</h4>", unsafe_allow_html=True)
+            for strength in profile['strengths']:
+                st.markdown(f"<div style='background: #f0fdf4; padding: 0.5rem; margin: 0.2rem 0; border-radius: 6px;'>✓ {strength}</div>", unsafe_allow_html=True)
         
-        st.markdown("""
-                    </ul>
-                </div>
-                <div style="background: #fef2f2; padding: 1rem; border-radius: 8px;">
-                    <h4>⚠️ Défis à Relever</h4>
-                    <ul>
-        """, unsafe_allow_html=True)
+        with col2:
+            st.markdown("<h4>⚠️ Défis à Relever</h4>", unsafe_allow_html=True)
+            for challenge in profile['challenges']:
+                st.markdown(f"<div style='background: #fef2f2; padding: 0.5rem; margin: 0.2rem 0; border-radius: 6px;'>⚠ {challenge}</div>", unsafe_allow_html=True)
         
-        for challenge in profile['challenges']:
-            st.markdown(f"<li>{challenge}</li>", unsafe_allow_html=True)
-        
+        # Conseil de développement
         st.markdown(f"""
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="conseil-box">
-                <h4>💡 Conseil de Développement</h4>
-                <p>{profile['advice']}</p>
-            </div>
+        <div class="conseil-box">
+            <h4>💡 Conseil de Développement</h4>
+            <p>{profile['advice']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown('</div>', unsafe_allow_html=True)
+        
+        # Vidéo recommandée
+        st.markdown("""
+        <div class="modern-card">
+            <h3>🎥 Vidéo Recommandée</h3>
+            <p>Regardez cette vidéo pour mieux comprendre votre style de leadership :</p>
+            <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">
+                ▶ Les 10 types de leadership - Comprendre votre profil
+            </a>
         </div>
         """, unsafe_allow_html=True)
 
@@ -752,7 +827,7 @@ with tabs[17]:
     </div>
     """, unsafe_allow_html=True)
 
-# ... (les autres slides restent similaires mais avec des indices ajustés)
+# ... (les autres slides restent similaires)
 
 # Message final
 st.markdown("---")
