@@ -356,25 +356,25 @@ st.markdown("""
 st.title("✨ Leadership & Styles de Leadership")
 st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec exemples concrets et vidéos</div>", unsafe_allow_html=True)
 
-# Structure avec les 10 styles de leadership + activités
+# Structure mise à jour avec 8 activités intégrées + 2 activités de clôture
 slide_names = [
-    "0. Activité 1: Le Leader en 3 Mots", "1. Test DISC Leadership", "2. Activité 2: Mon Animal Leader", "3. Intro", "4. Activité 3: Compliment Flash", "5. Définitions", "6. Activité 4: Le Bâton de Parole", "7. L vs M", "8. Activité 5: Tour de Table des Qualités", 
-    "9. L vs C", "10. Activité 6: Le Mot le Plus Important", "11. Théories XY", "12. Activité 7: Reformulation en Duo", "13. Visionnaire", "14. Activité 8: Écoute Active Rapide", "15. Coaching", "16. Activité 9: Question Puissante", "17. Affiliatif", "18. Activité 10: Oui-Mais / Oui-And", 
-    "19. Démocratique", "20. Activité 11: Leader Tournant", "21. Directif", "22. Activité 12: Gestion d'Objection Simple", "23. Pace-setter", "24. Activité 13: Journal Minute", "25. Transformationnel", "26. Activité 14: Carte Mentale Express", 
-    "27. Transactionnel", "28. Activité 15: Post-it de Réflexion", "29. Authentique", "30. Activité 16: Engagement en 1 Phrase", "31. Serviteur", "32. Activité 17: Action Immédiate", "33. Situationnel", "34. Activité 18: Gratitude Leader", 
-    "35. Laissez-faire",  "37. Jeu de Rôle", "39. Compétences", "40. IE", "41. Cas", "42. Quiz 1", "43. Quiz 2", 
-    "44. Synthèse", "45. Secteurs", "46. Erreurs", "47. Conseils", "48. Ressources","49. Activité 19: Mot de la Fin","50. Activité 20: Applaudissement Tournant"
+    "0. Activité 1: Le Leader en 3 Mots", "1. Test DISC Leadership", "2. Activité 2: Reformulation en Duo", "3. Intro", "4. Activité 3: Post-it de Réflexion", "5. Définitions", "6. Activité 4: Question Puissante", "7. L vs M", "8. Activité 5: Écoute Active Rapide", 
+    "9. L vs C", "10. Activité 6: Tour de Table des Qualités", "11. Théories XY", "12. Activité 7: Mini-Jeu de Rôle : Vision", "13. Visionnaire", "14. Activité 8: Carte Mentale Express", "15. Coaching", "16. Affiliatif", "17. Démocratique", "18. Directif", 
+    "19. Pace-setter", "20. Transformationnel", "21. Transactionnel", "22. Authentique", "23. Serviteur", "24. Situationnel", 
+    "25. Laissez-faire", "26. Jeu de Rôle", "27. Compétences", "28. IE", "29. Cas", "30. Quiz 1", "31. Quiz 2", 
+    "32. Synthèse", "33. Secteurs", "34. Erreurs", "35. Conseils", "36. Ressources",
+    "37. Activité 19: Mot de la Fin", "38. Activité 20: Applaudissement Tournant"
 ]
 
 tabs = st.tabs(slide_names)
 
 # ==============================
-# ACTIVITÉ 1 : LE LEADER EN 3 MOTS (Slide 0)
+# ACTIVITÉ EXPRESS 1 : LE LEADER EN 3 MOTS (Slide 0)
 # ==============================
 with tabs[0]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 1/20 : Le Leader en 3 Mots</h2>
+    <h2>🎯 Activité 1/8 : Le Leader en 3 Mots</h2>
     <p class="content-paragraph">Un icebreaker pour activer les représentations.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -406,7 +406,7 @@ with tabs[1]:
     <p class="content-paragraph">Découvrez votre style de leadership dominant avec ce test basé sur les 4 couleurs du modèle DISC</p>
     </div>
     """, unsafe_allow_html=True)
-    # Questions avec options colorées
+    # (Le code du test DISC reste ici, identique à la version précédente)
     disc_questions = [
         {
             "question": "Face à un nouveau projet, je préfère :",
@@ -652,150 +652,13 @@ with tabs[1]:
         """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 2 : MON ANIMAL LEADER (Slide 2)
+# ACTIVITÉ EXPRESS 2 : REFORMULATION EN DUO (Slide 2)
 # ==============================
 with tabs[2]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 2/20 : Mon Animal Leader</h2>
-    <p class="content-paragraph">Une activité créative pour explorer son style de leadership.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🐾 Consigne</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p>« Si tu étais un animal leader, lequel serais-tu et pourquoi ? »</p>
-        <p><strong>Exemples :</strong></p>
-        <ul class="content-list">
-            <li><strong>Lion :</strong> Décideur, protecteur</li>
-            <li><strong>Abeille :</strong> Organisé, travail d'équipe</li>
-            <li><strong>Dauphin :</strong> Communicatif, intelligent</li>
-        </ul>
-        <p><strong>Partage :</strong> Tour de table rapide.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Stimuler la réflexion métaphorique et rendre le leadership plus accessible et personnel.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 3 : COMPLIMENT FLASH (Slide 4)
-# ==============================
-with tabs[4]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 3/20 : Compliment Flash</h2>
-    <p class="content-paragraph">Créer un climat de bienveillance et de reconnaissance.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🤝 Déroulement</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p>Former des duos. Chacun donne un <strong>compliment spécifique</strong> à son partenaire.</p>
-        <p>Changer de partenaire 2 fois (3 duos au total).</p>
-        <div class="example-box">
-            💡 <strong>Exemple :</strong> "J'apprécie comment tu as clarifié le point sur la vision dans la discussion."
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Renforcer la confiance, créer un climat positif dès le début.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 4 : LE BÂTON DE PAROLE (Slide 6)
-# ==============================
-with tabs[6]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 4/20 : Le Bâton de Parole</h2>
-    <p class="content-paragraph">Pratiquer l'écoute et la prise de parole structurée.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🪵 Consigne</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p>Utiliser un bâton, un stylo ou tout objet symbolique.</p>
-        <p><strong>Règle :</strong> Seule la personne qui tient le bâton peut parler.</p>
-        <p><strong>Sujet :</strong> "Qu'est-ce qu'un bon leader selon vous ?"</p>
-        <p><strong>Objectif :</strong> Chacun parle une fois, sans interruption.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Encourager l'écoute active et donner la parole à tous, même aux plus réservés.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 5 : TOUR DE TABLE DES QUALITÉS (Slide 8)
-# ==============================
-with tabs[8]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 5/20 : Tour de Table des Qualités</h2>
-    <p class="content-paragraph">Explorer collectivement les qualités essentielles du leader.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Consigne</h3>
-        <p><strong>Durée :</strong> 15 minutes</p>
-        <p>Chacun nomme <strong>une qualité essentielle</strong> d'un bon leader.</p>
-        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
-        <p><strong>Objectif :</strong> Créer une liste riche et variée.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Activer la créativité, favoriser l'écoute active, et élargir la définition du leadership.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 6 : LE MOT LE PLUS IMPORTANT (Slide 10)
-# ==============================
-with tabs[10]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 6/20 : Le Mot le Plus Important</h2>
-    <p class="content-paragraph">Choisir un mot central et l'expliquer brièvement.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎯 Consigne</h3>
-        <p><strong>Durée :</strong> 12 minutes</p>
-        <p><strong>Question :</strong> "Quel est le mot le plus important en leadership ?"</p>
-        <p><strong>Chacun :</strong> Choisit un mot, explique en 30 secondes son choix.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Approfondir la réflexion sur les concepts clés du leadership.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 7 : REFORMULATION EN DUO (Slide 12)
-# ==============================
-with tabs[12]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 7/20 : Reformulation en Duo</h2>
-    <p class="content-paragraph">Pratiquer l'écoute active et la reformulation.</p>
+    <h2>🎯 Activité 2/8 : Reformulation en Duo</h2>
+    <p class="content-paragraph">Pratiquez l'écoute active après le test DISC.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
@@ -820,367 +683,7 @@ with tabs[12]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 8 : ÉCOUTE ACTIVE RAPIDE (Slide 14)
-# ==============================
-with tabs[14]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 8/20 : Écoute Active Rapide</h2>
-    <p class="content-paragraph">Pratiquer l'écoute sans jugement ni préparation de réponse.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👂 Consigne</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p>Chaque participant parle pendant 2 minutes sur un sujet simple (ex : "Un projet qui me passionne").</p>
-        <p><strong>Règle :</strong> L'auditeur ne peut pas interrompre, ni répondre. Il doit juste écouter.</p>
-        <p>Ensuite, on inverse les rôles.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Apprendre à écouter pour comprendre, pas pour répondre — compétence fondamentale du leadership.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 9 : QUESTION PUISSANTE (Slide 16)
-# ==============================
-with tabs[16]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 9/20 : Question Puissante</h2>
-    <p class="content-paragraph">Ouvrir la réflexion avec une seule question ouverte.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>💬 Consigne</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p>Poser une seule <strong>question ouverte</strong> à son partenaire.</p>
-        <p><strong>Exemples :</strong></p>
-        <ul class="content-list">
-            <li>"Qu'est-ce qui te passionne dans ce projet ?"</li>
-            <li>"Comment vois-tu les choses ?"</li>
-            <li>"Quel impact veux-tu avoir ?"</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Apprendre à poser des questions qui ouvrent la voie à la compréhension, pas à la défense.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 10 : OUI-MAS / OUI-ET (Slide 18)
-# ==============================
-with tabs[18]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 10/20 : Oui-Mais... / Oui-Et...</h2>
-    <p class="content-paragraph">Explorer l'impact des réponses sur la motivation.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Scénario</h3>
-        <p><strong>Durée :</strong> 12 minutes</p>
-        <p>Proposer une idée simple : "On fait une pause dans 10 minutes".</p>
-        <p><strong>Version 1 :</strong> Répondre "Oui, mais..." (bloquant)</p>
-        <p><strong>Version 2 :</strong> Répondre "Oui, et..." (constructif)</p>
-        <p><strong>Débriefing :</strong> Quel impact sur la motivation et la créativité ?</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Apprendre à construire, pas à bloquer — fondamental pour le leadership collaboratif.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 11 : LEADER TOURNANT (Slide 20)
-# ==============================
-with tabs[20]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 11/20 : Leader Tournant</h2>
-    <p class="content-paragraph">Expérimenter différents styles de leadership en temps réel.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🔄 Consigne</h3>
-        <p><strong>Durée :</strong> 15 minutes</p>
-        <p>Organiser une discussion simple sur un sujet neutre (ex : "Quel est le meilleur café ?").</p>
-        <p><strong>Règle :</strong> Chaque minute, le leadership change : une nouvelle personne prend la parole pour guider la discussion.</p>
-        <p><strong>Observation :</strong> Comment les styles changent ? Qui est le plus efficace ?</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Montrer que le leadership n'est pas une position, mais une action — accessible à tous.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 12 : GESTION D'OBJECTION SIMPLE (Slide 22)
-# ==============================
-with tabs[22]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 12/20 : Gestion d'Objection Simple</h2>
-    <p class="content-paragraph">Pratiquer la réponse constructive face à une objection.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🗣️ Scénario</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Situation :</strong> "Je propose qu'on organise une sortie."</p>
-        <p><strong>Objection :</strong> "On n'a pas le budget."</p>
-        <p><strong>Exercice :</strong> Répondre de façon constructive — sans rejeter, mais en proposant une solution.</p>
-        <p><strong>Exemple de réponse :</strong> "C'est vrai que le budget est serré. On pourrait faire une sortie en plein air gratuite ?"</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Transformer une objection en opportunité — compétence clé pour les leaders.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 13 : JOURNAL MINUTE (Slide 24)
-# ==============================
-with tabs[24]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 13/20 : Journal Minute</h2>
-    <p class="content-paragraph">Réfléchir en toute simplicité sur son leadership quotidien.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Consigne</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p>Écrire en quelques lignes :</p>
-        <ul class="content-list">
-            <li>Une décision que j'ai prise récemment</li>
-            <li>Comment j'ai influencé quelqu'un cette semaine</li>
-            <li>Ce que j'ai appris sur le leadership aujourd'hui</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Créer une habitude de réflexion, transformer l'expérience en apprentissage.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 14 : CARTE MENTALE EXPRESS (Slide 26)
-# ==============================
-with tabs[26]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 14/20 : Carte Mentale Express</h2>
-    <p class="content-paragraph">Visualiser ses propres forces de leader.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🧠 Consigne</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p>Créer une carte mentale sur une feuille : <strong>Centre : MOI</strong></p>
-        <p><strong>Branches :</strong> Mes talents naturels en tant que leader.</p>
-        <p><strong>Exemples :</strong> Écoute, Résilience, Vision, Empathie...</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Renforcer l'estime de soi et la conscience de ses forces.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 15 : POST-IT DE RÉFLEXION (Slide 28)
-# ==============================
-with tabs[28]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 15/20 : Post-it de Réflexion</h2>
-    <p class="content-paragraph">Passer du concept à l'action personnelle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Matériel</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p>Post-its de 3 couleurs :</p>
-        <ul class="content-list">
-            <li><span style="color:green; font-weight:bold;">🟩 Vert</span> : Ce que je fais bien comme leader</li>
-            <li><span style="color:orange; font-weight:bold;">🟧 Orange</span> : Ce que je veux améliorer</li>
-            <li><span style="color:blue; font-weight:bold;">🟦 Bleu</span> : Une action concrète pour demain</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Passez du concept à l'action personnelle et concrète.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 16 : ENGAGEMENT EN 1 PHRASE (Slide 30)
-# ==============================
-with tabs[30]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 16/20 : Engagement en 1 Phrase</h2>
-    <p class="content-paragraph">Transformer la théorie en engagement personnel.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>✍️ Consigne</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p>Complétez cette phrase :</p>
-        <p style="background:#f0f9ff; padding:1rem; border-left:4px solid #3b82f6; font-style:italic;">
-            <strong>"Je m'engage à ___________ pour développer mon leadership."</strong>
-        </p>
-        <p><strong>Exemples :</strong> "donner un feedback chaque semaine", "écouter sans interrompre".</p>
-        <p><strong>Partage :</strong> Optionnel mais motivant.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Créer un sentiment de responsabilité et de prise de conscience.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 17 : ACTION IMMÉDIATE (Slide 32)
-# ==============================
-with tabs[32]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 17/20 : Action Immédiate</h2>
-    <p class="content-paragraph">Faire le lien entre la théorie et l'action concrète.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>✍️ Consigne</h3>
-        <p><strong>Durée :</strong> 3 minutes</p>
-        <p>Quelle petite action de leadership puis-je faire avant la fin de la journée ?</p>
-        <p><strong>Exemples :</strong></p>
-        <ul class="content-list">
-            <li>Donner un compliment spécifique à un collègue</li>
-            <li>Écouter quelqu'un sans interrompre</li>
-            <li>Prendre une décision que je remettais à plus tard</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Transformer l'apprentissage en comportement immédiat et tangible.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 18 : GRATITUDE LEADER (Slide 34)
-# ==============================
-with tabs[34]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 18/20 : Gratitude Leader</h2>
-    <p class="content-paragraph">Reconnaître l'impact des autres sur notre parcours.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🙏 Consigne</h3>
-        <p><strong>Durée :</strong> 7 minutes</p>
-        <p>Identifier mentalement <strong>3 personnes</strong> qui ont été des leaders pour vous (dans votre vie personnelle ou professionnelle).</p>
-        <p>Leur dire mentalement : <em>"Merci pour ton impact."</em></p>
-        <p><strong>Effet :</strong> Crée un sentiment de connexion et d'humilité.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Renforcer la gratitude, clé de la résilience et de l'humilité dans le leadership.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 19 : MOT DE LA FIN (Slide 36)
-# ==============================
-with tabs[49]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 19/20 : Mot de la Fin</h2>
-    <p class="content-paragraph">Clôturez en puissance avec une dernière participation collective.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🗣️ Tour de Table</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
-        <div class="example-box">
-            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Créer une mémoire collective positive de la session.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# ACTIVITÉ 20 : APPLAUDISSEMENT TOURNANT (Slide 38)
-# ==============================
-with tabs[50]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 20/20 : Applaudissement Tournant</h2>
-    <p class="content-paragraph">Créer une énergie positive et sensorielle pour clôturer.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👏 Déroulement</h3>
-        <p><strong>Durée :</strong> 3 minutes</p>
-        <p>Une personne se place au centre de la salle.</p>
-        <p>Tout le monde l'applaudit chaleureusement pendant 15 secondes.</p>
-        <p>Elle tourne sur elle-même et s'arrête.</p>
-        <p>Une autre personne prend sa place — répéter 2 à 3 fois.</p>
-        <p><strong>Effet :</strong> Énergie collective, reconnaissance, bienveillance.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Clôturer la session sur une note positive, humaine et sensorielle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# SLIDES EXISTANTS CORRIGÉS (décalés)
+# SLIDES EXISTANTS (décalés)
 # ==============================
 # Slide 3 : Introduction
 with tabs[3]:
@@ -1203,6 +706,35 @@ with tabs[3]:
     </div>
     """, unsafe_allow_html=True)
 
+# ==============================
+# ACTIVITÉ EXPRESS 3 : POST-IT DE RÉFLEXION (Slide 4)
+# ==============================
+with tabs[4]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 3/8 : Post-it de Réflexion</h2>
+    <p class="content-paragraph">Une pause réflexive après l'introduction.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>📝 Matériel</h3>
+        <p><strong>Durée :</strong> 8 minutes</p>
+        <p>Post-its de 3 couleurs :</p>
+        <ul class="content-list">
+            <li><span style="color:green; font-weight:bold;">🟩 Vert</span> : Ce que je fais bien comme leader</li>
+            <li><span style="color:orange; font-weight:bold;">🟧 Orange</span> : Ce que je veux améliorer</li>
+            <li><span style="color:blue; font-weight:bold;">🟦 Bleu</span> : Une action concrète pour demain</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Passer du concept à l'action personnelle et concrète.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Slide 5 : Définitions
 with tabs[5]:
     st.markdown("""
@@ -1216,6 +748,37 @@ with tabs[5]:
     <div class="example-box">
     💡 <strong>Exemple :</strong> Un chef de projet qui organise les tâches et les délais pour son équipe.
     </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 4 : QUESTION PUISSANTE (Slide 6)
+# ==============================
+with tabs[6]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 4/8 : Question Puissante</h2>
+    <p class="content-paragraph">Ouvrir la réflexion avec une seule question ouverte.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>💬 Exercice</h3>
+        <p><strong>Durée :</strong> 10 minutes</p>
+        <p>Poser une seule <strong>question ouverte</strong> à son partenaire.</p>
+        <p><strong>Exemples :</strong></p>
+        <ul class="content-list">
+            <li>"Qu'est-ce qui te passionne dans ce projet ?"</li>
+            <li>"Comment vois-tu les choses ?"</li>
+            <li>"Quel impact veux-tu avoir ?"</li>
+        </ul>
+        <p><strong>Conseil :</strong> Évitez les questions fermées (oui/non).</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Apprendre à poser des questions qui ouvrent la voie à la compréhension, pas à la défense.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1239,6 +802,32 @@ with tabs[7]:
     </div>
     """, unsafe_allow_html=True)
 
+# ==============================
+# ACTIVITÉ EXPRESS 5 : ÉCOUTE ACTIVE RAPIDE (Slide 8)
+# ==============================
+with tabs[8]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 5/8 : Écoute Active Rapide</h2>
+    <p class="content-paragraph">Pratiquer l'écoute sans jugement.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>👂 Consigne</h3>
+        <p><strong>Durée :</strong> 8 minutes</p>
+        <p>Chaque participant parle pendant 2 minutes sur un sujet simple (ex : "Un projet qui me passionne").</p>
+        <p><strong>Règle :</strong> L'auditeur ne peut pas interrompre, ni répondre. Il doit juste écouter.</p>
+        <p>Ensuite, on inverse les rôles.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Apprendre à écouter pour comprendre, pas pour répondre — compétence fondamentale du leadership.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Slide 9 : Leadership vs Commandement
 with tabs[9]:
     st.markdown("""
@@ -1257,6 +846,32 @@ with tabs[9]:
     <div class="quote-card">
     « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
     </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 6 : TOUR DE TABLE DES QUALITÉS (Slide 10)
+# ==============================
+with tabs[10]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 6/8 : Tour de Table des Qualités</h2>
+    <p class="content-paragraph">Explorer collectivement les qualités essentielles du leader.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>👥 Consigne</h3>
+        <p><strong>Durée :</strong> 15 minutes</p>
+        <p>Chacun nomme <strong>une qualité essentielle</strong> d'un bon leader.</p>
+        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
+        <p><strong>Objectif :</strong> Créer une liste riche et variée.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Activer la créativité, favoriser l'écoute active, et élargir la définition du leadership.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1291,7 +906,33 @@ with tabs[11]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES POUR LES 10 STYLES DE LEADERSHIP
+# ACTIVITÉ EXPRESS 7 : MINI-JEU DE RÔLE (Slide 12)
+# ==============================
+with tabs[12]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 7/8 : Mini-Jeu de Rôle - Vision</h2>
+    <p class="content-paragraph">Pratiquer le style visionnaire en binôme.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🎭 Scénario</h3>
+        <p><strong>Durée :</strong> 10 minutes</p>
+        <p><strong>Situation :</strong> Un leader doit présenter une vision de projet à une équipe réticente.</p>
+        <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
+        <p><strong>Consigne :</strong> Le leader doit inspirer et convaincre. Les collaborateurs expriment des doutes.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Expérimenter la communication d'une vision inspirante et le pouvoir de l'inspiration.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# SLIDES POUR LES 10 STYLES DE LEADERSHIP (décalés)
 # ==============================
 # Données pour les 10 styles de leadership
 leadership_styles_data = [
@@ -1397,9 +1038,9 @@ leadership_styles_data = [
     }
 ]
 
-# Création des slides pour chaque style
+# Création des slides pour chaque style (décalés)
 for i, style in enumerate(leadership_styles_data):
-    with tabs[13 + i*2]:  # Les styles commencent à l'onglet 13, espacés de 2 (13, 15, 17...)
+    with tabs[13 + i]:  # Les styles commencent à l'onglet 13
         st.markdown(f"""
         <div class="modern-card">
             <h2>🎨 Style {style['name']}</h2>
@@ -1442,110 +1083,44 @@ for i, style in enumerate(leadership_styles_data):
         st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
         st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
-# Slide 33 : Leadership Situationnel
-with tabs[33]:
+# ==============================
+# ACTIVITÉ EXPRESS 8 : CARTE MENTALE EXPRESS (Slide 14)
+# ==============================
+with tabs[14]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 8/8 : Carte Mentale Express</h2>
+    <p class="content-paragraph">Visualiser ses forces de leader en un clin d'œil.</p>
+    </div>
+    """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-    <h2>🔄 Leadership Situationnel</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
-        « Adaptons notre style à la situation »
-    </p>
-    <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs, ainsi que du contexte.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Un manager utilise un style directif avec un nouveau collaborateur (faible compétence, forte motivation) et délégatif avec un expert expérimenté (forte compétence, forte motivation).
-    </div>
-    <h3>📈 Les 4 niveaux de développement</h3>
-    <ul class="content-list">
-    <li><strong>D1 :</strong> Faible compétence, forte motivation → Style directif</li>
-    <li><strong>D2 :</strong> Faible à moyenne compétence, faible motivation → Style persuasif</li>
-    <li><strong>D3 :</strong> Moyenne à forte compétence, motivation variable → Style participatif</li>
-    <li><strong>D4 :</strong> Forte compétence, forte motivation → Style délégatif</li>
-    </ul>
-    """, unsafe_allow_html=True)
-    # Forces et défis pour le style situationnel
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Adaptation optimale à chaque situation</li>
-                <li>Développement progressif des collaborateurs</li>
-                <li>Efficacité contextuelle</li>
-                <li>Respect des individualités</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Nécessite une grande flexibilité</li>
-                <li>Complexe à maîtriser</li>
-                <li>Demande une bonne analyse des situations</li>
-                <li>Risque d'incohérence perçue</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : adapter son leadership à chaque collaborateur, développer progressivement les compétences, gérer des équipes hétérogènes.
-    </p>
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
+        <h3>🧠 Consigne</h3>
+        <p><strong>Durée :</strong> 10 minutes</p>
+        <p>Créer une carte mentale sur une feuille :</p>
+        <p><strong>Centre :</strong> MOI</p>
+        <p><strong>Branches :</strong> Mes talents naturels en tant que leader.</p>
+        <p><strong>Exemples :</strong> Écoute, Résilience, Vision, Empathie...</p>
     </div>
     """, unsafe_allow_html=True)
-
-# Slide 35 : Laissez-faire
-with tabs[35]:
     st.markdown("""
-    <div class="modern-card">
-    <h2>🎨 Style Laissez-faire</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
-        « À toi de jouer »
-    </p>
-    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources nécessaires mais intervient peu dans le travail quotidien.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale pour développer leurs projets.
-    </div>
-    """, unsafe_allow_html=True)
-    # Forces et défis pour le style laissez-faire
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Autonomie et créativité</li>
-                <li>Responsabilisation des équipes</li>
-                <li>Innovation libre</li>
-                <li>Adaptation aux experts</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Manque de direction</li>
-                <li>Manque de coordination</li>
-                <li>Risque de désengagement</li>
-                <li>Peut créer de la confusion</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : équipes d'experts très compétents et motivés, environnements créatifs, projets innovants nécessitant de l'autonomie.
-    </p>
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Renforcer l'estime de soi et la conscience de ses forces.</p>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# JEU DE RÔLE - SLIDE 37
+# JEU DE RÔLE - SLIDE 26
 # ==============================
-with tabs[37]:
+with tabs[26]:
     st.markdown("""
     <div class="test-section">
     <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
     <p class="content-paragraph">Pratiquez les différents styles de leadership à travers des scénarios réalistes en binômes</p>
     </div>
     """, unsafe_allow_html=True)
-    # Scénarios de jeu de rôle complets
+    # (Le code du jeu de rôle reste ici, identique à la version précédente)
     roleplay_scenarios = [
         {
             "titre": "🚀 Lancement d'un Nouveau Projet",
@@ -1758,8 +1333,10 @@ with tabs[37]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 39 : Compétences
-with tabs[39]:
+# Slides 27 à 36 : Contenu existant (Compétences, IE, Cas, Quiz, Synthèse, Secteurs, Erreurs, Conseils, Ressources)
+# (Copier-coller du code original pour ces slides, décalé de 1)
+# Exemple pour le slide 27 (Compétences)
+with tabs[27]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>🔑 Compétences Clés du Leader Moderne</h2>
@@ -1779,8 +1356,8 @@ with tabs[39]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 40 : Intelligence Émotionnelle
-with tabs[40]:
+# Slide 28 : IE
+with tabs[28]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
@@ -1800,8 +1377,8 @@ with tabs[40]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 41 : Études de Cas
-with tabs[41]:
+# Slide 29 : Cas
+with tabs[29]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
@@ -1822,8 +1399,16 @@ with tabs[41]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 42 : QUIZ 1 - Fondamentaux
-with tabs[42]:
+# Slides 30 et 31 : Quiz 1 et 2 (code existant, décalé de 1)
+Voici le code pour **les slides 30 et 31 : Quiz 1 et Quiz 2**, extraits du code fourni, décalés de 1 position (donc correspondant aux onglets `tabs[30]` et `tabs[31]`) et avec le bon format.
+
+---
+
+### **Slide 30 : Quiz 1 (d'origine 22)**
+
+```python
+# Slide 30 : QUIZ 1 - Fondamentaux (d'origine 22, décalé de 1)
+with tabs[30]: # Décalé de 1
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
@@ -2008,8 +1593,12 @@ with tabs[42]:
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 43 : QUIZ 2 - Styles
-with tabs[43]:
+
+### **Slide 31 : Quiz 2 (d'origine 23)**
+
+
+# Slide 31 : QUIZ 2 - Styles (d'origine 23, décalé de 1)
+with tabs[31]: # Décalé de 1
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
@@ -2194,8 +1783,9 @@ with tabs[43]:
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 44 : Synthèse
-with tabs[44]:
+
+# Slide 32 : Synthèse
+with tabs[32]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>🎓 Synthèse du Parcours Leadership</h2>
@@ -2213,8 +1803,8 @@ with tabs[44]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 45 : Secteurs d'Application
-with tabs[45]:
+# Slide 33 : Secteurs
+with tabs[33]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>🏥 Leadership dans Différents Secteurs</h2>
@@ -2229,8 +1819,8 @@ with tabs[45]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 46 : Erreurs Courantes
-with tabs[46]:
+# Slide 34 : Erreurs
+with tabs[34]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>🚫 Erreurs Courantes en Leadership</h2>
@@ -2247,8 +1837,8 @@ with tabs[46]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 47 : Conseils
-with tabs[47]:
+# Slide 35 : Conseils
+with tabs[35]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>💡 Conseils Pratiques</h2>
@@ -2265,8 +1855,8 @@ with tabs[47]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 48 : Ressources
-with tabs[48]:
+# Slide 36 : Ressources
+with tabs[36]: # Décalé de 1
     st.markdown("""
     <div class="modern-card">
     <h2>📚 Ressources Complémentaires</h2>
@@ -2285,15 +1875,67 @@ with tabs[48]:
     </div>
     """, unsafe_allow_html=True)
 
+# ==============================
+# ACTIVITÉ 19 : MOT DE LA FIN (Slide 37)
+# ==============================
+with tabs[37]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 19/20 : Mot de la Fin (Clôture)</h2>
+    <p class="content-paragraph">Terminez en beauté avec une participation collective.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🗣️ Tour de Table</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
+        <div class="example-box">
+            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer une mémoire collective positive de la session.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ 20 : APPLAUDISSEMENT TOURNANT (Slide 38)
+# ==============================
+with tabs[38]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 20/20 : Applaudissement Tournant (Clôture)</h2>
+    <p class="content-paragraph">Créez une énergie positive et sensorielle pour clore.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>👏 Déroulement</h3>
+        <p><strong>Durée :</strong> 3 minutes</p>
+        <p>Une personne se place au centre de la salle.</p>
+        <p>Tout le monde l'applaudit chaleureusement pendant 15 secondes.</p>
+        <p>Elle tourne sur elle-même et s'arrête.</p>
+        <p>Une autre personne prend sa place — répéter 2 à 3 fois.</p>
+        <p><strong>Effet :</strong> Énergie collective, reconnaissance, bienveillance.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Clôturer la session sur une note positive, humaine et sensorielle.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 # Message final
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
 <p><strong>✨ Présentation Leadership Pro - Formation Complète ✨</strong></p>
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
+<p>8 activités intégrées • 2 activités de clôture incluses</p>
 </div>
 """, unsafe_allow_html=True)
-
-
-
-
