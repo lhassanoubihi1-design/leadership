@@ -1400,13 +1400,10 @@ with tabs[29]: # Décalé de 1
     """, unsafe_allow_html=True)
 
 # Slides 30 et 31 : Quiz 1 et 2 (code existant, décalé de 1)
-Voici le code pour **les slides 30 et 31 : Quiz 1 et Quiz 2**, extraits du code fourni, décalés de 1 position (donc correspondant aux onglets `tabs[30]` et `tabs[31]`) et avec le bon format.
 
----
 
-### **Slide 30 : Quiz 1 (d'origine 22)**
 
-```python
+
 # Slide 30 : QUIZ 1 - Fondamentaux (d'origine 22, décalé de 1)
 with tabs[30]: # Décalé de 1
     st.markdown("""
@@ -1939,3 +1936,4 @@ st.markdown("""
 <p>8 activités intégrées • 2 activités de clôture incluses</p>
 </div>
 """, unsafe_allow_html=True)
+
