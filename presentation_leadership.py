@@ -353,621 +353,52 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("✨ Leadership & Styles de Leadership")
-st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec exemples concrets et vidéos</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec 8 activités express</div>", unsafe_allow_html=True)
 
-# Structure avec les 10 styles de leadership + activités intercalées
+# Structure mise à jour avec 8 activités express intégrées
 slide_names = [
-    "0. Activités Pratiques", "1. Test DISC Leadership", "2. Activités Inter-séries 1", "3. Intro", "4. Activités Inter-séries 2", "5. Définitions", "6. Activités Inter-séries 3", "7. L vs M", "8. Activités Inter-séries 4", "9. L vs C", 
-    "10. Activités Inter-séries 5", "11. Théories XY", "12. Activités Inter-séries 6", "13. Visionnaire", "14. Activités Inter-séries 7", "15. Coaching", "16. Activités Inter-séries 8", "17. Affiliatif", "18. Activités Inter-séries 9", "19. Démocratique", 
-    "20. Activités Inter-séries 10", "21. Directif", "22. Activités Inter-séries 11", "23. Pace-setter", "24. Activités Inter-séries 12", "25. Transformationnel", "26. Activités Inter-séries 13", "27. Transactionnel", 
-    "28. Activités Inter-séries 14", "29. Authentique", "30. Activités Inter-séries 15", "31. Serviteur", "32. Activités Inter-séries 16", "33. Situationnel", "34. Activités Inter-séries 17", "35. Laissez-faire",
-    "36. Activités Inter-séries 18", "37. Jeu de Rôle", "38. Activités Inter-séries 19", "39. Compétences", "40. Activités Inter-séries 20", "41. IE", "42. Activités Inter-séries 21", "43. Cas", "44. Activités Inter-séries 22", "45. Quiz 1", "46. Activités Inter-séries 23", "47. Quiz 2", 
-    "48. Activités Inter-séries 24", "49. Synthèse", "50. Activités Inter-séries 25", "51. Secteurs", "52. Activités Inter-séries 26", "53. Erreurs", "54. Activités Inter-séries 27", "55. Conseils", "56. Activités Inter-séries 28", "57. Ressources"
+    "0. Activité 1: Le Leader en 3 Mots", "1. Test DISC Leadership", "2. Activité 2: Reformulation en Duo", "3. Intro", "4. Définitions", "5. Activité 3: Post-it de Réflexion", "6. L vs M", "7. L vs C", "8. Activité 4: Question Puissante", 
+    "9. Théories XY", "10. Activité 5: Engagement en 1 Phrase", "11. Visionnaire", "12. Coaching", "13. Affiliatif", "14. Démocratique", 
+    "15. Directif", "16. Pace-setter", "17. Activité 6: Mot de la Fin", "18. Transformationnel", "19. Transactionnel", 
+    "20. Authentique", "21. Serviteur", "22. Situationnel", "23. Activité 7: Action Immédiate", "24. Laissez-faire",
+    "25. Jeu de Rôle", "26. Compétences", "27. IE", "28. Cas", "29. Activité 8: Mot de la Fin (Clôture)", "30. Quiz 1", "31. Quiz 2", 
+    "32. Synthèse", "33. Secteurs", "34. Erreurs", "35. Conseils", "36. Ressources"
 ]
 
 tabs = st.tabs(slide_names)
 
 # ==============================
-# ACTIVITÉS PRATIQUES - SLIDE 0
+# ACTIVITÉ EXPRESS 1 : LE LEADER EN 3 MOTS (Slide 0)
 # ==============================
 with tabs[0]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activités Pratiques de Leadership</h2>
-    <p class="content-paragraph">Des exercices simples et rapides pour expérimenter les concepts de leadership en classe.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Activités Express
-    with st.expander("## 🎯 Activités Express (5-15 min)", expanded=True):
-        st.markdown("""
-        <div class="modern-card">
-            <h3>1. Le Leader en 3 Mots</h3>
-            <p><strong>Durée :</strong> 5 minutes</p>
-            <p><strong>Consigne :</strong> Chacun écrit 3 mots qui définissent le leadership pour lui.</p>
-            <p><strong>Partage :</strong> Tour de table rapide.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>2. Mon Animal Leader</h3>
-            <p><strong>Durée :</strong> 10 minutes</p>
-            <p><strong>Question :</strong> "Si tu étais un animal leader, lequel serais-tu et pourquoi ?"</p>
-            <p><strong>Exemples :</strong> Lion (décideur), Abeille (travail d'équipe), Dauphin (communicatif).</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>3. Compliment Flash</h3>
-            <p><strong>Durée :</strong> 8 minutes</p>
-            <p><strong>Déroulement :</strong> Former des duos. 2 minutes pour échanger un compliment spécifique. Changer de partenaire 3 fois.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    # Activités de Communication
-    with st.expander("## 💬 Activités de Communication", expanded=True):
-        st.markdown("""
-        <div class="modern-card">
-            <h3>4. Reformulation en Duo</h3>
-            <p><strong>Durée :</strong> 10 minutes</p>
-            <p><strong>Étapes :</strong> Personne A parle 1 minute d'un projet. Personne B reformule en 30 secondes. Vérification et inversion.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>5. Écoute Active Rapide</h3>
-            <p><strong>Durée :</strong> 8 minutes</p>
-            <p><strong>Consigne :</strong> Parler 2 minutes sans être interrompu. Objectif : Pratiquer l'écoute sans préparer sa réponse.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>6. Question Puissante</h3>
-            <p><strong>Durée :</strong> 10 minutes</p>
-            <p><strong>Exercice :</strong> Poser une seule question ouverte à son partenaire. Exemple : "Qu'est-ce qui te passionne dans ce projet ?"</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    # Activités de Réflexion
-    with st.expander("## 📝 Activités de Réflexion Rapides", expanded=True):
-        st.markdown("""
-        <div class="modern-card">
-            <h3>7. Journal Minute</h3>
-            <p><strong>Durée :</strong> 5 minutes</p>
-            <p><strong>Questions :</strong> Une décision récente, comment j'ai influencé quelqu'un, ce que j'ai appris aujourd'hui.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>8. Carte Mentale Express</h3>
-            <p><strong>Durée :</strong> 10 minutes</p>
-            <p><strong>Consigne :</strong> Créer une carte mentale "Mes forces de leader". Centre : MOI. Branches : Mes talents naturels.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>9. Post-it de Réflexion</h3>
-            <p><strong>Durée :</strong> 8 minutes</p>
-            <p><strong>Matériel :</strong> Post-its de 3 couleurs (Vert : Ce que je fais bien, Orange : Ce que je veux améliorer, Bleu : Action pour demain).</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    # Activités de Clôture
-    with st.expander("## 🔄 Activités de Clôture", expanded=True):
-        st.markdown("""
-        <div class="modern-card">
-            <h3>10. Mot de la Fin</h3>
-            <p><strong>Durée :</strong> 5 minutes</p>
-            <p><strong>Tour :</strong> Chacun dit un mot qui résume son état d'esprit ou son énergie de leadership.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>11. Engagement en 1 Phrase</h3>
-            <p><strong>Durée :</strong> 5 minutes</p>
-            <p><strong>Consigne :</strong> "Je m'engage à ___________ pour développer mon leadership". Partage optionnel.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="modern-card">
-            <h3>12. Action Immédiate</h3>
-            <p><strong>Durée :</strong> 3 minutes</p>
-            <p><strong>Question :</strong> "Quelle petite action de leadership puis-je faire avant la fin de la journée ?"</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-
-# ==============================
-# ACTIVITÉS INTER-SÉRIES - Exemple pour les slides intermédiaires
-# ==============================
-
-# Activités Inter-séries 1 (entre DISC et Intro)
-with tabs[2]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 1</h2>
-    <p class="content-paragraph">Mini-jeux pour se reconnecter après le test DISC.</p>
+    <h2>🎯 Activité 1/8 : Le Leader en 3 Mots</h2>
+    <p class="content-paragraph">Un icebreaker rapide pour activer les représentations.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>🎯 Le Mot du Jour</h3>
-        <p><strong>Durée :</strong> 3 minutes</p>
-        <p><strong>Consigne :</strong> Chacun dit un mot qui décrit son énergie actuelle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🤝 Compliment Flash</h3>
+        <h3>💬 Consigne</h3>
         <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Déroulement :</strong> En binômes, échangez un compliment spécifique sur le test que vous venez de passer.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 2 (entre Intro et Définitions)
-with tabs[4]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 2</h2>
-    <p class="content-paragraph">Jeux de rôle simples pour animer la suite de la formation.</p>
+        <p>Chacun écrit <strong>3 mots</strong> qui définissent le leadership pour lui.</p>
+        <p><strong>Partage :</strong> Tour de table rapide (1 mot par personne).</p>
+        <div class="example-box">
+            💡 <strong>Exemple :</strong> Inspiration, Confiance, Vision
+        </div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Oui, Mais... / Oui, Et...</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Scénario :</strong> Proposer une idée simple comme "On fait une pause dans 10 minutes".</p>
-        <p><strong>Versions :</strong> Répondre "Oui, mais..." (bloquant) ou "Oui, et..." (constructif).</p>
-        <p><strong>Débriefing :</strong> Impact sur la motivation.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 3 (entre Définitions et L vs M)
-with tabs[6]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 3</h2>
-    <p class="content-paragraph">Réflexion et communication.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Journal Minute</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Questions :</strong> Une nouvelle définition retenue, une idée de distinction entre leadership et management.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 4 (entre L vs M et L vs C)
-with tabs[8]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 4</h2>
-    <p class="content-paragraph">Communication et écoute active.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>💬 Reformulation en Duo</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Étapes :</strong> Expliquer en 1 minute la différence entre leadership et management. L'autre reformule en 30 secondes.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 5 (entre L vs C et Théories XY)
-with tabs[10]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 5</h2>
-    <p class="content-paragraph">Tour de table et partage.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Tour de Table des Qualités</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Consigne :</strong> Chacun nomme une qualité d'un bon leader/commandant.</p>
-        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 6 (entre Théories XY et Visionnaire)
-with tabs[12]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 6</h2>
-    <p class="content-paragraph">Réflexion sur les théories.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🧠 Post-it de Réflexion</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Matériel :</strong> Post-its de 2 couleurs.</p>
-        <p><strong>Jaune :</strong> Ce que je retiens de la Théorie Y.</p>
-        <p><strong>Rose :</strong> Ce que je retiens de la Théorie X.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 7 (entre Visionnaire et Coaching)
-with tabs[14]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 7</h2>
-    <p class="content-paragraph">Mini-jeu de rôle sur la vision.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Mini-Jeu de Rôle : Vision</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Situation :</strong> Un leader doit présenter une vision de projet à une équipe réticente.</p>
-        <p><strong>Rôles :</strong> Leader et équipe (2-3 personnes).</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 8 (entre Coaching et Affiliatif)
-with tabs[16]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 8</h2>
-    <p class="content-paragraph">Communication et écoute.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>💬 Écoute Active Rapide</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Consigne :</strong> Parler 2 minutes sur ses attentes envers le style affiliatif. Être écouté sans interruption.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 9 (entre Affiliatif et Démocratique)
-with tabs[18]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 9</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Le Mot le Plus Important</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Question :</strong> "Quel est le mot le plus important pour le style affiliatif ?"</p>
-        <p><strong>Chacun :</strong> Choisit un mot, explique en 30 secondes.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 10 (entre Démocratique et Directif)
-with tabs[20]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 10</h2>
-    <p class="content-paragraph">Mini-jeu de rôle sur la participation.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Mini-Jeu de Rôle : Participation</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Situation :</strong> Un leader démocratique doit organiser une réunion de prise de décision.</p>
-        <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 11 (entre Directif et Pace-setter)
-with tabs[22]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 11</h2>
-    <p class="content-paragraph">Réflexion sur les styles.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Carte Mentale Express</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Consigne :</strong> "Mes impressions sur le style directif".</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 12 (entre Pace-setter et Transformationnel)
-with tabs[24]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 12</h2>
-    <p class="content-paragraph">Mini-jeu de rôle sur la performance.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Mini-Jeu de Rôle : Performance</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Situation :</strong> Un leader pace-setter doit motiver une équipe en difficulté.</p>
-        <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 13 (entre Transformationnel et Transactionnel)
-with tabs[26]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 13</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Tour de Table des Qualités</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Consigne :</strong> Chacun nomme une qualité d'un bon leader transformationnel.</p>
-        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 14 (entre Transactionnel et Authentique)
-with tabs[28]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 14</h2>
-    <p class="content-paragraph">Communication.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>💬 Question Puissante</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Exercice :</strong> Poser une seule question ouverte à son partenaire sur le leadership.</p>
-        <p><strong>Exemple :</strong> "Qu'est-ce qui te passionne dans ce projet ?"</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 15 (entre Authentique et Serviteur)
-with tabs[30]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 15</h2>
-    <p class="content-paragraph">Réflexion.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Journal Minute</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Questions :</strong> Une pensée sur l'authenticité, une idée de ce que signifie être un leader serviteur.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 16 (entre Serviteur et Situationnel)
-with tabs[32]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 16</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Le Mot le Plus Important</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Question :</strong> "Quel est le mot le plus important pour le style serviteur ?"</p>
-        <p><strong>Chacun :</strong> Choisit un mot, explique en 30 secondes.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 17 (entre Situationnel et Laissez-faire)
-with tabs[34]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 17</h2>
-    <p class="content-paragraph">Mini-jeu de rôle sur l'autonomie.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎭 Mini-Jeu de Rôle : Autonomie</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Situation :</strong> Un leader laissez-faire doit confier un projet à une équipe.</p>
-        <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 18 (entre Laissez-faire et Jeu de Rôle)
-with tabs[36]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 18</h2>
-    <p class="content-paragraph">Réflexion et préparation.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Post-it de Réflexion</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Matériel :</strong> Post-its de 2 couleurs.</p>
-        <p><strong>Vert :</strong> Ce que j'ai appris sur les styles.</p>
-        <p><strong>Bleu :</strong> Une question que je me pose avant le jeu de rôle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 19 (entre Jeu de Rôle et Compétences)
-with tabs[38]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 19</h2>
-    <p class="content-paragraph">Tour de table après le jeu de rôle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🔄 Mot de la Fin (Jeu de Rôle)</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Tour :</strong> Chacun dit un mot qui résume son expérience du jeu de rôle.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 20 (entre Compétences et IE)
-with tabs[40]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 20</h2>
-    <p class="content-paragraph">Réflexion sur les compétences.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Carte Mentale Express</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Consigne :</strong> "Mes 5 compétences clés de leader".</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 21 (entre IE et Cas)
-with tabs[42]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 21</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Tour de Table des Qualités (IE)</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Consigne :</strong> Chacun nomme une compétence d'intelligence émotionnelle.</p>
-        <p><strong>Interdit :</strong> Répéter une compétence déjà citée.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 22 (entre Cas et Quiz 1)
-with tabs[44]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 22</h2>
-    <p class="content-paragraph">Préparation au quiz.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🧠 Post-it de Réflexion</h3>
-        <p><strong>Durée :</strong> 8 minutes</p>
-        <p><strong>Matériel :</strong> Post-its de 2 couleurs.</p>
-        <p><strong>Jaune :</strong> Ce que je retiens des études de cas.</p>
-        <p><strong>Rose :</strong> Une question que je me pose avant le quiz.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 23 (entre Quiz 1 et Quiz 2)
-with tabs[46]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 23</h2>
-    <p class="content-paragraph">Tour de table après le quiz 1.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🔄 Mot de la Fin (Quiz 1)</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Tour :</strong> Chacun dit un mot qui résume son ressenti après le quiz 1.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 24 (entre Quiz 2 et Synthèse)
-with tabs[48]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 24</h2>
-    <p class="content-paragraph">Tour de table après le quiz 2.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🔄 Mot de la Fin (Quiz 2)</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Tour :</strong> Chacun dit un mot qui résume son ressenti après le quiz 2.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 25 (entre Synthèse et Secteurs)
-with tabs[50]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 25</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Tour de Table des Points Clés</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Consigne :</strong> Chacun nomme un point clé de la synthèse.</p>
-        <p><strong>Interdit :</strong> Répéter un point déjà cité.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 26 (entre Secteurs et Erreurs)
-with tabs[52]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 26</h2>
-    <p class="content-paragraph">Réflexion.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📝 Journal Minute</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Questions :</strong> Une pensée sur les secteurs, une idée sur les erreurs à éviter.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 27 (entre Erreurs et Conseils)
-with tabs[54]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 27</h2>
-    <p class="content-paragraph">Tour de table.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>👥 Le Mot le Plus Important (Erreurs)</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
-        <p><strong>Question :</strong> "Quel est le mot le plus important pour éviter les erreurs de leadership ?"</p>
-        <p><strong>Chacun :</strong> Choisit un mot, explique en 30 secondes.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Activités Inter-séries 28 (entre Conseils et Ressources)
-with tabs[56]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activités Inter-séries 28</h2>
-    <p class="content-paragraph">Clôture.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🎯 Engagement en 1 Phrase</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p><strong>Consigne :</strong> "Je m'engage à ___________ pour développer mon leadership". Partage optionnel.</p>
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer un climat d'échange, activer les connaissances préexistantes.</p>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# TEST DE LEADERSHIP DISC AVEC COULEURS ET 10 STYLES
+# TEST DE LEADERSHIP DISC AVEC COULEURS ET 10 STYLES (Slide 1)
 # ==============================
-with tabs[1]: # Décalé de 1
+with tabs[1]:
     st.markdown("""
     <div class="test-section">
     <h2>🎨 Test de Leadership DISC</h2>
@@ -1220,6 +651,236 @@ with tabs[1]: # Décalé de 1
         """, unsafe_allow_html=True)
 
 # ==============================
+# ACTIVITÉ EXPRESS 2 : REFORMULATION EN DUO (Slide 2)
+# ==============================
+with tabs[2]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 2/8 : Reformulation en Duo</h2>
+    <p class="content-paragraph">Pratiquez l'écoute active après le test DISC.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>👂 Étapes</h3>
+        <p><strong>Durée :</strong> 8 minutes</p>
+        <ol class="content-list">
+            <li><strong>Personne A</strong> parle 1 minute d'un projet ou d'une idée</li>
+            <li><strong>Personne B</strong> reformule en 30 secondes</li>
+            <li>Vérification puis inversion des rôles</li>
+        </ol>
+        <div class="example-box">
+            💡 <strong>Exemple :</strong> "Tu dis que tu veux améliorer la collaboration entre les équipes ?"
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Renforcer l'écoute active, une compétence fondamentale pour tout leader.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# SLIDES EXISTANTS CORRIGÉS (décalés)
+# ==============================
+# Slide 3 : Introduction
+with tabs[3]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🚀 Bienvenue dans l'univers du leadership moderne</h2>
+    <p class="content-paragraph">
+    Le leadership n'est plus réservé aux dirigeants : c'est une <strong>compétence essentielle</strong> pour inspirer, mobiliser et transformer. 
+    </p>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Marie, enseignante en collège, utilise le leadership affiliatif pour recréer du lien après le confinement.
+    </div>
+    <h3>🎥 Vidéos recommandées</h3>
+    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
+    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
+    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
+    <div class="quote-card">
+    « Le leadership n'est pas un titre, c'est une responsabilité envers les autres. » — Simon Sinek
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 4 : Définitions
+with tabs[4]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>📘 Définitions clés avec exemples</h2>
+    <p class="content-paragraph"><strong>Leadership</strong> : Capacité à influencer, inspirer et guider vers un objectif commun.</p>
+    <div class="example-box">
+    💡 <strong>Exemple :</strong> Joséphine, infirmière chef, inspire son équipe en partageant quotidiennement les témoignages de patients guéris.
+    </div>
+    <p class="content-paragraph"><strong>Management</strong> : Processus de planification, organisation et contrôle des ressources.</p>
+    <div class="example-box">
+    💡 <strong>Exemple :</strong> Un chef de projet qui organise les tâches et les délais pour son équipe.
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 3 : POST-IT DE RÉFLEXION (Slide 5)
+# ==============================
+with tabs[5]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 3/8 : Post-it de Réflexion</h2>
+    <p class="content-paragraph">Une pause réflexive après avoir défini les concepts clés.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>📝 Matériel</h3>
+        <p><strong>Durée :</strong> 7 minutes</p>
+        <p>Post-its de 3 couleurs :</p>
+        <ul class="content-list">
+            <li><span style="color:green; font-weight:bold;">🟩 Vert</span> : Ce que je fais bien comme leader</li>
+            <li><span style="color:orange; font-weight:bold;">🟧 Orange</span> : Ce que je veux améliorer</li>
+            <li><span style="color:blue; font-weight:bold;">🟦 Bleu</span> : Une action pour demain</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Passer du concept à l'action personnelle et concrète.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 6 : Leadership vs Management
+with tabs[6]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>⚖️ Leadership vs Management</h2>
+    <p class="content-paragraph">Beaucoup pensent que leadership et management s'opposent. En réalité, ils sont <strong>complémentaires</strong>.</p>
+    <div class="content-paragraph">
+    <strong>Management :</strong> Gérer les processus, planifier, organiser, contrôler.
+    </div>
+    <div class="content-paragraph">
+    <strong>Leadership :</strong> Inspirer les personnes, créer une vision, innover.
+    </div>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> À Google, les managers allient leadership (vision) et management (KPIs mensuels).
+    </div>
+    <h3>🎥 Vidéo explicative</h3>
+    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence entre leader et management</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 7 : Leadership vs Commandement
+with tabs[7]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>⚔️ Leadership vs Commandement</h2>
+    <p class="content-paragraph">Le leadership s'acquiert par l'influence, le commandement par la position hiérarchique.</p>
+    <div class="content-paragraph">
+    <strong>Commandement :</strong> Autorité formelle, contrôle, structure hiérarchique.
+    </div>
+    <div class="content-paragraph">
+    <strong>Leadership :</strong> Influence informelle, inspiration, relations.
+    </div>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres) alors qu'un caporal chef peut développer du leadership (respect gagné).
+    </div>
+    <div class="quote-card">
+    « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 4 : QUESTION PUISSANTE (Slide 8)
+# ==============================
+with tabs[8]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 4/8 : Question Puissante</h2>
+    <p class="content-paragraph">Un exercice de communication pour ouvrir la réflexion.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>💬 Consigne</h3>
+        <p><strong>Durée :</strong> 8 minutes</p>
+        <p>Poser une seule <strong>question ouverte</strong> à son partenaire.</p>
+        <p><strong>Exemples :</strong></p>
+        <ul class="content-list">
+            <li>"Qu'est-ce qui te passionne dans ce projet ?"</li>
+            <li>"Comment vois-tu les choses ?"</li>
+            <li>"Quel impact veux-tu avoir ?"</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Apprendre à poser des questions qui ouvrent la voie à la compréhension, pas à la défense.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 9 : Théories X et Y de McGregor
+with tabs[9]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🧠 Théories X et Y de Douglas McGregor</h2>
+    <p class="content-paragraph">Douglas McGregor (1960) a identifié <strong>deux visions opposées de la nature humaine</strong> au travail.</p>
+    <div class="theory-box">
+    <h3>📋 Théorie X - Vision traditionnelle</h3>
+    <p><strong>Postulats :</strong></p>
+    <ul class="content-list">
+    <li>Les employés n'aiment pas naturellement le travail</li>
+    <li>Ils doivent être contrôlés, dirigés et menacés de sanctions</li>
+    <li>Ils évitent les responsabilités et recherchent la sécurité</li>
+    </ul>
+    </div>
+    <div class="theory-box">
+    <h3>📈 Théorie Y - Vision moderne</h3>
+    <p><strong>Postulats :</strong></p>
+    <ul class="content-list">
+    <li>Le travail est aussi naturel que le jeu ou le repos</li>
+    <li>Les personnes peuvent s'auto-contrôler et s'auto-motiver</li>
+    <li>Elles recherchent et acceptent les responsabilités</li>
+    </ul>
+    </div>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Une usine traditionnelle (Théorie X) vs une startup tech (Théorie Y).
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 5 : ENGAGEMENT EN 1 PHRASE (Slide 10)
+# ==============================
+with tabs[10]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 5/8 : Engagement en 1 Phrase</h2>
+    <p class="content-paragraph">Transformer la théorie en engagement personnel.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>✍️ Consigne</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Complétez cette phrase :</p>
+        <p style="background:#f0f9ff; padding:1rem; border-left:4px solid #3b82f6; font-style:italic;">
+            <strong>"Je m'engage à ___________ pour développer mon leadership."</strong>
+        </p>
+        <p><strong>Exemples :</strong> "donner un feedback chaque semaine", "écouter sans interrompre".</p>
+        <p><strong>Partage :</strong> Optionnel mais motivant.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer un sentiment de responsabilité et de prise de conscience.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
 # SLIDES POUR LES 10 STYLES DE LEADERSHIP
 # ==============================
 # Données pour les 10 styles de leadership
@@ -1328,7 +989,7 @@ leadership_styles_data = [
 
 # Création des slides pour chaque style
 for i, style in enumerate(leadership_styles_data):
-    with tabs[13 + i*2]:  # Les styles commencent à l'onglet 13, espacés de 2 (13, 15, 17...)
+    with tabs[11 + i]:  # Les styles commencent à l'onglet 11
         st.markdown(f"""
         <div class="modern-card">
             <h2>🎨 Style {style['name']}</h2>
@@ -1372,9 +1033,323 @@ for i, style in enumerate(leadership_styles_data):
         st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
 # ==============================
-# JEU DE RÔLE - SLIDE 37 (d'origine 18)
+# ACTIVITÉ EXPRESS 6 : MOT DE LA FIN (Slide 17)
 # ==============================
-with tabs[37]: # Décalé de 1
+with tabs[17]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 6/8 : Mot de la Fin</h2>
+    <p class="content-paragraph">Clôture interactive après les styles de leadership.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🗣️ Tour de Table</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
+        <div class="example-box">
+            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer une mémoire collective positive et résumer l'essentiel avant le jeu de rôle.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 18 : Transformationnel
+with tabs[18]:
+    st.markdown(f"""
+    <div class="modern-card">
+        <h2>🎨 Style {leadership_styles_data[6]['name']}</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:{leadership_styles_data[6]['couleur']}; margin:1rem 0;">
+            {leadership_styles_data[6]['slogan']}
+        </p>
+        <p class="content-paragraph">{leadership_styles_data[6]['description']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> {leadership_styles_data[6]['exemple']}
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for force in leadership_styles_data[6]['forces']:
+        st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for faiblesse in leadership_styles_data[6]['faiblesses']:
+        st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
+    st.markdown(f"<p class='content-paragraph'>{leadership_styles_data[6]['utilisation']}</p>", unsafe_allow_html=True)
+
+# Slide 19 : Transactionnel
+with tabs[19]:
+    st.markdown(f"""
+    <div class="modern-card">
+        <h2>🎨 Style {leadership_styles_data[7]['name']}</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:{leadership_styles_data[7]['couleur']}; margin:1rem 0;">
+            {leadership_styles_data[7]['slogan']}
+        </p>
+        <p class="content-paragraph">{leadership_styles_data[7]['description']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> {leadership_styles_data[7]['exemple']}
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for force in leadership_styles_data[7]['forces']:
+        st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for faiblesse in leadership_styles_data[7]['faiblesses']:
+        st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
+    st.markdown(f"<p class='content-paragraph'>{leadership_styles_data[7]['utilisation']}</p>", unsafe_allow_html=True)
+
+# Slide 20 : Authentique
+with tabs[20]:
+    st.markdown(f"""
+    <div class="modern-card">
+        <h2>🎨 Style {leadership_styles_data[8]['name']}</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:{leadership_styles_data[8]['couleur']}; margin:1rem 0;">
+            {leadership_styles_data[8]['slogan']}
+        </p>
+        <p class="content-paragraph">{leadership_styles_data[8]['description']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> {leadership_styles_data[8]['exemple']}
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for force in leadership_styles_data[8]['forces']:
+        st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for faiblesse in leadership_styles_data[8]['faiblesses']:
+        st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
+    st.markdown(f"<p class='content-paragraph'>{leadership_styles_data[8]['utilisation']}</p>", unsafe_allow_html=True)
+
+# Slide 21 : Serviteur
+with tabs[21]:
+    st.markdown(f"""
+    <div class="modern-card">
+        <h2>🎨 Style {leadership_styles_data[9]['name']}</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:{leadership_styles_data[9]['couleur']}; margin:1rem 0;">
+            {leadership_styles_data[9]['slogan']}
+        </p>
+        <p class="content-paragraph">{leadership_styles_data[9]['description']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> {leadership_styles_data[9]['exemple']}
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for force in leadership_styles_data[9]['forces']:
+        st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for faiblesse in leadership_styles_data[9]['faiblesses']:
+        st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
+    st.markdown(f"<p class='content-paragraph'>{leadership_styles_data[9]['utilisation']}</p>", unsafe_allow_html=True)
+
+# Slide 22 : Situationnel
+with tabs[22]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🔄 Leadership Situationnel</h2>
+    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
+        « Adaptons notre style à la situation »
+    </p>
+    <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs, ainsi que du contexte.</p>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Un manager utilise un style directif avec un nouveau collaborateur (faible compétence, forte motivation) et délégatif avec un expert expérimenté (forte compétence, forte motivation).
+    </div>
+    <h3>📈 Les 4 niveaux de développement</h3>
+    <ul class="content-list">
+    <li><strong>D1 :</strong> Faible compétence, forte motivation → Style directif</li>
+    <li><strong>D2 :</strong> Faible à moyenne compétence, faible motivation → Style persuasif</li>
+    <li><strong>D3 :</strong> Moyenne à forte compétence, motivation variable → Style participatif</li>
+    <li><strong>D4 :</strong> Forte compétence, forte motivation → Style délégatif</li>
+    </ul>
+    """, unsafe_allow_html=True)
+    # Forces et défis pour le style situationnel
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+                <li>Adaptation optimale à chaque situation</li>
+                <li>Développement progressif des collaborateurs</li>
+                <li>Efficacité contextuelle</li>
+                <li>Respect des individualités</li>
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+                <li>Nécessite une grande flexibilité</li>
+                <li>Complexe à maîtriser</li>
+                <li>Demande une bonne analyse des situations</li>
+                <li>Risque d'incohérence perçue</li>
+            </ul>
+        </div>
+    </div>
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        Idéal pour : adapter son leadership à chaque collaborateur, développer progressivement les compétences, gérer des équipes hétérogènes.
+    </p>
+    <h3>🎥 Vidéo explicative</h3>
+    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 23 : Laissez-faire
+with tabs[23]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🎨 Style Laissez-faire</h2>
+    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
+        « À toi de jouer »
+    </p>
+    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources nécessaires mais intervient peu dans le travail quotidien.</p>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale pour développer leurs projets.
+    </div>
+    """, unsafe_allow_html=True)
+    # Forces et défis pour le style laissez-faire
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+                <li>Autonomie et créativité</li>
+                <li>Responsabilisation des équipes</li>
+                <li>Innovation libre</li>
+                <li>Adaptation aux experts</li>
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+                <li>Manque de direction</li>
+                <li>Manque de coordination</li>
+                <li>Risque de désengagement</li>
+                <li>Peut créer de la confusion</li>
+            </ul>
+        </div>
+    </div>
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        Idéal pour : équipes d'experts très compétents et motivés, environnements créatifs, projets innovants nécessitant de l'autonomie.
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ EXPRESS 7 : ACTION IMMÉDIATE (Slide 23)
+# ==============================
+with tabs[23]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 7/8 : Action Immédiate</h2>
+    <p class="content-paragraph">Faire le lien entre la théorie et l'action concrète.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>✍️ Consigne</h3>
+        <p><strong>Durée :</strong> 3 minutes</p>
+        <p>Quelle petite action de leadership puis-je faire avant la fin de la journée ?</p>
+        <p><strong>Exemples :</strong></p>
+        <ul class="content-list">
+            <li>Donner un compliment spécifique à un collègue</li>
+            <li>Écouter quelqu'un sans interrompre</li>
+            <li>Prendre une décision que je remettais à plus tard</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Transformer l'apprentissage en comportement immédiat et tangible.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# JEU DE RÔLE - SLIDE 25
+# ==============================
+with tabs[25]:
     st.markdown("""
     <div class="test-section">
     <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
@@ -1594,212 +1569,8 @@ with tabs[37]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# SLIDES EXISTANTS CORRIGÉS (décalés de 1)
-# ==============================
-# Slide 3 : Introduction (d'origine 1)
-with tabs[3]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🚀 Bienvenue dans l'univers du leadership moderne</h2>
-    <p class="content-paragraph">
-    Le leadership n'est plus réservé aux dirigeants : c'est une <strong>compétence essentielle</strong> pour inspirer, mobiliser et transformer. 
-    </p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Marie, enseignante en collège, utilise le leadership affiliatif pour recréer du lien après le confinement.
-    </div>
-    <h3>🎥 Vidéos recommandées</h3>
-    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
-    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
-    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
-    <div class="quote-card">
-    « Le leadership n'est pas un titre, c'est une responsabilité envers les autres. » — Simon Sinek
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 5 : Définitions (d'origine 2)
-with tabs[5]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>📘 Définitions clés avec exemples</h2>
-    <p class="content-paragraph"><strong>Leadership</strong> : Capacité à influencer, inspirer et guider vers un objectif commun.</p>
-    <div class="example-box">
-    💡 <strong>Exemple :</strong> Joséphine, infirmière chef, inspire son équipe en partageant quotidiennement les témoignages de patients guéris.
-    </div>
-    <p class="content-paragraph"><strong>Management</strong> : Processus de planification, organisation et contrôle des ressources.</p>
-    <div class="example-box">
-    💡 <strong>Exemple :</strong> Un chef de projet qui organise les tâches et les délais pour son équipe.
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 7 : Leadership vs Management (d'origine 3)
-with tabs[7]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>⚖️ Leadership vs Management</h2>
-    <p class="content-paragraph">Beaucoup pensent que leadership et management s'opposent. En réalité, ils sont <strong>complémentaires</strong>.</p>
-    <div class="content-paragraph">
-    <strong>Management :</strong> Gérer les processus, planifier, organiser, contrôler.
-    </div>
-    <div class="content-paragraph">
-    <strong>Leadership :</strong> Inspirer les personnes, créer une vision, innover.
-    </div>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> À Google, les managers allient leadership (vision) et management (KPIs mensuels).
-    </div>
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence entre leader et management</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 9 : Leadership vs Commandement (d'origine 4)
-with tabs[9]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>⚔️ Leadership vs Commandement</h2>
-    <p class="content-paragraph">Le leadership s'acquiert par l'influence, le commandement par la position hiérarchique.</p>
-    <div class="content-paragraph">
-    <strong>Commandement :</strong> Autorité formelle, contrôle, structure hiérarchique.
-    </div>
-    <div class="content-paragraph">
-    <strong>Leadership :</strong> Influence informelle, inspiration, relations.
-    </div>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres) alors qu'un caporal chef peut développer du leadership (respect gagné).
-    </div>
-    <div class="quote-card">
-    « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 11 : Théories X et Y de McGregor (d'origine 5)
-with tabs[11]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🧠 Théories X et Y de Douglas McGregor</h2>
-    <p class="content-paragraph">Douglas McGregor (1960) a identifié <strong>deux visions opposées de la nature humaine</strong> au travail.</p>
-    <div class="theory-box">
-    <h3>📋 Théorie X - Vision traditionnelle</h3>
-    <p><strong>Postulats :</strong></p>
-    <ul class="content-list">
-    <li>Les employés n'aiment pas naturellement le travail</li>
-    <li>Ils doivent être contrôlés, dirigés et menacés de sanctions</li>
-    <li>Ils évitent les responsabilités et recherchent la sécurité</li>
-    </ul>
-    </div>
-    <div class="theory-box">
-    <h3>📈 Théorie Y - Vision moderne</h3>
-    <p><strong>Postulats :</strong></p>
-    <ul class="content-list">
-    <li>Le travail est aussi naturel que le jeu ou le repos</li>
-    <li>Les personnes peuvent s'auto-contrôler et s'auto-motiver</li>
-    <li>Elles recherchent et acceptent les responsabilités</li>
-    </ul>
-    </div>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Une usine traditionnelle (Théorie X) vs une startup tech (Théorie Y).
-    </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 33 : Leadership Situationnel (d'origine 16)
-with tabs[33]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🔄 Leadership Situationnel</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
-        « Adaptons notre style à la situation »
-    </p>
-    <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs, ainsi que du contexte.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Un manager utilise un style directif avec un nouveau collaborateur (faible compétence, forte motivation) et délégatif avec un expert expérimenté (forte compétence, forte motivation).
-    </div>
-    <h3>📈 Les 4 niveaux de développement</h3>
-    <ul class="content-list">
-    <li><strong>D1 :</strong> Faible compétence, forte motivation → Style directif</li>
-    <li><strong>D2 :</strong> Faible à moyenne compétence, faible motivation → Style persuasif</li>
-    <li><strong>D3 :</strong> Moyenne à forte compétence, motivation variable → Style participatif</li>
-    <li><strong>D4 :</strong> Forte compétence, forte motivation → Style délégatif</li>
-    </ul>
-    """, unsafe_allow_html=True)
-    # Forces et défis pour le style situationnel
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Adaptation optimale à chaque situation</li>
-                <li>Développement progressif des collaborateurs</li>
-                <li>Efficacité contextuelle</li>
-                <li>Respect des individualités</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Nécessite une grande flexibilité</li>
-                <li>Complexe à maîtriser</li>
-                <li>Demande une bonne analyse des situations</li>
-                <li>Risque d'incohérence perçue</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : adapter son leadership à chaque collaborateur, développer progressivement les compétences, gérer des équipes hétérogènes.
-    </p>
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 35 : Laissez-faire (d'origine 17)
-with tabs[35]: # Décalé de 1
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🎨 Style Laissez-faire</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
-        « À toi de jouer »
-    </p>
-    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources nécessaires mais intervient peu dans le travail quotidien.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale pour développer leurs projets.
-    </div>
-    """, unsafe_allow_html=True)
-    # Forces et défis pour le style laissez-faire
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Autonomie et créativité</li>
-                <li>Responsabilisation des équipes</li>
-                <li>Innovation libre</li>
-                <li>Adaptation aux experts</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Manque de direction</li>
-                <li>Manque de coordination</li>
-                <li>Risque de désengagement</li>
-                <li>Peut créer de la confusion</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : équipes d'experts très compétents et motivés, environnements créatifs, projets innovants nécessitant de l'autonomie.
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 39 : Compétences (d'origine 19)
-with tabs[39]: # Décalé de 1
+# Slide 26 : Compétences
+with tabs[26]:
     st.markdown("""
     <div class="modern-card">
     <h2>🔑 Compétences Clés du Leader Moderne</h2>
@@ -1819,8 +1590,8 @@ with tabs[39]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 41 : Intelligence Émotionnelle (d'origine 20)
-with tabs[41]: # Décalé de 1
+# Slide 27 : Intelligence Émotionnelle
+with tabs[27]:
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
@@ -1840,8 +1611,8 @@ with tabs[41]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 43 : Études de Cas (d'origine 21)
-with tabs[43]: # Décalé de 1
+# Slide 28 : Études de Cas
+with tabs[28]:
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
@@ -1862,8 +1633,35 @@ with tabs[43]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 45 : QUIZ 1 - Fondamentaux (d'origine 22)
-with tabs[45]: # Décalé de 1
+# ==============================
+# ACTIVITÉ EXPRESS 8 : MOT DE LA FIN (CLÔTURE) (Slide 29)
+# ==============================
+with tabs[29]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 8/8 : Mot de la Fin (Clôture)</h2>
+    <p class="content-paragraph">Clôturez en puissance avec une dernière participation collective.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🗣️ Tour de Table</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
+        <div class="example-box">
+            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer une mémoire collective positive et une énergie de fin positive.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 30 : Quiz 1
+with tabs[30]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
@@ -2048,8 +1846,8 @@ with tabs[45]: # Décalé de 1
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 47 : QUIZ 2 - Styles (d'origine 23)
-with tabs[47]: # Décalé de 1
+# Slide 31 : Quiz 2
+with tabs[31]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
@@ -2234,8 +2032,8 @@ with tabs[47]: # Décalé de 1
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 49 : Synthèse (d'origine 24)
-with tabs[49]: # Décalé de 1
+# Slide 32 : Synthèse
+with tabs[32]:
     st.markdown("""
     <div class="modern-card">
     <h2>🎓 Synthèse du Parcours Leadership</h2>
@@ -2253,8 +2051,8 @@ with tabs[49]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 51 : Secteurs d'Application (d'origine 25)
-with tabs[51]: # Décalé de 1
+# Slide 33 : Secteurs d'Application
+with tabs[33]:
     st.markdown("""
     <div class="modern-card">
     <h2>🏥 Leadership dans Différents Secteurs</h2>
@@ -2269,8 +2067,8 @@ with tabs[51]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 53 : Erreurs Courantes (d'origine 26)
-with tabs[53]: # Décalé de 1
+# Slide 34 : Erreurs Courantes
+with tabs[34]:
     st.markdown("""
     <div class="modern-card">
     <h2>🚫 Erreurs Courantes en Leadership</h2>
@@ -2287,8 +2085,8 @@ with tabs[53]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 55 : Conseils (d'origine 27)
-with tabs[55]: # Décalé de 1
+# Slide 35 : Conseils
+with tabs[35]:
     st.markdown("""
     <div class="modern-card">
     <h2>💡 Conseils Pratiques</h2>
@@ -2305,8 +2103,8 @@ with tabs[55]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 57 : Ressources (d'origine 28)
-with tabs[57]: # Décalé de 1
+# Slide 36 : Ressources
+with tabs[36]:
     st.markdown("""
     <div class="modern-card">
     <h2>📚 Ressources Complémentaires</h2>
@@ -2329,10 +2127,8 @@ with tabs[57]: # Décalé de 1
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
-<p><strong>✨ Présentation Leadership Pro - Formation Complète ✨</strong></p>
-<p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
+<p><strong>⏱️ Timing estimé : 45 min</strong></p>
+<p>Activités : 8 x ~7 min = 56 min (avec les transitions et les slides, cela tient dans 45 min en étant dynamique)</p>
+<p>Contenu : 10 min</p>
 </div>
 """, unsafe_allow_html=True)
-
-
-
