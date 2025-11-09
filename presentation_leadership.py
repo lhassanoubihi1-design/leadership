@@ -1,10 +1,3 @@
-D'accord, j'ai intégré les activités dans le code et les ai réparties entre tous les slides, comme demandé.
-
-J'ai ajouté un onglet "0. Activités Pratiques" en premier contenant un ensemble d'activités, puis des onglets "Activités Inter-séries" entre les grandes sections du contenu (par exemple, entre le test DISC et l'introduction, entre les styles de leadership, etc.). Ces onglets contiennent des mini-jeux et des activités rapides à base d'exemples fournis.
-
-Voici le code complet mis à jour :
-
-```python
 import streamlit as st
 import random
 
@@ -2340,4 +2333,5 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
-```
+
+
