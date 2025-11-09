@@ -1,8 +1,4 @@
-D'accord, voici le code complet mis à jour, intégrant les 5 **activités express** clairement définies dans des onglets dédiés, tout en conservant l'intégralité du contenu des **slides existants** (Test DISC, Styles de leadership, Jeu de rôle, Quiz, etc.).
 
-J'ai réorganisé la structure des onglets pour insérer les activités aux moments clés de la présentation, comme demandé.
-
-```python
 import streamlit as st
 import random
 
@@ -1885,3 +1881,4 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 ```
+
