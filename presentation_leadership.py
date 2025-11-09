@@ -1,8 +1,4 @@
-Voici le code complet mis à jour, avec **toutes les activités intégrées** dans des slides dédiés, **suivi de tous les contenus originaux** (styles de leadership, quiz, jeu de rôle, etc.) **dans leur intégralité**, comme demandé.
 
-J'ai ajouté un bloc `with tabs[x]:` pour chaque activité, et recopié l'intégralité des contenus des slides suivants (Intro, Définitions, etc.) en conservant leur structure exacte.
-
-```python
 import streamlit as st
 import random
 
@@ -2298,3 +2294,4 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 ```
+
