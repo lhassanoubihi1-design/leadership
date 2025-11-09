@@ -815,7 +815,7 @@ for i, style in enumerate(leadership_styles_data):
 # ==============================
 # SLIDE 19 : ACTIVITÉS PRATIQUES SIMPLES
 # ==============================
-with tabs[19]:
+with tabs[18]:
     st.markdown("""
     <div class="test-section">
     <h2>🎯 Activités Pratiques Simples</h2>
@@ -1897,6 +1897,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
