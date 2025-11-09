@@ -353,16 +353,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("✨ Leadership & Styles de Leadership")
-st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec 8 activités express</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète en 45 min</div>", unsafe_allow_html=True)
 
 # Structure mise à jour avec 8 activités express intégrées
 slide_names = [
     "0. Activité 1: Le Leader en 3 Mots", "1. Test DISC Leadership", "2. Activité 2: Reformulation en Duo", "3. Intro", "4. Définitions", "5. Activité 3: Post-it de Réflexion", "6. L vs M", "7. L vs C", "8. Activité 4: Question Puissante", 
     "9. Théories XY", "10. Activité 5: Engagement en 1 Phrase", "11. Visionnaire", "12. Coaching", "13. Affiliatif", "14. Démocratique", 
-    "15. Directif", "16. Pace-setter", "17. Activité 6: Mot de la Fin", "18. Transformationnel", "19. Transactionnel", 
+    "15. Directif", "16. Pace-setter", "17. Activité 6: Mot de la Fin (Clôture Partielle)", "18. Transformationnel", "19. Transactionnel", 
     "20. Authentique", "21. Serviteur", "22. Situationnel", "23. Activité 7: Action Immédiate", "24. Laissez-faire",
-    "25. Jeu de Rôle", "26. Compétences", "27. IE", "28. Cas", "29. Activité 8: Mot de la Fin (Clôture)", "30. Quiz 1", "31. Quiz 2", 
-    "32. Synthèse", "33. Secteurs", "34. Erreurs", "35. Conseils", "36. Ressources"
+    "25. Jeu de Rôle", "26. Compétences", "27. Activité 8: Compliment Flash", "28. IE", "29. Activité 9: Mot de la Fin (Clôture Finale)", "30. Cas", "31. Quiz 1", "32. Quiz 2", 
+    "33. Synthèse", "34. Secteurs", "35. Erreurs", "36. Conseils", "37. Ressources"
 ]
 
 tabs = st.tabs(slide_names)
@@ -373,8 +373,8 @@ tabs = st.tabs(slide_names)
 with tabs[0]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 1/8 : Le Leader en 3 Mots</h2>
-    <p class="content-paragraph">Un icebreaker rapide pour activer les représentations.</p>
+    <h2>🎯 Activité 1/9 : Le Leader en 3 Mots</h2>
+    <p class="content-paragraph">Un icebreaker pour activer les représentations.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
@@ -656,7 +656,7 @@ with tabs[1]:
 with tabs[2]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 2/8 : Reformulation en Duo</h2>
+    <h2>🎯 Activité 2/9 : Reformulation en Duo</h2>
     <p class="content-paragraph">Pratiquez l'écoute active après le test DISC.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -727,7 +727,7 @@ with tabs[4]:
 with tabs[5]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 3/8 : Post-it de Réflexion</h2>
+    <h2>🎯 Activité 3/9 : Post-it de Réflexion</h2>
     <p class="content-paragraph">Une pause réflexive après avoir défini les concepts clés.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -746,7 +746,7 @@ with tabs[5]:
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Passer du concept à l'action personnelle et concrète.</p>
+        <p>Passez du concept à l'action personnelle et concrète.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -797,7 +797,7 @@ with tabs[7]:
 with tabs[8]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 4/8 : Question Puissante</h2>
+    <h2>🎯 Activité 4/9 : Question Puissante</h2>
     <p class="content-paragraph">Un exercice de communication pour ouvrir la réflexion.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -857,7 +857,7 @@ with tabs[9]:
 with tabs[10]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 5/8 : Engagement en 1 Phrase</h2>
+    <h2>🎯 Activité 5/9 : Engagement en 1 Phrase</h2>
     <p class="content-paragraph">Transformer la théorie en engagement personnel.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -883,7 +883,6 @@ with tabs[10]:
 # ==============================
 # SLIDES POUR LES 10 STYLES DE LEADERSHIP
 # ==============================
-# Données pour les 10 styles de leadership
 leadership_styles_data = [
     {
         "name": "Visionnaire",
@@ -1033,12 +1032,12 @@ for i, style in enumerate(leadership_styles_data):
         st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ EXPRESS 6 : MOT DE LA FIN (Slide 17)
+# ACTIVITÉ EXPRESS 6 : MOT DE LA FIN (CLÔTURE PARTIELLE) - SLIDE 17
 # ==============================
 with tabs[17]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 6/8 : Mot de la Fin</h2>
+    <h2>🎯 Activité 6/9 : Mot de la Fin (Clôture Partielle)</h2>
     <p class="content-paragraph">Clôture interactive après les styles de leadership.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1055,7 +1054,7 @@ with tabs[17]:
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Créer une mémoire collective positive et résumer l'essentiel avant le jeu de rôle.</p>
+        <p>Créer une mémoire collective positive avant le jeu de rôle.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1322,7 +1321,7 @@ with tabs[23]:
 with tabs[23]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 7/8 : Action Immédiate</h2>
+    <h2>🎯 Activité 7/9 : Action Immédiate</h2>
     <p class="content-paragraph">Faire le lien entre la théorie et l'action concrète.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -1590,8 +1589,36 @@ with tabs[26]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 27 : Intelligence Émotionnelle
+# ==============================
+# ACTIVITÉ EXPRESS 8 : COMPLIMENT FLASH (Slide 27)
+# ==============================
 with tabs[27]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 8/9 : Compliment Flash</h2>
+    <p class="content-paragraph">Créer un climat de bienveillance avant la clôture.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🤝 Déroulement</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Former des duos. Chacun donne un <strong>compliment spécifique</strong> à son partenaire.</p>
+        <p>Changer de partenaire une fois.</p>
+        <div class="example-box">
+            💡 <strong>Exemple :</strong> "J'apprécie comment tu as clarifié le point sur la vision dans la discussion."
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Renforcer la confiance, créer une énergie positive avant la clôture finale.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 28 : Intelligence Émotionnelle
+with tabs[28]:
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
@@ -1611,8 +1638,35 @@ with tabs[27]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 28 : Études de Cas
-with tabs[28]:
+# ==============================
+# ACTIVITÉ EXPRESS 9 : MOT DE LA FIN (CLÔTURE FINALE) - SLIDE 29
+# ==============================
+with tabs[29]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 9/9 : Mot de la Fin (Clôture Finale)</h2>
+    <p class="content-paragraph">Clôturez en puissance avec une dernière participation collective.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🗣️ Tour de Table</h3>
+        <p><strong>Durée :</strong> 5 minutes</p>
+        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
+        <div class="example-box">
+            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer une mémoire collective positive, une énergie de fin puissante et durable.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 30 : Études de Cas
+with tabs[30]:
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
@@ -1633,35 +1687,8 @@ with tabs[28]:
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# ACTIVITÉ EXPRESS 8 : MOT DE LA FIN (CLÔTURE) (Slide 29)
-# ==============================
-with tabs[29]:
-    st.markdown("""
-    <div class="test-section">
-    <h2>🎯 Activité 8/8 : Mot de la Fin (Clôture)</h2>
-    <p class="content-paragraph">Clôturez en puissance avec une dernière participation collective.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="modern-card">
-        <h3>🗣️ Tour de Table</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
-        <div class="example-box">
-            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="conseil-box">
-        <h4>💡 Objectif pédagogique</h4>
-        <p>Créer une mémoire collective positive et une énergie de fin positive.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# Slide 30 : Quiz 1
-with tabs[30]:
+# Slide 31 : QUIZ 1 - Fondamentaux
+with tabs[31]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
@@ -1846,8 +1873,8 @@ with tabs[30]:
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 31 : Quiz 2
-with tabs[31]:
+# Slide 32 : QUIZ 2 - Styles
+with tabs[32]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
@@ -2032,8 +2059,8 @@ with tabs[31]:
             </div>
             """, unsafe_allow_html=True)
 
-# Slide 32 : Synthèse
-with tabs[32]:
+# Slide 33 : Synthèse
+with tabs[33]:
     st.markdown("""
     <div class="modern-card">
     <h2>🎓 Synthèse du Parcours Leadership</h2>
@@ -2051,8 +2078,8 @@ with tabs[32]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 33 : Secteurs d'Application
-with tabs[33]:
+# Slide 34 : Secteurs d'Application
+with tabs[34]:
     st.markdown("""
     <div class="modern-card">
     <h2>🏥 Leadership dans Différents Secteurs</h2>
@@ -2067,8 +2094,8 @@ with tabs[33]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 34 : Erreurs Courantes
-with tabs[34]:
+# Slide 35 : Erreurs Courantes
+with tabs[35]:
     st.markdown("""
     <div class="modern-card">
     <h2>🚫 Erreurs Courantes en Leadership</h2>
@@ -2085,8 +2112,8 @@ with tabs[34]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 35 : Conseils
-with tabs[35]:
+# Slide 36 : Conseils
+with tabs[36]:
     st.markdown("""
     <div class="modern-card">
     <h2>💡 Conseils Pratiques</h2>
@@ -2103,8 +2130,8 @@ with tabs[35]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 36 : Ressources
-with tabs[36]:
+# Slide 37 : Ressources
+with tabs[37]:
     st.markdown("""
     <div class="modern-card">
     <h2>📚 Ressources Complémentaires</h2>
@@ -2128,7 +2155,7 @@ st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
 <p><strong>⏱️ Timing estimé : 45 min</strong></p>
-<p>Activités : 8 x ~7 min = 56 min (avec les transitions et les slides, cela tient dans 45 min en étant dynamique)</p>
-<p>Contenu : 10 min</p>
+<p>Activités : 9 x ~5 min = 45 min (avec transitions fluides)</p>
+<p>Contenu : intégré dans les slides</p>
 </div>
 """, unsafe_allow_html=True)
