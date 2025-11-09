@@ -813,253 +813,276 @@ for i, style in enumerate(leadership_styles_data):
 
     
 # ==============================
-# JEU DE RÔLE - SLIDE 18
+# SLIDE 19 : ACTIVITÉS PRATIQUES SIMPLES
 # ==============================
-with tabs[18]:
+with tabs[19]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
-    <p class="content-paragraph">Pratiquez les différents styles de leadership à travers des scénarios réalistes en binômes</p>
+    <h2>🎯 Activités Pratiques Simples</h2>
+    <p class="content-paragraph">Des exercices rapides et concrets pour développer votre leadership au quotidien</p>
     </div>
     """, unsafe_allow_html=True)
     
-    # Scénarios de jeu de rôle complets
-    roleplay_scenarios = [
-        {
-            "titre": "🚀 Lancement d'un Nouveau Projet",
-            "description": "Vous devez lancer un projet innovant avec une équipe réticente au changement",
-            "roles": [
-                "Leader : Convaincre l'équipe de l'importance du projet",
-                "Collaborateur : Exprimer des réserves et des préoccupations"
-            ],
-            "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
-            "duree": "10 minutes"
-        },
-        {
-            "titre": "🔥 Gestion de Crise",
-            "description": "Une urgence nécessite une action immédiate et coordonnée",
-            "roles": [
-                "Leader : Prendre des décisions rapides sous pression",
-                "Collaborateur : Suivre les instructions et signaler les problèmes"
-            ],
-            "styles_recommandes": ["Directif", "Pace-setter"],
-            "duree": "8 minutes"
-        },
-        {
-            "titre": "🤝 Résolution de Conflit",
-            "description": "Deux membres de l'équipe sont en conflit ouvert",
-            "roles": [
-                "Leader : Médier le conflit et rétablir l'harmonie",
-                "Collaborateur en conflit : Exprimer son point de vue"
-            ],
-            "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
-            "duree": "12 minutes"
-        },
-        {
-            "titre": "💡 Innovation et Créativité",
-            "description": "Brainstorming pour résoudre un problème complexe",
-            "roles": [
-                "Leader : Stimuler la créativité sans imposer de solutions",
-                "Collaborateur : Proposer des idées innovantes"
-            ],
-            "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
-            "duree": "15 minutes"
-        },
-        {
-            "titre": "📈 Performance d'Équipe",
-            "description": "L'équipe n'atteint pas ses objectifs de performance",
-            "roles": [
-                "Leader : Identifier les problèmes et motiver l'équipe",
-                "Collaborateur : Expliquer les difficultés rencontrées"
-            ],
-            "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
-            "duree": "10 minutes"
-        }
-    ]
+    # Section activités express
+    st.markdown("### ⚡ Activités Express (5-15 minutes)")
     
-    # Initialisation de l'état
-    if 'current_scenario' not in st.session_state:
-        st.session_state.current_scenario = None
-    if 'time_left' not in st.session_state:
-        st.session_state.time_left = 0
-    if 'initial_time' not in st.session_state:
-        st.session_state.initial_time = 0
-    if 'timer_running' not in st.session_state:
-        st.session_state.timer_running = False
-    if 'timer_finished' not in st.session_state:
-        st.session_state.timer_finished = False
-
-    # Sélection du scénario
-    st.markdown("### 🎯 Choisissez un Scénario")
+    col1, col2, col3 = st.columns(3)
     
-    for i, scenario in enumerate(roleplay_scenarios):
-        if st.button(f"{scenario['titre']} - {scenario['duree']}", key=f"scenario_{i}", use_container_width=True):
-            st.session_state.current_scenario = scenario
-            st.session_state.timer_running = False
-            st.session_state.timer_finished = False
-            # Convertir la durée en secondes
-            minutes = int(scenario['duree'].split()[0])
-            st.session_state.time_left = minutes * 60
-            st.session_state.initial_time = minutes * 60
-            st.rerun()
-    
-    # Affichage du scénario sélectionné
-    if st.session_state.current_scenario:
-        scenario = st.session_state.current_scenario
-        
-        st.markdown(f"""
-        <div class="roleplay-card">
-            <h3>🎭 {scenario['titre']}</h3>
-            <p><strong>Description :</strong> {scenario['description']}</p>
-            <p><strong>Durée :</strong> {scenario['duree']}</p>
-            <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
+    with col1:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🎯 Le Leader en 3 Mots</h4>
+            <p><strong>Durée :</strong> 5 minutes</p>
+            <p><strong>Consigne :</strong> Chacun écrit 3 mots qui définissent le leadership pour lui</p>
+            <p><strong>Variante :</strong> 3 mots pour décrire son style personnel</p>
+            <div class="conseil-box">
+                💡 <strong>Astuce :</strong> Excellent pour briser la glace en début de session
+            </div>
         </div>
         """, unsafe_allow_html=True)
-        
-        # Rôles
-        st.markdown("### 👥 Rôles à Distribuer")
-        col1, col2 = st.columns(2)
-        
-        with col1:
-            st.markdown(f"""
-            <div class="roleplay-scenario">
-                <h4>🎯 Rôle du Leader</h4>
-                <p>{scenario['roles'][0]}</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            st.markdown(f"""
-            <div class="roleplay-scenario">
-                <h4>👤 Rôle du Collaborateur</h4>
-                <p>{scenario['roles'][1]}</p>
-            </div>
-            """, unsafe_allow_html=True)
-        
-        # Conteneur pour le timer qui sera mis à jour
-        timer_placeholder = st.empty()
-        
-        # Contrôles du timer
-        st.markdown("### ⏱️ Contrôles du Timer")
-        col1, col2, col3 = st.columns(3)
-        
-        with col1:
-            if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
-                st.session_state.timer_running = True
-                st.session_state.timer_finished = False
-                st.rerun()
-        
-        with col2:
-            if st.button("⏸️ Pause", key="pause_timer", use_container_width=True):
-                st.session_state.timer_running = False
-                st.rerun()
-        
-        with col3:
-            if st.button("🔄 Réinitialiser", key="reset_timer", use_container_width=True):
-                st.session_state.timer_running = False
-                st.session_state.timer_finished = False
-                st.session_state.time_left = st.session_state.initial_time
-                st.rerun()
-        
-        # Logique du timer
-        if st.session_state.timer_running and st.session_state.time_left > 0:
-            # Mettre à jour le temps
-            st.session_state.time_left -= 1
-            
-            # Si le temps est écoulé
-            if st.session_state.time_left <= 0:
-                st.session_state.timer_running = False
-                st.session_state.timer_finished = True
-                st.session_state.time_left = 0
-        
-        # Affichage du timer
-        minutes = st.session_state.time_left // 60
-        seconds = st.session_state.time_left % 60
-        
-        # Couleur du timer
-        if st.session_state.initial_time > 0:
-            progress = st.session_state.time_left / st.session_state.initial_time
-            if progress > 0.5:
-                timer_color = "#10B981"  # Vert
-            elif progress > 0.25:
-                timer_color = "#F59E0B"  # Orange
-            else:
-                timer_color = "#EF4444"  # Rouge
-        else:
-            timer_color = "#6B7280"
-        
-        # Afficher le timer dans le placeholder
-        with timer_placeholder.container():
-            st.markdown("### ⏱️ Timer de la Session")
-            st.markdown(f"""
-            <div class="timer-box" style="border-color: {timer_color};">
-                <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
-                    {minutes:02d}:{seconds:02d}
-                </div>
-                <div style="margin-top: 0.5rem;">
-                    {'⏰ En cours...' if st.session_state.timer_running else '⏸️ En pause' if st.session_state.time_left < st.session_state.initial_time else '⏹️ Prêt'}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Barre de progression
-            if st.session_state.initial_time > 0:
-                progress_value = 1 - (st.session_state.time_left / st.session_state.initial_time)
-                st.progress(progress_value)
-                st.caption(f"Progression : {int(progress_value * 100)}%")
-        
-        # Si le timer est en cours, planifier un rerun
-        if st.session_state.timer_running and st.session_state.time_left > 0:
-            # Ajouter un petit délai avant le rerun
-            import time
-            time.sleep(1)
-            st.rerun()
-        
-        # Message de fin
-        if st.session_state.timer_finished:
-            st.balloons()
-            st.success("🎉 Temps écoulé ! La session est terminée.")
-            
-            if st.button("🔄 Recommencer", key="restart_finished"):
-                st.session_state.timer_running = False
-                st.session_state.timer_finished = False
-                st.session_state.time_left = st.session_state.initial_time
-                st.rerun()
-        
-        # Consignes pour le débriefing
-        st.markdown("### 📝 Debriefing")
+    
+    with col2:
         st.markdown("""
-        <div class="conseil-box">
-            <h4>Questions pour le debriefing :</h4>
+        <div class="modern-card">
+            <h4>🦁 Mon Animal Leader</h4>
+            <p><strong>Durée :</strong> 10 minutes</p>
+            <p><strong>Question :</strong> "Si tu étais un animal leader, lequel serais-tu ?"</p>
+            <p><strong>Exemples :</strong> Lion, Abeille, Dauphin, Aigle</p>
+            <div class="conseil-box">
+                💡 <strong>Astuce :</strong> Fait appel à la créativité et à l'analogie
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🌟 Compliment Flash</h4>
+            <p><strong>Durée :</strong> 8 minutes</p>
+            <p><strong>Déroulement :</strong> Duos qui échangent des compliments spécifiques</p>
+            <p><strong>Bénéfice :</strong> Renforce la cohésion d'équipe</p>
+            <div class="conseil-box">
+                💡 <strong>Astuce :</strong> Changer de partenaire 3 fois
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Section activités de communication
+    st.markdown("### 💬 Activités de Communication")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🎤 Le Bâton de Parole</h4>
+            <p><strong>Durée :</strong> 10 minutes</p>
+            <p><strong>Matériel :</strong> Un objet symbolique</p>
+            <p><strong>Règle :</strong> Seul celui qui tient le bâton parle</p>
+            <div class="example-box">
+                <strong>Sujet :</strong> "Qu'est-ce qu'un bon leader selon vous ?"
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>👂 Écoute Active Rapide</h4>
+            <p><strong>Durée :</strong> 8 minutes</p>
+            <p><strong>Consigne :</strong> Parler 2 minutes sans être interrompu</p>
+            <p><strong>Objectif :</strong> Pratiquer l'écoute sans préparer sa réponse</p>
+            <div class="conseil-box">
+                💡 <strong>Difficulté :</strong> Résister à l'envie d'interrompre
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🔄 Reformulation en Duo</h4>
+            <p><strong>Durée :</strong> 10 minutes</p>
+            <p><strong>Étapes :</strong></p>
             <ul>
-                <li>Quel style de leadership a été utilisé ?</li>
-                <li>Comment s'est senti le collaborateur ?</li>
-                <li>Qu'est-ce qui a bien fonctionné ?</li>
-                <li>Qu'est-ce qui pourrait être amélioré ?</li>
-                <li>Quel autre style aurait pu être efficace ?</li>
+                <li>Personne A parle 1 minute</li>
+                <li>Personne B reformule</li>
+                <li>Vérification et inversion</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
     
-    # Instructions générales
-    st.markdown("---")
-    st.markdown("""
-    <div class="modern-card">
-        <h3>📋 Instructions pour le Jeu de Rôle</h3>
-        <ol class="content-list">
-            <li><strong>Formez des binômes</strong> - Un leader et un collaborateur</li>
-            <li><strong>Choisissez un scénario</strong> - Cliquez sur un des scénarios ci-dessus</li>
-            <li><strong>Distribuez les rôles</strong> - Chacun joue son rôle selon la description</li>
-            <li><strong>Utilisez le timer</strong> - Respectez le temps imparti</li>
-            <li><strong>Débriefer</strong> - À la fin, échangez vos retours d'expérience</li>
-            <li><strong>Inversez les rôles</strong> - Changez de rôle pour le scénario suivant</li>
-        </ol>
-        
-        <div class="example-box">
-            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
+    # Section mini jeux de rôle
+    st.markdown("### 🎭 Mini Jeux de Rôle Simples")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>👍 Oui, Mais... / Oui, Et...</h4>
+            <p><strong>Durée :</strong> 12 minutes</p>
+            <p><strong>Scénario :</strong> Proposer une idée simple</p>
+            <p><strong>Version 1 :</strong> Répondre "Oui, mais..." (bloquant)</p>
+            <p><strong>Version 2 :</strong> Répondre "Oui, et..." (constructif)</p>
+            <div class="example-box">
+                <strong>Débriefing :</strong> Impact sur la motivation et la créativité
+            </div>
         </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🔄 Leader Tournant</h4>
+            <p><strong>Durée :</strong> 15 minutes</p>
+            <p><strong>Activité :</strong> Discussion sur un sujet simple</p>
+            <p><strong>Règle :</strong> Chaque minute, le leadership change</p>
+            <div class="example-box">
+                <strong>Observation :</strong> Styles différents de facilitation
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Section activités réflexives
+    st.markdown("### 📝 Activités Réflexives Rapides")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>📓 Journal Minute</h4>
+            <p><strong>Durée :</strong> 5 minutes</p>
+            <p><strong>Questions :</strong></p>
+            <ul>
+                <li>Une décision récente</li>
+                <li>Comment j'ai influencé quelqu'un</li>
+                <li>Un apprentissage leadership</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>🧠 Carte Mentale Express</h4>
+            <p><strong>Durée :</strong> 10 minutes</p>
+            <p><strong>Consigne :</strong> Créer une carte "Mes forces de leader"</p>
+            <p><strong>Centre :</strong> MOI</p>
+            <p><strong>Branches :</strong> Mes talents naturels</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="modern-card">
+            <h4>📌 Post-it de Réflexion</h4>
+            <p><strong>Durée :</strong> 8 minutes</p>
+            <p><strong>Matériel :</strong> Post-its 3 couleurs</p>
+            <ul>
+                <li>🟢 Ce que je fais bien</li>
+                <li>🟠 Ce que je veux améliorer</li>
+                <li>🔵 Action concrète</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Section séquences rapides
+    st.markdown("### 🕒 Séquences Rapides Prêtes à l'Emploi")
+    
+    sequences = [
+        {
+            "duree": "5 minutes",
+            "titre": "Séquence Éclair",
+            "etapes": [
+                "🎯 Mot du jour (1 min) - Qualité leader du jour",
+                "🌟 Compliment flash (2 min) - Duo rapide", 
+                "💪 Engagement (2 min) - Action concrète"
+            ]
+        },
+        {
+            "duree": "10 minutes", 
+            "titre": "Séquence Réflexive",
+            "etapes": [
+                "📝 Réflexion individuelle (3 min) - Journal minute",
+                "💬 Partage en duo (4 min) - Échange bienveillant",
+                "🎯 Synthèse collective (3 min) - 1 insight par personne"
+            ]
+        },
+        {
+            "duree": "15 minutes",
+            "titre": "Séquence Complète",
+            "etapes": [
+                "🎭 Icebreaker (3 min) - Animal leader",
+                "🔄 Activité principale (8 min) - Jeu de rôle simple",
+                "📊 Debriefing (4 min) - Apprentissages clés"
+            ]
+        }
+    ]
+    
+    for seq in sequences:
+        with st.expander(f"🕒 {seq['titre']} - {seq['duree']}"):
+            for etape in seq['etapes']:
+                st.markdown(f"- {etape}")
+    
+    # Section conseils pratiques
+    st.markdown("### 💡 Conseils pour l'Animation")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        <div class="conseil-box">
+            <h4>🎯 Pour Réussir vos Activités</h4>
+            <ul>
+                <li>Donner des consignes claires et courtes</li>
+                <li>Montrer l'exemple en participant</li>
+                <li>Garder un timing serré</li>
+                <li>Créer un climat de bienveillance</li>
+                <li>Accepter tous les niveaux de participation</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="conseil-box">
+            <h4>📦 Matériel Minimal Requis</h4>
+            <ul>
+                <li>📝 Papier et stylos</li>
+                <li>⏱️ Timer/chronomètre</li>
+                <li>📌 Post-its (optionnel)</li>
+                <li>💺 Espace pour se déplacer</li>
+                <li>💡 Bonne humeur !</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Section quand utiliser ces activités
+    st.markdown("### 🎯 Quand Utiliser ces Activités ?")
+    
+    situations = [
+        {"moment": "Début de session", "activites": "Leader en 3 mots, Animal leader"},
+        {"moment": "Pause active", "activites": "Compliment flash, Bâton de parole"}, 
+        {"moment": "Renforcer la cohésion", "activites": "Reformulation, Écoute active"},
+        {"moment": "Clôture de formation", "activites": "Journal minute, Engagement"},
+        {"moment": "Team building", "activites": "Leader tournant, Post-it réflexion"}
+    ]
+    
+    for situation in situations:
+        st.markdown(f"**{situation['moment']}** : {situation['activites']}")
+    
+    # Call to action
+    st.markdown("""
+    <div class="modern-card" style="text-align: center; background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+        <h3>🚀 Prêt à Essayer ?</h3>
+        <p class="content-paragraph">Choisissez une activité et lancez-vous ! Ces exercices simples transforment la théorie en pratique concrète.</p>
+        <p><strong>💡 Conseil :</strong> Commencez par une activité de 5 minutes pour prendre confiance.</p>
     </div>
     """, unsafe_allow_html=True)
+
+# Continuer avec les autres slides existants...
 # ==============================
 # SLIDES EXISTANTS CORRIGÉS
 # ==============================
@@ -1874,6 +1897,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
