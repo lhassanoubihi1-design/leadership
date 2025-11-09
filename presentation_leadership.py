@@ -362,8 +362,8 @@ slide_names = [
     "9. L vs C", "10. Activité 6: Le Mot le Plus Important", "11. Théories XY", "12. Activité 7: Reformulation en Duo", "13. Visionnaire", "14. Activité 8: Écoute Active Rapide", "15. Coaching", "16. Activité 9: Question Puissante", "17. Affiliatif", "18. Activité 10: Oui-Mais / Oui-And", 
     "19. Démocratique", "20. Activité 11: Leader Tournant", "21. Directif", "22. Activité 12: Gestion d'Objection Simple", "23. Pace-setter", "24. Activité 13: Journal Minute", "25. Transformationnel", "26. Activité 14: Carte Mentale Express", 
     "27. Transactionnel", "28. Activité 15: Post-it de Réflexion", "29. Authentique", "30. Activité 16: Engagement en 1 Phrase", "31. Serviteur", "32. Activité 17: Action Immédiate", "33. Situationnel", "34. Activité 18: Gratitude Leader", 
-    "35. Laissez-faire", "36. Activité 19: Mot de la Fin", "37. Jeu de Rôle", "38. Activité 20: Applaudissement Tournant", "39. Compétences", "40. IE", "41. Cas", "42. Quiz 1", "43. Quiz 2", 
-    "44. Synthèse", "45. Secteurs", "46. Erreurs", "47. Conseils", "48. Ressources"
+    "35. Laissez-faire", "36. Activité 19: Mot de la Fin", "37. Jeu de Rôle",  "39. Compétences", "40. IE", "41. Cas", "42. Quiz 1", "43. Quiz 2", 
+    "44. Synthèse", "45. Secteurs", "46. Erreurs", "47. Conseils", "48. Ressources","49. Activité 20: Applaudissement Tournant"
 ]
 
 tabs = st.tabs(slide_names)
@@ -1154,7 +1154,7 @@ with tabs[36]:
 # ==============================
 # ACTIVITÉ 20 : APPLAUDISSEMENT TOURNANT (Slide 38)
 # ==============================
-with tabs[38]:
+with tabs[49]:
     st.markdown("""
     <div class="test-section">
     <h2>🎯 Activité 20/20 : Applaudissement Tournant</h2>
@@ -2293,6 +2293,7 @@ st.markdown("""
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
