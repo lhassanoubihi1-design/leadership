@@ -1,8 +1,3 @@
-D'accord, j'ai compris. Voici le code mis à jour avec un nouvel onglet "0. Activités Pratiques" ajouté **en premier**, contenant des activités express, de communication, de réflexion et de clôture, comme demandé.
-
-Le reste du code reste inchangé, mais tous les anciens onglets sont décalés d'une position vers la droite (l'ancien onglet 0 devient l'onglet 1, etc.).
-
-```python
 import streamlit as st
 import random
 
@@ -1863,3 +1858,4 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 ```
+
