@@ -1880,5 +1880,6 @@ st.markdown("""
 <p>Activités : 5 x ~7 min = 35 min | Contenu : 10 min</p>
 </div>
 """, unsafe_allow_html=True)
-```
+
+
 
