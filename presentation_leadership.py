@@ -1,4 +1,3 @@
-
 import streamlit as st
 import random
 
@@ -363,7 +362,7 @@ slide_names = [
     "19. Pace-setter", "20. Transformationnel", "21. Transactionnel", "22. Authentique", "23. Serviteur", "24. Situationnel", 
     "25. Laissez-faire", "26. Jeu de Rôle", "27. Compétences", "28. IE", "29. Cas", "30. Quiz 1", "31. Quiz 2", 
     "32. Synthèse", "33. Secteurs", "34. Erreurs", "35. Conseils", "36. Ressources",
-    "37. Activité 19: Mot de la Fin", "38. Activité 20: Applaudissement Tournant"
+    "37. Activité 19: Mot de la Fin (Clôture)", "38. Activité 20: Applaudissement Tournant (Clôture)"
 ]
 
 tabs = st.tabs(slide_names)
@@ -406,7 +405,7 @@ with tabs[1]:
     <p class="content-paragraph">Découvrez votre style de leadership dominant avec ce test basé sur les 4 couleurs du modèle DISC</p>
     </div>
     """, unsafe_allow_html=True)
-    # (Le code du test DISC reste ici, identique à la version précédente)
+    # Questions avec options colorées
     disc_questions = [
         {
             "question": "Face à un nouveau projet, je préfère :",
@@ -664,7 +663,7 @@ with tabs[2]:
     st.markdown("""
     <div class="modern-card">
         <h3>👂 Étapes</h3>
-        <p><strong>Durée :</strong> 10 minutes</p>
+        <p><strong>Durée :</strong> 8 minutes</p>
         <ol class="content-list">
             <li><strong>Personne A</strong> parle 1 minute d'un projet ou d'une idée</li>
             <li><strong>Personne B</strong> reformule en 30 secondes</li>
@@ -683,7 +682,7 @@ with tabs[2]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES EXISTANTS (décalés)
+# SLIDES EXISTANTS CORRIGÉS (décalés)
 # ==============================
 # Slide 3 : Introduction
 with tabs[3]:
@@ -763,7 +762,7 @@ with tabs[6]:
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>💬 Exercice</h3>
+        <h3>💬 Consigne</h3>
         <p><strong>Durée :</strong> 10 minutes</p>
         <p>Poser une seule <strong>question ouverte</strong> à son partenaire.</p>
         <p><strong>Exemples :</strong></p>
@@ -772,7 +771,6 @@ with tabs[6]:
             <li>"Comment vois-tu les choses ?"</li>
             <li>"Quel impact veux-tu avoir ?"</li>
         </ul>
-        <p><strong>Conseil :</strong> Évitez les questions fermées (oui/non).</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
@@ -871,7 +869,7 @@ with tabs[10]:
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Activer la créativité, favoriser l'écoute active, et élargir la définition du leadership.</p>
+        <p>Activer la créativité, favoriser l'écoute active, élargir la définition du leadership.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -921,7 +919,7 @@ with tabs[12]:
         <p><strong>Durée :</strong> 10 minutes</p>
         <p><strong>Situation :</strong> Un leader doit présenter une vision de projet à une équipe réticente.</p>
         <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
-        <p><strong>Consigne :</strong> Le leader doit inspirer et convaincre. Les collaborateurs expriment des doutes.</p>
+        <p><strong>Consigne :</strong> Le leader doit inspirer et convaincre.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
@@ -934,7 +932,6 @@ with tabs[12]:
 # ==============================
 # SLIDES POUR LES 10 STYLES DE LEADERSHIP (décalés)
 # ==============================
-# Données pour les 10 styles de leadership
 leadership_styles_data = [
     {
         "name": "Visionnaire",
@@ -1120,7 +1117,7 @@ with tabs[26]:
     <p class="content-paragraph">Pratiquez les différents styles de leadership à travers des scénarios réalistes en binômes</p>
     </div>
     """, unsafe_allow_html=True)
-    # (Le code du jeu de rôle reste ici, identique à la version précédente)
+    # Scénarios de jeu de rôle complets
     roleplay_scenarios = [
         {
             "titre": "🚀 Lancement d'un Nouveau Projet",
@@ -1333,10 +1330,8 @@ with tabs[26]:
     </div>
     """, unsafe_allow_html=True)
 
-# Slides 27 à 36 : Contenu existant (Compétences, IE, Cas, Quiz, Synthèse, Secteurs, Erreurs, Conseils, Ressources)
-# (Copier-coller du code original pour ces slides, décalé de 1)
-# Exemple pour le slide 27 (Compétences)
-with tabs[27]: # Décalé de 1
+# Slide 27 : Compétences
+with tabs[27]:
     st.markdown("""
     <div class="modern-card">
     <h2>🔑 Compétences Clés du Leader Moderne</h2>
@@ -1356,8 +1351,8 @@ with tabs[27]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 28 : IE
-with tabs[28]: # Décalé de 1
+# Slide 28 : Intelligence Émotionnelle
+with tabs[28]:
     st.markdown("""
     <div class="modern-card">
     <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
@@ -1377,8 +1372,8 @@ with tabs[28]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 29 : Cas
-with tabs[29]: # Décalé de 1
+# Slide 29 : Études de Cas
+with tabs[29]:
     st.markdown("""
     <div class="modern-card">
     <h2>📊 Études de Cas Concrets</h2>
@@ -1399,13 +1394,8 @@ with tabs[29]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slides 30 et 31 : Quiz 1 et 2 (code existant, décalé de 1)
-
-
-
-
-# Slide 30 : QUIZ 1 - Fondamentaux (d'origine 22, décalé de 1)
-with tabs[30]: # Décalé de 1
+# Slide 30 : QUIZ 1 - Fondamentaux
+with tabs[30]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
@@ -1590,12 +1580,8 @@ with tabs[30]: # Décalé de 1
             </div>
             """, unsafe_allow_html=True)
 
-
-### **Slide 31 : Quiz 2 (d'origine 23)**
-
-
-# Slide 31 : QUIZ 2 - Styles (d'origine 23, décalé de 1)
-with tabs[31]: # Décalé de 1
+# Slide 31 : QUIZ 2 - Styles
+with tabs[31]:
     st.markdown("""
     <div class="quiz-section">
     <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
@@ -1780,9 +1766,8 @@ with tabs[31]: # Décalé de 1
             </div>
             """, unsafe_allow_html=True)
 
-
 # Slide 32 : Synthèse
-with tabs[32]: # Décalé de 1
+with tabs[32]:
     st.markdown("""
     <div class="modern-card">
     <h2>🎓 Synthèse du Parcours Leadership</h2>
@@ -1800,8 +1785,8 @@ with tabs[32]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 33 : Secteurs
-with tabs[33]: # Décalé de 1
+# Slide 33 : Secteurs d'Application
+with tabs[33]:
     st.markdown("""
     <div class="modern-card">
     <h2>🏥 Leadership dans Différents Secteurs</h2>
@@ -1816,8 +1801,8 @@ with tabs[33]: # Décalé de 1
     </div>
     """, unsafe_allow_html=True)
 
-# Slide 34 : Erreurs
-with tabs[34]: # Décalé de 1
+# Slide 34 : Erreurs Courantes
+with tabs[34]:
     st.markdown("""
     <div class="modern-card">
     <h2>🚫 Erreurs Courantes en Leadership</h2>
@@ -1835,7 +1820,7 @@ with tabs[34]: # Décalé de 1
     """, unsafe_allow_html=True)
 
 # Slide 35 : Conseils
-with tabs[35]: # Décalé de 1
+with tabs[35]:
     st.markdown("""
     <div class="modern-card">
     <h2>💡 Conseils Pratiques</h2>
@@ -1853,7 +1838,7 @@ with tabs[35]: # Décalé de 1
     """, unsafe_allow_html=True)
 
 # Slide 36 : Ressources
-with tabs[36]: # Décalé de 1
+with tabs[36]:
     st.markdown("""
     <div class="modern-card">
     <h2>📚 Ressources Complémentaires</h2>
@@ -1879,7 +1864,7 @@ with tabs[37]:
     st.markdown("""
     <div class="test-section">
     <h2>🎯 Activité 19/20 : Mot de la Fin (Clôture)</h2>
-    <p class="content-paragraph">Terminez en beauté avec une participation collective.</p>
+    <p class="content-paragraph">Clôturez en puissance avec une dernière participation collective.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
@@ -1933,7 +1918,6 @@ st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
 <p><strong>✨ Présentation Leadership Pro - Formation Complète ✨</strong></p>
 <p>Test DISC • 10 styles de leadership • Jeu de rôle • Quiz interactifs • Ressources vidéo</p>
-<p>8 activités intégrées • 2 activités de clôture incluses</p>
+<p>8 activités express • 2 activités de clôture</p>
 </div>
 """, unsafe_allow_html=True)
-
