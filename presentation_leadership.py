@@ -1,3 +1,4 @@
+
 import streamlit as st
 import random
 
@@ -353,59 +354,27 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("✨ Leadership & Styles de Leadership")
-st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète – 45 min avec activités express</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align:center; margin-bottom:2rem; color:#64748b;'>Formation complète avec 8 activités express et 2 clôtures</div>", unsafe_allow_html=True)
 
-# Structure mise à jour : 20 onglets max, logique claire
+# Structure mise à jour avec 8 activités + 2 clôtures
 slide_names = [
-    "0. Activité 1: Le Leader en 3 Mots",
-    "1. Test DISC Leadership",
-    "2. Activité 2: Mon Animal Leader",
-    "3. Intro",
-    "4. Activité 3: Compliment Flash",
-    "5. Définitions",
-    "6. Activité 4: Le Bâton de Parole",
-    "7. L vs M",
-    "8. Activité 5: Tour de Table des Qualités",
-    "9. L vs C",
-    "10. Activité 6: Journal Minute",
-    "11. Théories XY",
-    "12. Activité 7: Reformulation en Duo",
-    "13. Visionnaire",
-    "14. Coaching",
-    "15. Affiliatif",
-    "16. Démocratique",
-    "17. Directif",
-    "18. Pace-setter",
-    "19. Transformationnel",
-    "20. Transactionnel",
-    "21. Authentique",
-    "22. Serviteur",
-    "23. Situationnel",
-    "24. Laissez-faire",
-    "25. Jeu de Rôle",
-    "26. Compétences",
-    "27. IE",
-    "28. Cas",
-    "29. Quiz 1",
-    "30. Quiz 2",
-    "31. Synthèse",
-    "32. Secteurs",
-    "33. Erreurs",
-    "34. Conseils",
-    "35. Ressources",
-    "36. Activité 8: Mot de la Fin",
-    "37. Activité 9: Applaudissement Tournant"
+    "0. Activité 1: Le Leader en 3 Mots", "1. Test DISC Leadership", "2. Activité 2: Reformulation en Duo", "3. Intro", "4. Activité 3: Post-it de Réflexion", "5. Définitions", "6. Activité 4: Question Puissante", "7. L vs M", "8. Activité 5: Écoute Active Rapide", 
+    "9. L vs C", "10. Activité 6: Tour de Table des Qualités", "11. Théories XY", "12. Activité 7: Mini-Jeu de Rôle : Vision", "13. Visionnaire", "14. Activité 8: Carte Mentale Express", "15. Coaching", "16. Affiliatif", "17. Démocratique", "18. Directif", 
+    "19. Pace-setter", "20. Transformationnel", "21. Transactionnel", "22. Authentique", "23. Serviteur", "24. Situationnel", 
+    "25. Laissez-faire", "26. Jeu de Rôle", "27. Compétences", "28. IE", "29. Cas", "30. Quiz 1", "31. Quiz 2", 
+    "32. Synthèse", "33. Secteurs", "34. Erreurs", "35. Conseils", "36. Ressources",
+    "37. Activité 19: Mot de la Fin (Clôture)", "38. Activité 20: Applaudissement Tournant (Clôture)"
 ]
 
 tabs = st.tabs(slide_names)
 
 # ==============================
-# ACTIVITÉ EXPRESS 1 : LE LEADER EN 3 MOTS (Slide 0)
+# ACTIVITÉ 1 : LE LEADER EN 3 MOTS (Slide 0)
 # ==============================
 with tabs[0]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 1/9 : Le Leader en 3 Mots</h2>
+    <h2>🎯 Activité 1/8 : Le Leader en 3 Mots</h2>
     <p class="content-paragraph">Un icebreaker pour activer les représentations.</p>
     </div>
     """, unsafe_allow_html=True)
@@ -428,7 +397,7 @@ with tabs[0]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# TEST DE LEADERSHIP DISC AVEC COULEURS ET STYLES (Slide 1)
+# TEST DISC (Slide 1)
 # ==============================
 with tabs[1]:
     st.markdown("""
@@ -437,7 +406,7 @@ with tabs[1]:
     <p class="content-paragraph">Découvrez votre style de leadership dominant avec ce test basé sur les 4 couleurs du modèle DISC</p>
     </div>
     """, unsafe_allow_html=True)
-    # Questions avec options colorées
+    # (Code du test DISC, identique à la version précédente)
     disc_questions = [
         {
             "question": "Face à un nouveau projet, je préfère :",
@@ -530,18 +499,18 @@ with tabs[1]:
             ]
         }
     ]
-
+    # Initialisation des scores
     if 'disc_scores' not in st.session_state:
         st.session_state.disc_scores = {'red': 0, 'yellow': 0, 'green': 0, 'blue': 0}
         st.session_state.disc_responses = [None] * len(disc_questions)
         st.session_state.show_disc_results = False
-
+    # Réinitialiser le test
     if st.button("🔄 Recommencer le test", key="reset_test"):
         st.session_state.disc_scores = {'red': 0, 'yellow': 0, 'green': 0, 'blue': 0}
         st.session_state.disc_responses = [None] * len(disc_questions)
         st.session_state.show_disc_results = False
         st.rerun()
-
+    # Affichage des questions
     for i, q in enumerate(disc_questions):
         st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/{len(disc_questions)} :</strong> {q["question"]}</div>', unsafe_allow_html=True)
         col1, col2, col3, col4 = st.columns(4)
@@ -555,6 +524,7 @@ with tabs[1]:
                     st.session_state.disc_responses[i] = option['color']
                     st.session_state.disc_scores[option['color']] += 1
                     st.rerun()
+        # Afficher la réponse sélectionnée
         if st.session_state.disc_responses[i] is not None:
             selected_color = st.session_state.disc_responses[i]
             selected_text = next(opt['text'] for opt in q['options'] if opt['color'] == selected_color)
@@ -566,95 +536,150 @@ with tabs[1]:
             }
             st.markdown(f"✅ **Votre choix :** {color_display[selected_color]} - {selected_text}")
         st.markdown("---")
-
+    # Vérifier si toutes les questions sont répondues
     all_answered = all(response is not None for response in st.session_state.disc_responses)
+    # Bouton pour voir les résultats
     if st.button("🎯 Découvrir mon style de leadership", key="calculate_disc", disabled=not all_answered):
         if not all_answered:
-            st.warning("⚠️ Veuillez répondre à toutes les questions.")
+            st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
         else:
             st.session_state.show_disc_results = True
             st.rerun()
-
+    # Affichage des résultats
     if st.session_state.get('show_disc_results', False) and all_answered:
         scores = st.session_state.disc_scores
         dominant_color = max(scores, key=scores.get)
         leadership_mapping = {
             'red': {
                 'primary_styles': ['Directif', 'Pace-setter'],
-                'description': 'Orientation résultats, compétitif, efficace en crise.',
-                'strengths': ['Décision rapide', 'Gestion de crise'],
-                'advice': 'Développez votre écoute.'
+                'secondary_styles': ['Transactionnel'],
+                'description': 'Vous êtes orienté résultats, compétitif et décidé. Vous excellez dans les situations qui demandent des décisions rapides et une forte direction.',
+                'strengths': ['Décision rapide', 'Orientation résultats', 'Leadership fort', 'Gestion de crise'],
+                'challenges': ['Peut être perçu comme autoritaire', 'Manque de patience', 'Néglige les relations'],
+                'advice': 'Développez votre écoute active et apprenez à valoriser les relations humaines.'
             },
             'yellow': {
-                'primary_styles': ['Visionnaire', 'Coaching'],
-                'description': 'Enthousiaste, motivant, inspire les autres.',
-                'strengths': ['Communication', 'Optimisme'],
-                'advice': 'Améliorez votre organisation.'
+                'primary_styles': ['Visionnaire', 'Transformationnel', 'Coaching'],
+                'secondary_styles': ['Démocratique'],
+                'description': 'Vous êtes enthousiaste, inspirant et relationnel. Vous motivez les autres par votre énergie communicative et votre vision positive.',
+                'strengths': ['Communication inspirante', 'Motivation des équipes', 'Créativité', 'Optimisme'],
+                'challenges': ['Manque de suivi', 'Trop d\'optimisme', 'Organisation variable'],
+                'advice': 'Renforcez votre sens de l\'organisation et votre capacité à suivre les détails.'
             },
             'green': {
-                'primary_styles': ['Affiliatif', 'Serviteur'],
-                'description': 'Empathique, fiable, crée de la cohésion.',
-                'strengths': ['Écoute active', 'Harmonie'],
-                'advice': 'Apprenez à dire non quand c'est nécessaire.'
+                'primary_styles': ['Affiliatif', 'Serviteur', 'Authentique'],
+                'secondary_styles': ['Démocratique'],
+                'description': 'Vous êtes empathique, fiable et harmonieux. Vous créez un environnement de confiance et favorisez la coopération.',
+                'strengths': ['Écoute active', 'Cohésion d\'équipe', 'Empathie', 'Fiabilité'],
+                'challenges': ['Évitement des conflits', 'Difficulté à dire non', 'Lenteur décisionnelle'],
+                'advice': 'Apprenez à prendre des décisions difficiles et à confronter les problèmes directement.'
             },
             'blue': {
                 'primary_styles': ['Analytique', 'Situationnel'],
-                'description': 'Précis, méthodique, base ses décisions sur les données.',
-                'strengths': ['Rigueur', 'Planification'],
-                'advice': 'Osez prendre des risques calculés.'
+                'secondary_styles': ['Transactionnel'],
+                'description': 'Vous êtes précis, méthodique et organisé. Vous basez vos décisions sur des faits et des données solides.',
+                'strengths': ['Pensée analytique', 'Précision', 'Planification', 'Expertise technique'],
+                'challenges': ['Perfectionnisme excessif', 'Lenteur d\'analyse', 'Manque de spontanéité'],
+                'advice': 'Développez votre capacité à prendre des décisions rapides et à vous adapter à l\'imprévu.'
             }
         }
         profile = leadership_mapping[dominant_color]
         result_class = f"result-{dominant_color}"
+        # Affichage des résultats avec Streamlit native
         st.markdown(f'<div class="{result_class}">', unsafe_allow_html=True)
         st.markdown(f"<h2>🎯 Votre Profil de Leadership</h2>", unsafe_allow_html=True)
-        st.markdown(f"<h3 style='color: {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'};'>Profil {dominant_color.capitalize()}</h3>", unsafe_allow_html=True)
-        st.markdown(f"<p>{profile['description']}</p>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='color: {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'};'>Profil {dominant_color.capitalize()} - Leader {', '.join(profile['primary_styles'])}</h3>", unsafe_allow_html=True)
+        st.markdown(f"<p><strong>Description :</strong> {profile['description']}</p>", unsafe_allow_html=True)
+        # Section scores DISC
         st.markdown("<h4>📊 Votre profil DISC :</h4>", unsafe_allow_html=True)
         col1, col2, col3, col4 = st.columns(4)
         with col1:
-            st.markdown(f'<div class="disc-score-red disc-score-box"><strong>🔴 Rouge</strong><br>{scores["red"]}/10</div>', unsafe_allow_html=True)
+            dominant_class = "disc-score-dominant" if dominant_color == 'red' else ""
+            st.markdown(f'<div class="disc-score-red disc-score-box {dominant_class}"><strong>🔴 Rouge</strong><br>{scores["red"]}/10</div>', unsafe_allow_html=True)
         with col2:
-            st.markdown(f'<div class="disc-score-yellow disc-score-box"><strong>🟡 Jaune</strong><br>{scores["yellow"]}/10</div>', unsafe_allow_html=True)
+            dominant_class = "disc-score-dominant" if dominant_color == 'yellow' else ""
+            st.markdown(f'<div class="disc-score-yellow disc-score-box {dominant_class}"><strong>🟡 Jaune</strong><br>{scores["yellow"]}/10</div>', unsafe_allow_html=True)
         with col3:
-            st.markdown(f'<div class="disc-score-green disc-score-box"><strong>🟢 Vert</strong><br>{scores["green"]}/10</div>', unsafe_allow_html=True)
+            dominant_class = "disc-score-dominant" if dominant_color == 'green' else ""
+            st.markdown(f'<div class="disc-score-green disc-score-box {dominant_class}"><strong>🟢 Vert</strong><br>{scores["green"]}/10</div>', unsafe_allow_html=True)
         with col4:
-            st.markdown(f'<div class="disc-score-blue disc-score-box"><strong>🔵 Bleu</strong><br>{scores["blue"]}/10</div>', unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+            dominant_class = "disc-score-dominant" if dominant_color == 'blue' else ""
+            st.markdown(f'<div class="disc-score-blue disc-score-box {dominant_class}"><strong>🔵 Bleu</strong><br>{scores["blue"]}/10</div>', unsafe_allow_html=True)
+        # Styles de leadership dominants
+        st.markdown("<h4>🎨 Vos Styles de Leadership Dominants</h4>", unsafe_allow_html=True)
+        cols = st.columns(2)
+        for idx, style in enumerate(profile['primary_styles']):
+            with cols[idx % 2]:
+                st.markdown(f"""
+                <div style="background: {'#fef2f2' if dominant_color == 'red' else '#fffbeb' if dominant_color == 'yellow' else '#f0fdf4' if dominant_color == 'green' else '#eff6ff'}; 
+                            padding: 1rem; border-radius: 8px; border-left: 4px solid {'#dc2626' if dominant_color == 'red' else '#d97706' if dominant_color == 'yellow' else '#16a34a' if dominant_color == 'green' else '#2563eb'}; margin: 0.5rem 0;">
+                    <strong>★ {style}</strong>
+                </div>
+                """, unsafe_allow_html=True)
+        # Forces et défis
+        col1, col2 = st.columns(2)
+        with col1:
+            st.markdown("<h4>✅ Vos Forces</h4>", unsafe_allow_html=True)
+            for strength in profile['strengths']:
+                st.markdown(f"<div style='background: #f0fdf4; padding: 0.5rem; margin: 0.2rem 0; border-radius: 6px;'>✓ {strength}</div>", unsafe_allow_html=True)
+        with col2:
+            st.markdown("<h4>⚠️ Défis à Relever</h4>", unsafe_allow_html=True)
+            for challenge in profile['challenges']:
+                st.markdown(f"<div style='background: #fef2f2; padding: 0.5rem; margin: 0.2rem 0; border-radius: 6px;'>⚠ {challenge}</div>", unsafe_allow_html=True)
+        # Conseil de développement
+        st.markdown(f"""
+        <div class="conseil-box">
+            <h4>💡 Conseil de Développement</h4>
+            <p>{profile['advice']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+        # Vidéo recommandée
+        st.markdown("""
+        <div class="modern-card">
+            <h3>🎥 Vidéo Recommandée</h3>
+            <p>Regardez cette vidéo pour mieux comprendre votre style de leadership :</p>
+            <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">
+                ▶ Les 10 types de leadership - Comprendre votre profil
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 2 : MON ANIMAL LEADER (Slide 2)
+# ACTIVITÉ 2 : REFORMULATION EN DUO (Slide 2)
 # ==============================
 with tabs[2]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 2/9 : Mon Animal Leader</h2>
-    <p class="content-paragraph">Une activité créative pour explorer son style de leadership.</p>
+    <h2>🎯 Activité 2/8 : Reformulation en Duo</h2>
+    <p class="content-paragraph">Pratiquez l'écoute active après le test DISC.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>🐾 Question</h3>
+        <h3>👂 Étapes</h3>
         <p><strong>Durée :</strong> 10 minutes</p>
-        <p>« Si tu étais un animal leader, lequel serais-tu et pourquoi ? »</p>
-        <p><strong>Exemples :</strong></p>
-        <ul class="content-list">
-            <li><strong>Lion :</strong> Décideur, protecteur</li>
-            <li><strong>Abeille :</strong> Organisé, travail d'équipe</li>
-            <li><strong>Dauphin :</strong> Communicatif, intelligent</li>
-        </ul>
+        <ol class="content-list">
+            <li><strong>Personne A</strong> parle 1 minute d'un projet ou d'une idée</li>
+            <li><strong>Personne B</strong> reformule en 30 secondes</li>
+            <li>Vérification puis inversion des rôles</li>
+        </ol>
+        <div class="example-box">
+            💡 <strong>Exemple :</strong> "Tu dis que tu veux améliorer la collaboration entre les équipes ?"
+        </div>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Rendre le leadership personnel et concret à travers une métaphore simple.</p>
+        <p>Renforcer l'écoute active, une compétence fondamentale pour tout leader.</p>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDE 3 : INTRODUCTION
+# SLIDES EXISTANTS (INTRO, DÉFINITIONS, ETC.)
 # ==============================
+# Slide 3 : Intro
 with tabs[3]:
     st.markdown("""
     <div class="modern-card">
@@ -676,33 +701,35 @@ with tabs[3]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 3 : COMPLIMENT FLASH (Slide 4)
+# ACTIVITÉ 3 : POST-IT DE RÉFLEXION (Slide 4)
 # ==============================
 with tabs[4]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 3/9 : Compliment Flash</h2>
-    <p class="content-paragraph">Créer un climat de reconnaissance.</p>
+    <h2>🎯 Activité 3/8 : Post-it de Réflexion</h2>
+    <p class="content-paragraph">Une pause réflexive après l'introduction.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>🤝 Déroulement</h3>
+        <h3>📝 Matériel</h3>
         <p><strong>Durée :</strong> 8 minutes</p>
-        <p>Former des duos. Chaque personne donne un compliment spécifique à l'autre pendant 2 minutes.</p>
-        <p>Changer de partenaire 3 fois.</p>
+        <p>Post-its de 3 couleurs :</p>
+        <ul class="content-list">
+            <li><span style="color:green; font-weight:bold;">🟩 Vert</span> : Ce que je fais bien comme leader</li>
+            <li><span style="color:orange; font-weight:bold;">🟧 Orange</span> : Ce que je veux améliorer</li>
+            <li><span style="color:blue; font-weight:bold;">🟦 Bleu</span> : Une action concrète pour demain</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Renforcer la bienveillance et la confiance dès le début.</p>
+        <p>Passer du concept à l'action personnelle et concrète.</p>
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# SLIDE 5 : DÉFINITIONS
-# ==============================
+# Slide 5 : Définitions
 with tabs[5]:
     st.markdown("""
     <div class="modern-card">
@@ -719,33 +746,36 @@ with tabs[5]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 4 : LE BÂTON DE PAROLE (Slide 6)
+# ACTIVITÉ 4 : QUESTION PUISSANTE (Slide 6)
 # ==============================
 with tabs[6]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 4/9 : Le Bâton de Parole</h2>
-    <p class="content-paragraph">Parler à tour de rôle pour garantir l'équité.</p>
+    <h2>🎯 Activité 4/8 : Question Puissante</h2>
+    <p class="content-paragraph">Ouvrir la réflexion avec une seule question ouverte.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>🪵 Règle</h3>
+        <h3>💬 Exercice</h3>
         <p><strong>Durée :</strong> 10 minutes</p>
-        <p>Seule la personne qui tient l'objet symbolique peut parler.</p>
-        <p><strong>Sujet :</strong> "Qu'est-ce qu'un bon leader selon vous ?"</p>
+        <p>Poser une seule <strong>question ouverte</strong> à son partenaire.</p>
+        <p><strong>Exemples :</strong></p>
+        <ul class="content-list">
+            <li>"Qu'est-ce qui te passionne dans ce projet ?"</li>
+            <li>"Comment vois-tu les choses ?"</li>
+            <li>"Quel impact veux-tu avoir ?"</li>
+        </ul>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Encourager l'écoute active et donner la parole à tous.</p>
+        <p>Apprendre à poser des questions qui ouvrent la voie à la compréhension, pas à la défense.</p>
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# SLIDE 7 : LEADERSHIP VS MANAGEMENT
-# ==============================
+# Slide 7 : Leadership vs Management
 with tabs[7]:
     st.markdown("""
     <div class="modern-card">
@@ -766,34 +796,32 @@ with tabs[7]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 5 : TOUR DE TABLE DES QUALITÉS (Slide 8)
+# ACTIVITÉ 5 : ÉCOUTE ACTIVE RAPIDE (Slide 8)
 # ==============================
 with tabs[8]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 5/9 : Tour de Table des Qualités</h2>
-    <p class="content-paragraph">Explorer collectivement les qualités d’un bon leader.</p>
+    <h2>🎯 Activité 5/8 : Écoute Active Rapide</h2>
+    <p class="content-paragraph">Pratiquer l'écoute sans jugement ni préparation de réponse.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>👥 Consigne</h3>
-        <p><strong>Durée :</strong> 15 minutes</p>
-        <p>Chacun nomme <strong>une qualité essentielle</strong> d’un leader.</p>
-        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
-        <p><strong>Objectif :</strong> Créer une liste collective riche.</p>
+        <h3>👂 Consigne</h3>
+        <p><strong>Durée :</strong> 8 minutes</p>
+        <p>Chaque participant parle pendant 2 minutes sur un sujet simple (ex : "Un projet qui me passionne").</p>
+        <p><strong>Règle :</strong> L'auditeur ne peut pas interrompre, ni répondre. Il doit juste écouter.</p>
+        <p>Ensuite, on inverse les rôles.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Stimuler la créativité et l’écoute active.</p>
+        <p>Apprendre à écouter pour comprendre, pas pour répondre — compétence fondamentale du leadership.</p>
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# SLIDE 9 : LEADERSHIP VS COMMANDement
-# ==============================
+# Slide 9 : Leadership vs Commandement
 with tabs[9]:
     st.markdown("""
     <div class="modern-card">
@@ -806,7 +834,7 @@ with tabs[9]:
     <strong>Leadership :</strong> Influence informelle, inspiration, relations.
     </div>
     <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres), un caporal développe du leadership (respect gagné).
+    💡 <strong>Exemple concret :</strong> Dans l'armée, un sergent utilise le commandement (ordres) alors qu'un caporal chef peut développer du leadership (respect gagné).
     </div>
     <div class="quote-card">
     « Le commandement fait respecter les règles, le leadership fait adhérer aux valeurs. »
@@ -815,36 +843,32 @@ with tabs[9]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 6 : JOURNAL MINUTE (Slide 10)
+# ACTIVITÉ 6 : TOUR DE TABLE DES QUALITÉS (Slide 10)
 # ==============================
 with tabs[10]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 6/9 : Journal Minute</h2>
-    <p class="content-paragraph">Réfléchir en toute simplicité.</p>
+    <h2>🎯 Activité 6/8 : Tour de Table des Qualités</h2>
+    <p class="content-paragraph">Explorer collectivement les qualités essentielles du leader.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>📝 Questions</h3>
-        <p><strong>Durée :</strong> 5 minutes</p>
-        <ul class="content-list">
-            <li>Une décision que j'ai prise récemment</li>
-            <li>Comment j'ai influencé quelqu'un cette semaine</li>
-            <li>Ce que j'ai appris sur le leadership aujourd'hui</li>
-        </ul>
+        <h3>👥 Consigne</h3>
+        <p><strong>Durée :</strong> 15 minutes</p>
+        <p>Chacun nomme <strong>une qualité essentielle</strong> d'un bon leader.</p>
+        <p><strong>Interdit :</strong> Répéter une qualité déjà citée.</p>
+        <p><strong>Objectif :</strong> Créer une liste riche et variée.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Transformer l'expérience en apprentissage.</p>
+        <p>Activer la créativité, favoriser l'écoute active, et élargir la définition du leadership.</p>
     </div>
     """, unsafe_allow_html=True)
 
-# ==============================
-# SLIDE 11 : THÉORIES X ET Y
-# ==============================
+# Slide 11 : Théories X et Y
 with tabs[11]:
     st.markdown("""
     <div class="modern-card">
@@ -875,144 +899,155 @@ with tabs[11]:
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 7 : REFORMULATION EN DUO (Slide 12)
+# ACTIVITÉ 7 : MINI-JEU DE RÔLE : VISION (Slide 12)
 # ==============================
 with tabs[12]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 7/9 : Reformulation en Duo</h2>
-    <p class="content-paragraph">Pratiquer l'écoute active après les théories.</p>
+    <h2>🎯 Activité 7/8 : Mini-Jeu de Rôle - Vision</h2>
+    <p class="content-paragraph">Mettez en pratique le style visionnaire.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
-        <h3>👂 Étapes</h3>
+        <h3>🎭 Scénario</h3>
         <p><strong>Durée :</strong> 10 minutes</p>
-        <ol class="content-list">
-            <li><strong>Personne A</strong> parle 1 minute d’un projet ou d’une idée</li>
-            <li><strong>Personne B</strong> reformule en 30 secondes</li>
-            <li>Vérification puis inversion des rôles</li>
-        </ol>
-        <div class="example-box">
-            💡 <strong>Exemple :</strong> "Tu dis que tu veux améliorer la collaboration entre les équipes ?"
-        </div>
+        <p><strong>Situation :</strong> Un leader doit présenter une vision de projet à une équipe réticente.</p>
+        <p><strong>Rôles :</strong> Leader et 2-3 collaborateurs.</p>
+        <p><strong>Objectif :</strong> Inspirez et motivez l'équipe avec votre vision.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="conseil-box">
         <h4>💡 Objectif pédagogique</h4>
-        <p>Renforcer l'écoute active, une compétence fondamentale pour tout leader.</p>
+        <p>Pratiquer la communication d'une vision inspirante et mobilisatrice.</p>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES POUR LES 10 STYLES DE LEADERSHIP (13 à 22)
+# STYLE VISIONNAIRE (Slide 13)
 # ==============================
-leadership_styles_data = [
-    {
-        "name": "Visionnaire",
-        "slogan": "« Viens avec moi vers l'avenir »",
-        "description": "Le leader visionnaire inspire en partageant une vision claire et motivante de l'avenir. Il donne du sens au travail et guide son équipe vers des objectifs ambitieux.",
-        "forces": ["Inspire et motive", "Donne une direction claire", "Favorise l'innovation", "Crée de l'engagement"],
-        "faiblesses": ["Peut manquer de détails pratiques", "Trop focalisé sur le long terme", "Peut négliger les problèmes courants"],
-        "exemple": "Elon Musk avec sa vision de coloniser Mars et de transition énergétique.",
-        "couleur": "#8B5CF6",
-        "utilisation": "Idéal pour : inspirer le changement, créer une vision partagée, motiver vers des objectifs ambitieux."
-    },
-    {
-        "name": "Coaching",
-        "slogan": "« Essayez et je vous aiderai à réussir »",
-        "description": "Le leader coaching se concentre sur le développement personnel et professionnel de chaque membre de l'équipe. Il investit du temps pour identifier les forces et aider à surmonter les faiblesses.",
-        "forces": ["Développe les talents", "Améliore les performances", "Fidélise les collaborateurs", "Crée une culture d'apprentissage"],
-        "faiblesses": ["Consommateurs de temps", "Difficile avec les équipes nombreuses", "Dépend de la motivation des collaborateurs"],
-        "exemple": "Un manager qui consacre 30 minutes par semaine à chaque collaborateur pour son développement.",
-        "couleur": "#10B981",
-        "utilisation": "Idéal pour : développer les talents, améliorer les compétences, fidéliser les collaborateurs."
-    },
-    {
-        "name": "Affiliatif",
-        "slogan": "« Les personnes d'abord »",
-        "description": "Le leader affiliatif privilégie l'harmonie et les relations humaines. Il crée un environnement de travail positif où les membres se sentent valorisés et connectés.",
-        "forces": ["Excellente gestion des conflits", "Forte cohésion d'équipe", "Environnement de confiance", "Bien-être au travail"],
-        "faiblesses": ["Peut éviter les confrontations nécessaires", "Performance parfois sacrifiée à l'harmonie", "Manque de direction claire"],
-        "exemple": "Une cheffe d'équipe qui célèbre les succès personnels.",
-        "couleur": "#3B82F6",
-        "utilisation": "Idéal pour : résoudre les conflits, renforcer la cohésion, créer un environnement positif."
-    },
-    {
-        "name": "Démocratique",
-        "slogan": "« Qu'en pensez-vous ? »",
-        "description": "Le leader démocratique valorise la participation et la collaboration. Il consulte son équipe avant de prendre des décisions importantes.",
-        "forces": ["Meilleures décisions collectives", "Fort engagement de l'équipe", "Innovation et créativité", "Respect mutuel"],
-        "faiblesses": ["Lenteur du processus décisionnel", "Difficile en situation d'urgence", "Risque de consensus mou"],
-        "exemple": "Chez Google, les équipes utilisent des votes et consultations.",
-        "couleur": "#6366F1",
-        "utilisation": "Idéal pour : prendre des décisions importantes, impliquer l'équipe, favoriser l'innovation."
-    },
-    {
-        "name": "Directif",
-        "slogan": "« Faites ce que je vous dis »",
-        "description": "Le leader directif donne des instructions claires et spécifiques. Il attend une exécution précise et contrôle étroitement le travail.",
-        "forces": ["Décisions rapides", "Clarté des attentes", "Efficace en urgence", "Contrôle serré"],
-        "faiblesses": ["Démotivant à long terme", "Tue l'initiative", "Faible développement des collaborateurs", "Résistance passive"],
-        "exemple": "Lors de l'incendie de Notre-Dame de Paris, les pompiers ont suivi des ordres directs.",
-        "couleur": "#EF4444",
-        "utilisation": "Idéal pour : situations de crise, équipes inexpérimentées, besoin de résultats immédiats."
-    },
-    {
-        "name": "Pace-setter",
-        "slogan": "« Faites comme moi, maintenant ! »",
-        "description": "Le leader pace-setter établit des standards d'excellence très élevés et montre l'exemple. Il s'attend à ce que l'équipe suive son rythme.",
-        "forces": ["Haute performance", "Résultats rapides", "Excellence technique", "Auto-motivation"],
-        "faiblesses": ["Épuisement de l'équipe", "Manque de délégation", "Démotivation si standards trop hauts", "Faible collaboration"],
-        "exemple": "Steve Jobs chez Apple.",
-        "couleur": "#F59E0B",
-        "utilisation": "Idéal pour : équipes très compétentes et motivées, besoin de résultats rapides."
-    },
-    {
-        "name": "Transformationnel",
-        "slogan": "« Ensemble, transformons notre réalité »",
-        "description": "Le leader transformationnel inspire un changement profond en challengeant les statu quo et en encourageant l'innovation radicale.",
-        "forces": ["Changement profond", "Innovation disruptive", "Développement des leaders", "Vision à long terme"],
-        "faiblesses": ["Résistance au changement", "Difficile à maintenir", "Nécessite une forte adhésion", "Risque de burnout"],
-        "exemple": "Jacques Servier a transformé l'industrie pharmaceutique française.",
-        "couleur": "#7C3AED",
-        "utilisation": "Idéal pour : conduire des changements majeurs, innover radicalement."
-    },
-    {
-        "name": "Transactionnel",
-        "slogan": "« Vous serez récompensé pour vos résultats »",
-        "description": "Le leader transactionnel fonctionne sur un système de récompenses et punitions basé sur la performance.",
-        "forces": ["Clarté des attentes", "Performance mesurable", "Efficacité à court terme", "Système équitable"],
-        "faiblesses": ["Limite la créativité", "Relation transactionnelle", "Démotivation si récompenses insuffisantes", "Focus court terme"],
-        "exemple": "Les systèmes de commissions dans les ventes.",
-        "couleur": "#6B7280",
-        "utilisation": "Idéal pour : environnements structurés, objectifs clairs, récompenses basées sur la performance."
-    },
-    {
-        "name": "Authentique",
-        "slogan": "« Je suis vrai et transparent »",
-        "description": "Le leader authentique montre sa vulnérabilité, admet ses erreurs et reste fidèle à ses valeurs.",
-        "forces": ["Confiance élevée", "Loyauté de l'équipe", "Culture d'apprentissage", "Respect authentique"],
-        "faiblesses": ["Vulnérabilité perçue comme faiblesse", "Nécessite une grande maturité"],
-        "exemple": "Brené Brown, chercheuse sur le leadership vulnérable.",
-        "couleur": "#059669",
-        "utilisation": "Idéal pour : construire la confiance, créer une culture transparente."
-    },
-    {
-        "name": "Serviteur",
-        "slogan": "« Je suis là pour vous servir »",
-        "description": "Le leader serviteur met les besoins de son équipe avant les siens. Il se concentre sur leur développement.",
-        "forces": ["Engagement exceptionnel", "Développement des talents", "Culture de service", "Rétention des talents"],
-        "faiblesses": ["Peut manquer d'autorité", "Risque d'épuisement du leader"],
-        "exemple": "Nelson Mandela qui a mis les besoins de son peuple avant les siens.",
-        "couleur": "#0EA5E9",
-        "utilisation": "Idéal pour : développer les talents, créer un engagement profond."
-    }
-]
+with tabs[13]:
+    st.markdown("""
+    <div class="modern-card">
+        <h2>🎨 Style Visionnaire</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:#8B5CF6; margin:1rem 0;">
+            « Viens avec moi vers l'avenir »
+        </p>
+        <p class="content-paragraph">Le leader visionnaire inspire en partageant une vision claire et motivante de l'avenir. Il donne du sens au travail et guide son équipe vers des objectifs ambitieux.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> Elon Musk avec sa vision de coloniser Mars et de transition énergétique.
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+                <li>Inspire et motive</li>
+                <li>Donne une direction claire</li>
+                <li>Favorise l'innovation</li>
+                <li>Crée de l'engagement</li>
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+                <li>Peut manquer de détails pratiques</li>
+                <li>Trop focalisé sur le long terme</li>
+                <li>Peut négliger les problèmes courants</li>
+            </ul>
+        </div>
+    </div>
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        Idéal pour : inspirer le changement, créer une vision partagée, motiver vers des objectifs ambitieux.
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-for i, style in enumerate(leadership_styles_data):
-    with tabs[13 + i]:
+# ==============================
+# ACTIVITÉ 8 : CARTE MENTALE EXPRESS (Slide 14)
+# ==============================
+with tabs[14]:
+    st.markdown("""
+    <div class="test-section">
+    <h2>🎯 Activité 8/8 : Carte Mentale Express</h2>
+    <p class="content-paragraph">Visualiser ses forces de leader en un clin d'œil.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="modern-card">
+        <h3>🧠 Consigne</h3>
+        <p><strong>Durée :</strong> 10 minutes</p>
+        <p>Créer une carte mentale sur une feuille :</p>
+        <p><strong>Centre :</strong> MOI</p>
+        <p><strong>Branches :</strong> Mes talents naturels en tant que leader.</p>
+        <p><strong>Exemples :</strong> Écoute, Résilience, Vision, Empathie...</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Renforcer l'estime de soi et la conscience de ses forces.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# STYLE COACHING (Slide 15)
+# ==============================
+with tabs[15]:
+    st.markdown(f"""
+    <div class="modern-card">
+        <h2>🎨 Style {leadership_styles_data[1]['name']}</h2>
+        <p style="font-size:1.3rem; font-weight:600; color:{leadership_styles_data[1]['couleur']}; margin:1rem 0;">
+            {leadership_styles_data[1]['slogan']}
+        </p>
+        <p class="content-paragraph">{leadership_styles_data[1]['description']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown(f"""
+    <div class="example-box">
+        💡 <strong>Exemple concret :</strong> {leadership_styles_data[1]['exemple']}
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="forces-defis-grid">
+        <div class="forces-box">
+            <h4>✅ Forces</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for force in leadership_styles_data[1]['forces']:
+        st.markdown(f"<li>{force}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+        <div class="defis-box">
+            <h4>⚠️ Défis</h4>
+            <ul class="content-list">
+    """, unsafe_allow_html=True)
+    for faiblesse in leadership_styles_data[1]['faiblesses']:
+        st.markdown(f"<li>{faiblesse}</li>", unsafe_allow_html=True)
+    st.markdown("""
+            </ul>
+        </div>
+    </div>
+    <h4>🎯 Quand utiliser ce style ?</h4>
+    <p class="content-paragraph">
+        {leadership_styles_data[1]['utilisation']}
+    </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# AUTRES STYLES (Affiliatif, Démocratique, etc.) (Slides 16-25)
+# ==============================
+for i in range(2, len(leadership_styles_data)):
+    with tabs[16 + i]: # Les autres styles commencent à l'onglet 16
+        style = leadership_styles_data[i]
         st.markdown(f"""
         <div class="modern-card">
             <h2>🎨 Style {style['name']}</h2>
@@ -1048,137 +1083,77 @@ for i, style in enumerate(leadership_styles_data):
                 </ul>
             </div>
         </div>
+        <h4>🎯 Quand utiliser ce style ?</h4>
+        <p class="content-paragraph">
+            {style['utilisation']}
+        </p>
+        </div>
         """, unsafe_allow_html=True)
-        st.markdown("<h4>🎯 Quand utiliser ce style ?</h4>", unsafe_allow_html=True)
-        st.markdown(f"<p class='content-paragraph'>{style['utilisation']}</p>", unsafe_allow_html=True)
 
 # ==============================
-# SLIDE 23 : SITUATIONNEL
+# JEU DE RÔLE (Slide 26)
 # ==============================
-with tabs[23]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🔄 Leadership Situationnel</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#7C3AED; margin:1rem 0;">
-        « Adaptons notre style à la situation »
-    </p>
-    <p class="content-paragraph">Le leader situationnel adapte son style en fonction de la maturité, des compétences et de la motivation de ses collaborateurs.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Un manager utilise un style directif avec un nouveau (faible comp., forte motivation) et délégatif avec un expert (forte comp., forte motivation).
-    </div>
-    <h3>📈 Les 4 niveaux de développement</h3>
-    <ul class="content-list">
-    <li><strong>D1 :</strong> Faible comp., forte motivation → Style directif</li>
-    <li><strong>D2 :</strong> Faible à moyenne comp., faible motivation → Style persuasif</li>
-    <li><strong>D3 :</strong> Moyenne à forte comp., motivation variable → Style participatif</li>
-    <li><strong>D4 :</strong> Forte comp., forte motivation → Style délégatif</li>
-    </ul>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Adaptation optimale</li>
-                <li>Développement progressif</li>
-                <li>Efficacité contextuelle</li>
-                <li>Respect des individualités</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Nécessite une grande flexibilité</li>
-                <li>Complexe à maîtriser</li>
-                <li>Analyse fine des situations</li>
-                <li>Risque d'incohérence</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : adapter son leadership à chaque collaborateur, développer les compétences, gérer des équipes hétérogènes.
-    </p>
-    <h3>🎥 Vidéo explicative</h3>
-    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Le leadership situationnel</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# SLIDE 24 : LAISSEZ-FAIRE
-# ==============================
-with tabs[24]:
-    st.markdown("""
-    <div class="modern-card">
-    <h2>🎨 Style Laissez-faire</h2>
-    <p style="font-size:1.3rem; font-weight:600; color:#6B7280; margin:1rem 0;">
-        « À toi de jouer »
-    </p>
-    <p class="content-paragraph">Le leader laissez-faire donne une autonomie totale à son équipe. Il fournit les ressources mais intervient peu.</p>
-    <div class="example-box">
-    💡 <strong>Exemple concret :</strong> Chez Pixar, les réalisateurs ont une liberté créative totale.
-    </div>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class="forces-defis-grid">
-        <div class="forces-box">
-            <h4>✅ Forces</h4>
-            <ul class="content-list">
-                <li>Autonomie et créativité</li>
-                <li>Responsabilisation</li>
-                <li>Innovation libre</li>
-                <li>Adaptation aux experts</li>
-            </ul>
-        </div>
-        <div class="defis-box">
-            <h4>⚠️ Défis</h4>
-            <ul class="content-list">
-                <li>Manque de direction</li>
-                <li>Manque de coordination</li>
-                <li>Risque de désengagement</li>
-                <li>Peut créer de la confusion</li>
-            </ul>
-        </div>
-    </div>
-    <h4>🎯 Quand utiliser ce style ?</h4>
-    <p class="content-paragraph">
-        Idéal pour : équipes d'experts, environnements créatifs, projets innovants.
-    </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-# ==============================
-# JEU DE RÔLE - SLIDE 25
-# ==============================
-with tabs[25]:
+with tabs[26]:
     st.markdown("""
     <div class="test-section">
     <h2>🎭 Jeu de Rôle - Mise en Pratique</h2>
-    <p class="content-paragraph">Pratiquez les styles en binômes</p>
+    <p class="content-paragraph">Pratiquez les différents styles de leadership à travers des scénarios réalistes en binômes</p>
     </div>
     """, unsafe_allow_html=True)
+    # (Code du jeu de rôle, identique à la version précédente)
     roleplay_scenarios = [
         {
-            "titre": "🚀 Lancement Nouveau Projet",
-            "description": "Vous devez lancer un projet innovant avec une équipe réticente",
+            "titre": "🚀 Lancement d'un Nouveau Projet",
+            "description": "Vous devez lancer un projet innovant avec une équipe réticente au changement",
             "roles": [
-                "Leader : Convaincre l'équipe",
-                "Collaborateur : Exprimer des réserves"
+                "Leader : Convaincre l'équipe de l'importance du projet",
+                "Collaborateur : Exprimer des réserves et des préoccupations"
             ],
             "styles_recommandes": ["Visionnaire", "Coaching", "Démocratique"],
             "duree": "10 minutes"
         },
         {
             "titre": "🔥 Gestion de Crise",
-            "description": "Une urgence nécessite une action immédiate",
+            "description": "Une urgence nécessite une action immédiate et coordonnée",
             "roles": [
-                "Leader : Prendre des décisions rapides",
-                "Collaborateur : Suivre les instructions"
+                "Leader : Prendre des décisions rapides sous pression",
+                "Collaborateur : Suivre les instructions et signaler les problèmes"
             ],
             "styles_recommandes": ["Directif", "Pace-setter"],
             "duree": "8 minutes"
+        },
+        {
+            "titre": "🤝 Résolution de Conflit",
+            "description": "Deux membres de l'équipe sont en conflit ouvert",
+            "roles": [
+                "Leader : Médier le conflit et rétablir l'harmonie",
+                "Collaborateur en conflit : Exprimer son point de vue"
+            ],
+            "styles_recommandes": ["Affiliatif", "Authentique", "Serviteur"],
+            "duree": "12 minutes"
+        },
+        {
+            "titre": "💡 Innovation et Créativité",
+            "description": "Brainstorming pour résoudre un problème complexe",
+            "roles": [
+                "Leader : Stimuler la créativité sans imposer de solutions",
+                "Collaborateur : Proposer des idées innovantes"
+            ],
+            "styles_recommandes": ["Démocratique", "Laissez-faire", "Transformationnel"],
+            "duree": "15 minutes"
+        },
+        {
+            "titre": "📈 Performance d'Équipe",
+            "description": "L'équipe n'atteint pas ses objectifs de performance",
+            "roles": [
+                "Leader : Identifier les problèmes et motiver l'équipe",
+                "Collaborateur : Expliquer les difficultés rencontrées"
+            ],
+            "styles_recommandes": ["Coaching", "Transactionnel", "Pace-setter"],
+            "duree": "10 minutes"
         }
     ]
+    # Initialisation de l'état
     if 'current_scenario' not in st.session_state:
         st.session_state.current_scenario = None
     if 'time_left' not in st.session_state:
@@ -1189,18 +1164,19 @@ with tabs[25]:
         st.session_state.timer_running = False
     if 'timer_finished' not in st.session_state:
         st.session_state.timer_finished = False
-
+    # Sélection du scénario
     st.markdown("### 🎯 Choisissez un Scénario")
     for i, scenario in enumerate(roleplay_scenarios):
         if st.button(f"{scenario['titre']} - {scenario['duree']}", key=f"scenario_{i}", use_container_width=True):
             st.session_state.current_scenario = scenario
             st.session_state.timer_running = False
             st.session_state.timer_finished = False
+            # Convertir la durée en secondes
             minutes = int(scenario['duree'].split()[0])
             st.session_state.time_left = minutes * 60
             st.session_state.initial_time = minutes * 60
             st.rerun()
-
+    # Affichage du scénario sélectionné
     if st.session_state.current_scenario:
         scenario = st.session_state.current_scenario
         st.markdown(f"""
@@ -1211,6 +1187,8 @@ with tabs[25]:
             <p><strong>Styles recommandés :</strong> {', '.join(scenario['styles_recommandes'])}</p>
         </div>
         """, unsafe_allow_html=True)
+        # Rôles
+        st.markdown("### 👥 Rôles à Distribuer")
         col1, col2 = st.columns(2)
         with col1:
             st.markdown(f"""
@@ -1226,8 +1204,10 @@ with tabs[25]:
                 <p>{scenario['roles'][1]}</p>
             </div>
             """, unsafe_allow_html=True)
-
+        # Conteneur pour le timer qui sera mis à jour
         timer_placeholder = st.empty()
+        # Contrôles du timer
+        st.markdown("### ⏱️ Contrôles du Timer")
         col1, col2, col3 = st.columns(3)
         with col1:
             if st.button("▶️ Démarrer", key="start_timer", use_container_width=True):
@@ -1244,104 +1224,677 @@ with tabs[25]:
                 st.session_state.timer_finished = False
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
-
+        # Logique du timer
         if st.session_state.timer_running and st.session_state.time_left > 0:
+            # Mettre à jour le temps
             st.session_state.time_left -= 1
+            # Si le temps est écoulé
             if st.session_state.time_left <= 0:
                 st.session_state.timer_running = False
                 st.session_state.timer_finished = True
+                st.session_state.time_left = 0
+        # Affichage du timer
         minutes = st.session_state.time_left // 60
         seconds = st.session_state.time_left % 60
+        # Couleur du timer
         if st.session_state.initial_time > 0:
             progress = st.session_state.time_left / st.session_state.initial_time
             if progress > 0.5:
-                timer_color = "#10B981"
+                timer_color = "#10B981"  # Vert
             elif progress > 0.25:
-                timer_color = "#F59E0B"
+                timer_color = "#F59E0B"  # Orange
             else:
-                timer_color = "#EF4444"
+                timer_color = "#EF4444"  # Rouge
         else:
             timer_color = "#6B7280"
-
+        # Afficher le timer dans le placeholder
         with timer_placeholder.container():
-            st.markdown("### ⏱️ Timer")
+            st.markdown("### ⏱️ Timer de la Session")
             st.markdown(f"""
             <div class="timer-box" style="border-color: {timer_color};">
-                <div style="font-size: 3rem; color: {timer_color};">
+                <div style="font-size: 3rem; font-weight: bold; color: {timer_color};">
                     {minutes:02d}:{seconds:02d}
+                </div>
+                <div style="margin-top: 0.5rem;">
+                    {'⏰ En cours...' if st.session_state.timer_running else '⏸️ En pause' if st.session_state.time_left < st.session_state.initial_time else '⏹️ Prêt'}
                 </div>
             </div>
             """, unsafe_allow_html=True)
+            # Barre de progression
             if st.session_state.initial_time > 0:
                 progress_value = 1 - (st.session_state.time_left / st.session_state.initial_time)
                 st.progress(progress_value)
-                st.caption(f"Progression : {int(progress_value*100)}%")
+                st.caption(f"Progression : {int(progress_value * 100)}%")
+        # Si le timer est en cours, planifier un rerun
         if st.session_state.timer_running and st.session_state.time_left > 0:
             import time
             time.sleep(1)
             st.rerun()
+        # Message de fin
         if st.session_state.timer_finished:
             st.balloons()
-            st.success("🎉 Temps écoulé !")
-            if st.button("🔄 Recommencer", key="restart"):
+            st.success("🎉 Temps écoulé ! La session est terminée.")
+            if st.button("🔄 Recommencer", key="restart_finished"):
                 st.session_state.timer_running = False
                 st.session_state.timer_finished = False
                 st.session_state.time_left = st.session_state.initial_time
                 st.rerun()
+        # Consignes pour le débriefing
         st.markdown("### 📝 Debriefing")
         st.markdown("""
         <div class="conseil-box">
-            <h4>Questions :</h4>
+            <h4>Questions pour le debriefing :</h4>
             <ul>
-                <li>Quel style a été utilisé ?</li>
+                <li>Quel style de leadership a été utilisé ?</li>
                 <li>Comment s'est senti le collaborateur ?</li>
-                <li>Qu'est-ce qui aurait pu être amélioré ?</li>
+                <li>Qu'est-ce qui a bien fonctionné ?</li>
+                <li>Qu'est-ce qui pourrait être amélioré ?</li>
+                <li>Quel autre style aurait pu être efficace ?</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
+    # Instructions générales
+    st.markdown("---")
+    st.markdown("""
+    <div class="modern-card">
+        <h3>📋 Instructions pour le Jeu de Rôle</h3>
+        <ol class="content-list">
+            <li><strong>Formez des binômes</strong> - Un leader et un collaborateur</li>
+            <li><strong>Choisissez un scénario</strong> - Cliquez sur un des scénarios ci-dessus</li>
+            <li><strong>Distribuez les rôles</strong> - Chacun joue son rôle selon la description</li>
+            <li><strong>Utilisez le timer</strong> - Respectez le temps imparti</li>
+            <li><strong>Débriefer</strong> - À la fin, échangez vos retours d'expérience</li>
+            <li><strong>Inversez les rôles</strong> - Changez de rôle pour le scénario suivant</li>
+        </ol>
+        <div class="example-box">
+            💡 <strong>Conseil :</strong> Essayez d'utiliser différents styles de leadership pour le même scénario et comparez les résultats !
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==============================
-# SLIDES RESTANTS (26 à 35)
+# SLIDES EXISTANTS (Compétences, IE, Cas, Quiz, etc.)
 # ==============================
-# (Compétences, IE, Cas, Quiz, etc.)
-# Copiez ici les contenus restants depuis le fichier original
+# Slide 27 : Compétences
+with tabs[27]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🔑 Compétences Clés du Leader Moderne</h2>
+    <h3>🏆 Les 5 compétences indispensables</h3>
+    <ul class="content-list">
+    <li><strong>Vision stratégique :</strong> Voir loin et large</li>
+    <li><strong>Communication inspirante :</strong> Parler avec cœur et conviction</li>
+    <li><strong>Décision courageuse :</strong> Assumer ses choix avec humilité</li>
+    <li><strong>Délégation efficace :</strong> Faire confiance et responsabiliser</li>
+    <li><strong>Résilience émotionnelle :</strong> Rebondir face aux échecs</li>
+    </ul>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Indra Nooyi, ancienne CEO de PepsiCo, combinait vision stratégique et attention aux détails humains.
+    </div>
+    <h3>🎥 Vidéo sur les compétences</h3>
+    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Les compétences d'un leader</a>
+    </div>
+    """, unsafe_allow_html=True)
 
-# ==============================
-# ACTIVITÉ 8 : MOT DE LA FIN (Slide 36)
-# ==============================
+# Slide 28 : Intelligence Émotionnelle
+with tabs[28]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🧠 Intelligence Émotionnelle (IE) au service du leadership</h2>
+    <p class="content-paragraph">L'IE représente <strong>80% de la performance</strong> en leadership selon Daniel Goleman.</p>
+    <h3>🎯 Les 4 piliers de l'IE</h3>
+    <ul class="content-list">
+    <li><strong>Conscience de soi :</strong> Comprendre ses émotions et leur impact</li>
+    <li><strong>Maîtrise de soi :</strong> Gérer ses réactions émotionnelles</li>
+    <li><strong>Conscience sociale :</strong> Percevoir les émotions des autres</li>
+    <li><strong>Gestion des relations :</strong> Influencer positivement les émotions collectives</li>
+    </ul>
+    <div class="example-box">
+    💡 <strong>Exemple concret :</strong> Lors d'une restructuration, Pierre, directeur RH, reconnaît sa propre anxiété et celle de son équipe, et organise des entretiens individuels pour rassurer.
+    </div>
+    <h3>🎥 Vidéo explicative</h3>
+    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle pour un meilleur leadership</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 29 : Études de Cas
+with tabs[29]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>📊 Études de Cas Concrets</h2>
+    <h3>🏢 Cas 1 : Transformation digitale</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Une PME familiale doit se digitaliser face à la concurrence.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Résistance au changement des équipes historiques.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership visionnaire + coaching progressif.</p>
+    <div class="example-box">
+    💡 <strong>Résultat :</strong> 6 mois pour la transition, 90% d'adoption des nouveaux outils.
+    </div>
+    <h3>🏭 Cas 2 : Fusion d'entreprises</h3>
+    <p class="content-paragraph"><strong>Contexte :</strong> Deux entreprises de cultures différentes fusionnent.</p>
+    <p class="content-paragraph"><strong>Défi :</strong> Choc culturel et perte de repères.</p>
+    <p class="content-paragraph"><strong>Solution :</strong> Leadership affiliatif pour créer du lien + démocratique pour co-construire.</p>
+    <div class="example-box">
+    💡 <strong>Résultat :</strong> 75% de rétention des talents clés, nouvelle identité partagée.
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 30 : QUIZ 1
+with tabs[30]:
+    st.markdown("""
+    <div class="quiz-section">
+    <h2>🧠 Quiz 1 - Fondamentaux du Leadership</h2>
+    <p class="content-paragraph">Testez vos connaissances sur les bases du leadership avec ce quiz de 10 questions</p>
+    </div>
+    """, unsafe_allow_html=True)
+    # (Code du quiz 1, identique à la version précédente)
+    quiz1_questions = [
+        {
+            "question": "Quelle est la définition la plus précise du leadership ?",
+            "options": [
+                "Exercer un pouvoir hiérarchique sur des subordonnés",
+                "Influencer et guider des personnes vers un objectif commun",
+                "Prendre toutes les décisions importantes seul",
+                "Contrôler strictement le travail des autres"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership est avant tout une capacité à influencer et guider, pas à contrôler ou dominer."
+        },
+        {
+            "question": "Quelle est la principale différence entre leadership et management ?",
+            "options": [
+                "Le leadership rapporte plus d'argent",
+                "Le leadership concerne la vision, le management l'organisation",
+                "Le management est plus important que le leadership",
+                "Il n'y a aucune différence"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership inspire le changement et fixe la vision, tandis que le management organise et planifie l'exécution."
+        },
+        {
+            "question": "Selon la théorie X et Y de McGregor, quelle affirmation correspond à la théorie Y ?",
+            "options": [
+                "Les employés sont naturellement paresseux et doivent être contrôlés",
+                "Les employés sont créatifs et cherchent à s'impliquer",
+                "Seul l'argent motive les employés",
+                "Les employés ne peuvent pas être fiables"
+            ],
+            "correct": 1,
+            "explanation": "La théorie Y considère que les employés sont naturellement motivés, créatifs et cherchent à prendre des responsabilités."
+        },
+        {
+            "question": "Quel style de leadership est centré sur le développement des collaborateurs ?",
+            "options": [
+                "Leadership directif",
+                "Leadership coaching",
+                "Leadership pace-setter", 
+                "Leadership laissez-faire"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership coaching se concentre sur le développement à long terme des compétences des collaborateurs."
+        },
+        {
+            "question": "Quelle compétence est la plus cruciale pour un leader selon la plupart des études ?",
+            "options": [
+                "Compétences techniques avancées",
+                "Intelligence émotionnelle",
+                "Connaissances financières",
+                "Maîtrise des outils technologiques"
+            ],
+            "correct": 1,
+            "explanation": "L'intelligence émotionnelle permet de comprendre et gérer les émotions, essentielle pour motiver et inspirer."
+        },
+        {
+            "question": "Dans le modèle situationnel de Hersey-Blanchard, quel style utiliser avec une équipe compétente mais peu motivée ?",
+            "options": [
+                "Directif",
+                "Persuasif", 
+                "Participatif",
+                "Délégatif"
+            ],
+            "correct": 2,
+            "explanation": "Avec une équipe compétente mais peu motivée, le style participatif qui implique l'équipe dans les décisions est le plus efficace."
+        },
+        {
+            "question": "Quel est le principal avantage du leadership démocratique ?",
+            "options": [
+                "Décisions très rapides",
+                "Fort engagement des collaborateurs",
+                "Contrôle total du leader",
+                "Peu de discussions nécessaires"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership démocratique favorise l'engagement car les collaborateurs se sentent écoutés et impliqués."
+        },
+        {
+            "question": "Quel type de leader inspire par son exemple et son intégrité ?",
+            "options": [
+                "Leader transactionnel",
+                "Leader authentique",
+                "Leader directif",
+                "Leader laissez-faire"
+            ],
+            "correct": 1,
+            "explanation": "Le leader authentique inspire par sa transparence, son intégrité et son alignement entre ses paroles et ses actions."
+        },
+        {
+            "question": "Quelle est la caractéristique principale du leadership serviteur ?",
+            "options": [
+                "Servir les intérêts du leader",
+                "Servir en premier, diriger ensuite",
+                "Servir seulement les actionnaires",
+                "Servir sous la direction des subordonnés"
+            ],
+            "correct": 1,
+            "explanation": "Le leader serviteur met les besoins des autres en premier et considère le leadership comme un service."
+        },
+        {
+            "question": "Quelle erreur un leader débutant doit-il absolument éviter ?",
+            "options": [
+                "Écouter trop son équipe",
+                "Micro-manager et ne pas faire confiance",
+                "Communiquer trop fréquemment",
+                "Faire trop de compliments"
+            ],
+            "correct": 1,
+            "explanation": "Le micro-management tue la motivation et l'autonomie, c'est une erreur fréquente des leaders débutants."
+        }
+    ]
+    # Initialisation du quiz 1
+    if 'quiz1_responses' not in st.session_state:
+        st.session_state.quiz1_responses = [None] * len(quiz1_questions)
+    if 'quiz1_score' not in st.session_state:
+        st.session_state.quiz1_score = 0
+    if 'show_quiz1_results' not in st.session_state:
+        st.session_state.show_quiz1_results = False
+    # Affichage des questions
+    for i, q in enumerate(quiz1_questions):
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        options = q["options"]
+        response = st.radio(
+            "Choisissez votre réponse :",
+            options,
+            key=f"quiz1_{i}",
+            index=st.session_state.quiz1_responses[i] if st.session_state.quiz1_responses[i] is not None else None
+        )
+        # Stocker la réponse
+        if response in options:
+            st.session_state.quiz1_responses[i] = options.index(response)
+    # Vérifier si toutes les questions sont répondues
+    all_answered = all(response is not None for response in st.session_state.quiz1_responses)
+    if st.button("📝 Voir mes résultats du Quiz 1", key="view_quiz1_results", disabled=not all_answered):
+        if not all_answered:
+            st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
+        else:
+            st.session_state.show_quiz1_results = True
+            # Calcul du score
+            score = 0
+            for i, q in enumerate(quiz1_questions):
+                if st.session_state.quiz1_responses[i] == q["correct"]:
+                    score += 1
+            st.session_state.quiz1_score = score
+            st.rerun()
+    # Affichage des résultats
+    if st.session_state.get('show_quiz1_results', False) and all_answered:
+        score = st.session_state.quiz1_score
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📊 Résultats du Quiz 1</h3>
+            <p><strong>Score : {score}/10</strong></p>
+            <p><strong>Pourcentage : {score * 10}%</strong></p>
+        """, unsafe_allow_html=True)
+        if score >= 9:
+            st.markdown("<p>🎉 <strong>Excellent !</strong> Vous maîtrisez parfaitement les fondamentaux du leadership.</p>", unsafe_allow_html=True)
+        elif score >= 7:
+            st.markdown("<p>👍 <strong>Très bien !</strong> Vous avez de bonnes connaissances en leadership.</p>", unsafe_allow_html=True)
+        elif score >= 5:
+            st.markdown("<p>💪 <strong>Bien !</strong> Vous avez les bases, continuez à apprendre.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown("<p>📚 <strong>À travailler.</strong> Revoyez les concepts fondamentaux.</p>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+        # Affichage des corrections
+        st.markdown("### 📖 Corrections détaillées")
+        for i, q in enumerate(quiz1_questions):
+            user_answer = st.session_state.quiz1_responses[i]
+            is_correct = user_answer == q["correct"]
+            st.markdown(f"""
+            <div class="modern-card">
+                <h4>Question {i+1} : {q['question']}</h4>
+                <p><strong>Votre réponse :</strong> {q['options'][user_answer]} {'✅' if is_correct else '❌'}</p>
+                <p><strong>Réponse correcte :</strong> {q['options'][q['correct']]}</p>
+                <p><strong>Explication :</strong> {q['explanation']}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+# Slide 31 : QUIZ 2
+with tabs[31]:
+    st.markdown("""
+    <div class="quiz-section">
+    <h2>🧠 Quiz 2 - Styles de Leadership Avancés</h2>
+    <p class="content-paragraph">Testez vos connaissances sur les styles de leadership avec ce quiz de 10 questions</p>
+    </div>
+    """, unsafe_allow_html=True)
+    quiz2_questions = [
+        {
+            "question": "Quel style de leadership est le plus adapté en situation de crise nécessitant une action immédiate ?",
+            "options": [
+                "Leadership démocratique",
+                "Leadership directif",
+                "Leadership laissez-faire",
+                "Leadership affiliatif"
+            ],
+            "correct": 1,
+            "explanation": "En situation de crise, le leadership directif permet de prendre des décisions rapides et d'orienter clairement l'action."
+        },
+        {
+            "question": "Quel leader est connu pour son approche 'Servant Leadership' ?",
+            "options": [
+                "Steve Jobs",
+                "Robert Greenleaf",
+                "Jack Welch",
+                "Bill Gates"
+            ],
+            "correct": 1,
+            "explanation": "Robert Greenleaf a développé le concept de 'Servant Leadership' où le leader sert d'abord son équipe."
+        },
+        {
+            "question": "Dans le leadership transformationnel, quelle est la technique clé pour inspirer les collaborateurs ?",
+            "options": [
+                "Stimulation intellectuelle",
+                "Contrôle renforcé",
+                "Punitions fréquentes",
+                "Délégation totale"
+            ],
+            "correct": 0,
+            "explanation": "La stimulation intellectuelle pousse les collaborateurs à innover et penser différemment, clé du leadership transformationnel."
+        },
+        {
+            "question": "Quel style de leadership risque de créer le plus de burn-out dans l'équipe ?",
+            "options": [
+                "Leadership visionnaire",
+                "Leadership pace-setter",
+                "Leadership coaching",
+                "Leadership démocratique"
+            ],
+            "correct": 1,
+            "explanation": "Le leadership pace-setter, où le leader montre l'exemple à un rythme effréné, peut épuiser l'équipe qui peine à suivre."
+        },
+        {
+            "question": "Quelle est la principale caractéristique du leadership authentique ?",
+            "options": [
+                "Transparence et alignement valeurs-actions",
+                "Charisme exceptionnel",
+                "Expertise technique suprême",
+                "Richesse personnelle"
+            ],
+            "correct": 0,
+            "explanation": "L'authenticité se manifeste par la transparence, l'intégrité et l'alignement entre les valeurs professées et les actions."
+        },
+        {
+            "question": "Selon le modèle situationnel, quel style utiliser avec un collaborateur débutant et motivé ?",
+            "options": [
+                "Délégatif",
+                "Directif",
+                "Participatif",
+                "Persuasif"
+            ],
+            "correct": 1,
+            "explanation": "Avec un débutant motivé, le style directif fournit la structure et les instructions nécessaires à l'apprentissage."
+        },
+        {
+            "question": "Quel type de leader utilise principalement des récompenses et punitions ?",
+            "options": [
+                "Leader transformationnel",
+                "Leader transactionnel",
+                "Leader authentique",
+                "Leader serviteur"
+            ],
+            "correct": 1,
+            "explanation": "Le leader transactionnel fonctionne sur le principe 'donnant-donnant' avec des récompenses pour les performances."
+        },
+        {
+            "question": "Quelle est la limite principale du leadership laissez-faire ?",
+            "options": [
+                "Manque de structure et de direction",
+                "Trop de contrôle",
+                "Communication excessive",
+                "Décisions trop rapides"
+            ],
+            "correct": 0,
+            "explanation": "Le laissez-faire peut mener au manque de coordination et à l'absence de vision claire pour l'équipe."
+        },
+        {
+            "question": "Quel style de leadership est le plus efficace pour construire l'harmonie d'équipe ?",
+            "options": [
+                "Leadership affiliatif",
+                "Leadership directif",
+                "Leadership pace-setter",
+                "Leadership transactionnel"
+            ],
+            "correct": 0,
+            "explanation": "Le leadership affiliatif se concentre sur les relations et l'harmonie, créant un environnement de travail positif."
+        },
+        {
+            "question": "Quelle compétence un leader visionnaire doit-il particulièrement développer ?",
+            "options": [
+                "Capacité à communiquer une vision inspirante",
+                "Compétences en micro-management",
+                "Maîtrise des détails opérationnels",
+                "Capacité à punir les mauvaises performances"
+            ],
+            "correct": 0,
+            "explanation": "Un leader visionnaire excelle dans l'art de communiquer une vision qui inspire et mobilise l'équipe."
+        }
+    ]
+    # Initialisation du quiz 2
+    if 'quiz2_responses' not in st.session_state:
+        st.session_state.quiz2_responses = [None] * len(quiz2_questions)
+    if 'quiz2_score' not in st.session_state:
+        st.session_state.quiz2_score = 0
+    if 'show_quiz2_results' not in st.session_state:
+        st.session_state.show_quiz2_results = False
+    # Affichage des questions
+    for i, q in enumerate(quiz2_questions):
+        st.markdown(f'<div class="quiz-question"><strong>Question {i+1}/10 :</strong> {q["question"]}</div>', unsafe_allow_html=True)
+        options = q["options"]
+        response = st.radio(
+            "Choisissez votre réponse :",
+            options,
+            key=f"quiz2_{i}",
+            index=st.session_state.quiz2_responses[i] if st.session_state.quiz2_responses[i] is not None else None
+        )
+        # Stocker la réponse
+        if response in options:
+            st.session_state.quiz2_responses[i] = options.index(response)
+    # Vérifier si toutes les questions sont répondues
+    all_answered = all(response is not None for response in st.session_state.quiz2_responses)
+    if st.button("📝 Voir mes résultats du Quiz 2", key="view_quiz2_results", disabled=not all_answered):
+        if not all_answered:
+            st.warning("⚠️ Veuillez répondre à toutes les questions avant de voir vos résultats.")
+        else:
+            st.session_state.show_quiz2_results = True
+            # Calcul du score
+            score = 0
+            for i, q in enumerate(quiz2_questions):
+                if st.session_state.quiz2_responses[i] == q["correct"]:
+                    score += 1
+            st.session_state.quiz2_score = score
+            st.rerun()
+    # Affichage des résultats
+    if st.session_state.get('show_quiz2_results', False) and all_answered:
+        score = st.session_state.quiz2_score
+        st.markdown(f"""
+        <div class="evaluation-box">
+            <h3>📊 Résultats du Quiz 2</h3>
+            <p><strong>Score : {score}/10</strong></p>
+            <p><strong>Pourcentage : {score * 10}%</strong></p>
+        """, unsafe_allow_html=True)
+        if score >= 9:
+            st.markdown("<p>🎉 <strong>Exceptionnel !</strong> Vous maîtrisez les styles de leadership avancés.</p>", unsafe_allow_html=True)
+        elif score >= 7:
+            st.markdown("<p>👍 <strong>Très bon !</strong> Vous avez une excellente compréhension des différents styles.</p>", unsafe_allow_html=True)
+        elif score >= 5:
+            st.markdown("<p>💪 <strong>Bon !</strong> Vous connaissez les bases, continuez à vous perfectionner.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown("<p>📚 <strong>À revoir.</strong> Étudiez les différents styles de leadership.</p>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+        # Affichage des corrections
+        st.markdown("### 📖 Corrections détaillées")
+        for i, q in enumerate(quiz2_questions):
+            user_answer = st.session_state.quiz2_responses[i]
+            is_correct = user_answer == q["correct"]
+            st.markdown(f"""
+            <div class="modern-card">
+                <h4>Question {i+1} : {q['question']}</h4>
+                <p><strong>Votre réponse :</strong> {q['options'][user_answer]} {'✅' if is_correct else '❌'}</p>
+                <p><strong>Réponse correcte :</strong> {q['options'][q['correct']]}</p>
+                <p><strong>Explication :</strong> {q['explanation']}</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+# Slide 32 : Synthèse
+with tabs[32]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🎓 Synthèse du Parcours Leadership</h2>
+    <h3>🔑 Les 5 points clés à retenir</h3>
+    <ul class="content-list">
+    <li><strong>1. Adaptabilité :</strong> Un bon leader adapte son style à la situation</li>
+    <li><strong>2. Authenticité :</strong> La cohérence entre paroles et actions</li>
+    <li><strong>3. Vision :</strong> Savoir où aller et emmener les autres</li>
+    <li><strong>4. Humilité :</strong> Reconnaître ses erreurs et apprendre</li>
+    <li><strong>5. Impact :</strong> Mesurer son leadership par l'impact positif</li>
+    </ul>
+    <div class="quote-card">
+    « Le véritable leadership ne consiste pas à avoir une position, mais à avoir une influence positive. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 33 : Secteurs d'Application
+with tabs[33]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🏥 Leadership dans Différents Secteurs</h2>
+    <h3>💻 Technologie</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Laissez-faire</p>
+    <h3>🏭 Industrie</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Directif + Démocratique</p>
+    <h3>🏥 Santé</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Affiliatif + Coaching</p>
+    <h3>🎓 Éducation</h3>
+    <p class="content-paragraph"><strong>Style dominant :</strong> Visionnaire + Coaching</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 34 : Erreurs Courantes
+with tabs[34]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>🚫 Erreurs Courantes en Leadership</h2>
+    <h3>❌ Les 7 pièges à éviter</h3>
+    <ul class="content-list">
+    <li><strong>1. Micro-management :</strong> Tuer l'autonomie et la créativité</li>
+    <li><strong>2. Incohérence :</strong> Dire une chose et faire le contraire</li>
+    <li><strong>3. Manque de reconnaissance :</strong> Oublier de valoriser les efforts</li>
+    <li><strong>4. Communication insuffisante :</strong> Ne pas partager l'information</li>
+    <li><strong>5. Éviter les conflits :</strong> Laisser pourrir les situations</li>
+    <li><strong>6. Style unique :</strong> Même style dans toutes les situations</li>
+    <li><strong>7. Négliger son développement :</strong> Arrêter d'apprendre</li>
+    </ul>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 35 : Conseils
+with tabs[35]:
+    st.markdown("""
+    <div class="modern-card">
+    <h2>💡 Conseils Pratiques</h2>
+    <h3>🎯 5 conseils pour développer votre leadership</h3>
+    <ul class="content-list">
+    <li><strong>1. Pratiquez l'écoute active</strong> - Écoutez pour comprendre, pas pour répondre</li>
+    <li><strong>2. Donnez du feedback régulier</strong> - Constructif, spécifique et opportun</li>
+    <li><strong>3. Développez votre intelligence émotionnelle</strong> - Comprenez vos émotions et celles des autres</li>
+    <li><strong>4. Communiquez clairement votre vision</strong> - Expliquez le "pourquoi" derrière chaque action</li>
+    <li><strong>5. Investissez dans votre développement</strong> - Le leadership s'apprend et se perfectionne</li>
+    </ul>
+    <h3>🎥 Vidéos sur les styles</h3>
+    <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Slide 36 : Ressources
 with tabs[36]:
     st.markdown("""
+    <div class="modern-card">
+    <h2>📚 Ressources Complémentaires</h2>
+    <h3>🎥 Toutes les vidéos recommandées</h3>
+    <a href="https://youtu.be/hCtFbHJQHvk?si=r00mEZ8Mnnzecd1I" target="_blank" class="video-link">▶ Définition d'un leader</a>
+    <a href="https://youtu.be/Ej9M-U1EiGY?si=kgqe2lA8Pe6oF26Q" target="_blank" class="video-link">▶ Définition du leadership</a>
+    <a href="https://youtu.be/mhkLc0HEtR0?si=n4rAkltZW8gIGu7g" target="_blank" class="video-link">▶ Différence leader/management</a>
+    <a href="https://youtu.be/vilZazhIjoc?si=b4PNNY5P8SAqu9_p" target="_blank" class="video-link">▶ Les 5 styles de leadership</a>
+    <a href="https://youtu.be/iRBQqfJaoo4?si=Kbhele-WRaC6wqGw" target="_blank" class="video-link">▶ Leadership situationnel</a>
+    <a href="https://youtu.be/2tDKptsgvVU?si=fSS4rwyv7EM9biy9" target="_blank" class="video-link">▶ Compétences d'un leader</a>
+    <a href="https://youtu.be/UOS8X33jOZo?si=IXlKW4TF9CEi6E3h" target="_blank" class="video-link">▶ Intelligence émotionnelle</a>
+    <a href="https://youtu.be/NY82yptNp5E?si=_SrSJ8F5t2RY1ywK" target="_blank" class="video-link">▶ Les 10 types de leadership</a>
+    <div class="quote-card">
+    « L'investissement le plus important que vous puissiez faire est d'investir en vous-même. »
+    </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# ==============================
+# ACTIVITÉ 19 : MOT DE LA FIN (CLÔTURE) (Slide 37)
+# ==============================
+with tabs[37]:
+    st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 8/9 : Mot de la Fin</h2>
-    <p class="content-paragraph">Clôturez en puissance.</p>
+    <h2>🎯 Activité 19/20 : Mot de la Fin (Clôture)</h2>
+    <p class="content-paragraph">Terminez en puissance avec une participation collective.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
         <h3>🗣️ Tour de Table</h3>
         <p><strong>Durée :</strong> 5 minutes</p>
-        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit.</p>
+        <p>Chacun dit <strong>un mot</strong> qui résume son état d'esprit ou son énergie de leadership.</p>
         <div class="example-box">
-            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance
+            💡 <strong>Exemples :</strong> Inspiration, Dynamique, Confiance, Action
         </div>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Créer une mémoire collective positive de la session.</p>
     </div>
     """, unsafe_allow_html=True)
 
 # ==============================
-# ACTIVITÉ 9 : APPLAUDISSEMENT TOURNANT (Slide 37)
+# ACTIVITÉ 20 : APPLAUDISSEMENT TOURNANT (Slide 38)
 # ==============================
-with tabs[37]:
+with tabs[38]:
     st.markdown("""
     <div class="test-section">
-    <h2>🎯 Activité 9/9 : Applaudissement Tournant</h2>
-    <p class="content-paragraph">Créer une énergie positive finale.</p>
+    <h2>🎯 Activité 20/20 : Applaudissement Tournant (Clôture)</h2>
+    <p class="content-paragraph">Créez une énergie positive et sensorielle pour clore.</p>
     </div>
     """, unsafe_allow_html=True)
     st.markdown("""
     <div class="modern-card">
         <h3>👏 Déroulement</h3>
         <p><strong>Durée :</strong> 3 minutes</p>
-        <p>Une personne au centre. Tout le monde l'applaudit 15 secondes. Elle tourne. Autre personne.</p>
+        <p>Une personne se place au centre de la salle.</p>
+        <p>Tout le monde l'applaudit chaleureusement pendant 15 secondes.</p>
+        <p>Elle tourne sur elle-même et s'arrête.</p>
+        <p>Une autre personne prend sa place — répéter 2 à 3 fois.</p>
+        <p><strong>Effet :</strong> Énergie collective, reconnaissance, bienveillance.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.markdown("""
+    <div class="conseil-box">
+        <h4>💡 Objectif pédagogique</h4>
+        <p>Clôturer la session sur une note positive, humaine et sensorielle.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1349,8 +1902,8 @@ with tabs[37]:
 st.markdown("---")
 st.markdown("""
 <div style="text-align: center; color: #64748b; margin-top: 2rem;">
-<p><strong>⏱️ Durée estimée : 45 min</strong></p>
-<p>Activités : 9 x ~7 min = 63 min | Contenu : 10 min</p>
-<p><strong>→ Total ajusté avec transitions</strong></p>
+<p><strong>⏱️ Timing estimé : 45 min</strong></p>
+<p>Activités : 8 x ~7 min = 56 min (avec transitions) | Contenu : 10 min</p>
+<p>Clôtures : 2 x ~5 min = 10 min</p>
 </div>
 """, unsafe_allow_html=True)
