@@ -1,10 +1,4 @@
-Le code contient une erreur de référence à une variable non définie (`leadership_styles_data` au lieu de `leadership_styles_data`). Voici le **code corrigé** avec les 8 activités intégrées, les 2 activités de clôture ajoutées à la fin, et toutes les erreurs de syntaxe résolues.
 
----
-
-### ✅ **Code Final Corrigé (copier-coller direct)**
-
-```python
 import streamlit as st
 import random
 
@@ -2007,4 +2001,4 @@ st.markdown("""
 <p><strong>8 activités express + 5 activités de clôture</strong></p>
 </div>
 """, unsafe_allow_html=True)
-```
+
